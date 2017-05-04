@@ -9,35 +9,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--StockVersus-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Table View Controller-->
+        <scene sceneID="K1T-Fx-ho4">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FeedViewController" customModule="StockVersus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="o7M-kk-Pg1" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="375" sectionHeaderHeight="28" sectionFooterHeight="28" id="3zh-Ht-44V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="StockVersus" id="nN4-eQ-qZM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="x5H-cP-vS5">
-                            <color key="tintColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="oNP-zU-VLT">
-                            <color key="tintColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedCell" id="C9I-6r-4Iv">
+                                <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C9I-6r-4Iv" id="tLW-1F-i7I">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x39-0Z-mgm">
+                                            <rect key="frame" x="19.5" y="19.5" width="335" height="335"/>
+                                            <color key="backgroundColor" red="0.1066021697" green="0.1066021697" blue="0.1066021697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="335" id="0zm-zq-ijh"/>
+                                                <constraint firstAttribute="height" constant="335" id="okH-wz-FWi"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="x39-0Z-mgm" firstAttribute="centerY" secondItem="tLW-1F-i7I" secondAttribute="centerY" id="3Sb-Jj-bpq"/>
+                                        <constraint firstItem="x39-0Z-mgm" firstAttribute="centerX" secondItem="tLW-1F-i7I" secondAttribute="centerX" id="gUM-Ya-Ahg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o7M-kk-Pg1" id="vhP-mJ-xZI"/>
+                            <outlet property="delegate" destination="o7M-kk-Pg1" id="YDH-7S-R5I"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="x3F-iw-goM"/>
                     <connections>
-                        <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="LuY-yX-4J3"/>
-                        <segue destination="a5b-11-lVq" kind="show" identifier="FeedToLeaderboard" id="umi-eg-oUh"/>
+                        <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="kNo-ZK-FTn"/>
+                        <segue destination="a5b-11-lVq" kind="show" identifier="FeedToLeaderboard" id="4QI-O1-qck"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9F3-8C-ttX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="136"/>
+            <point key="canvasLocation" x="138" y="136"/>
         </scene>
         <!--Portfolio View Controller-->
         <scene sceneID="zdq-JV-mtd">
@@ -55,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6K-RA-YiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="839" y="137"/>
+            <point key="canvasLocation" x="986" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jsw-xk-f6m">
@@ -73,7 +92,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CUz-oh-c8h"/>
+                        <segue destination="o7M-kk-Pg1" kind="relationship" relationship="rootViewController" id="CSq-4B-1YS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oeq-JR-vW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPZ-VJ-Ne9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1529" y="137"/>
+            <point key="canvasLocation" x="985" y="-528"/>
         </scene>
     </scenes>
 </document>

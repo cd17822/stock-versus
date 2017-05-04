@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB5E288C1EB8F2E900BBDB6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E288B1EB8F2E900BBDB6E /* AppDelegate.swift */; };
-		CB5E288E1EB8F2E900BBDB6E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E288D1EB8F2E900BBDB6E /* FeedViewController.swift */; };
 		CB5E28911EB8F2E900BBDB6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB5E288F1EB8F2E900BBDB6E /* Main.storyboard */; };
 		CB5E28941EB8F2E900BBDB6E /* StockVersus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28921EB8F2E900BBDB6E /* StockVersus.xcdatamodeld */; };
 		CB5E28961EB8F2E900BBDB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5E28951EB8F2E900BBDB6E /* Assets.xcassets */; };
@@ -21,6 +20,7 @@
 		CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C21EB8F42200BBDB6E /* Global.swift */; };
 		CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */; };
 		CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */; };
+		CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		CB5E28881EB8F2E900BBDB6E /* StockVersus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockVersus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5E288B1EB8F2E900BBDB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB5E288D1EB8F2E900BBDB6E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		CB5E28901EB8F2E900BBDB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB5E28931EB8F2E900BBDB6E /* StockVersus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StockVersus.xcdatamodel; sourceTree = "<group>"; };
 		CB5E28951EB8F2E900BBDB6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		CB5E28C21EB8F42200BBDB6E /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 				CB5E28C01EB8F41A00BBDB6E /* Network.swift */,
 				CB5E28BE1EB8F40500BBDB6E /* FeedPaneVIew.swift */,
 				CB5E28BC1EB8F3F100BBDB6E /* FeedPane.xib */,
-				CB5E288D1EB8F2E900BBDB6E /* FeedViewController.swift */,
+				CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */,
 				CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */,
 				CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */,
 				CB5E288F1EB8F2E900BBDB6E /* Main.storyboard */,
@@ -285,8 +285,8 @@
 				CB5E28C11EB8F41A00BBDB6E /* Network.swift in Sources */,
 				CB5E28BF1EB8F40500BBDB6E /* FeedPaneVIew.swift in Sources */,
 				CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */,
+				CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */,
 				CB5E28941EB8F2E900BBDB6E /* StockVersus.xcdatamodeld in Sources */,
-				CB5E288E1EB8F2E900BBDB6E /* FeedViewController.swift in Sources */,
 				CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */,
 				CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */,
 				CB5E288C1EB8F2E900BBDB6E /* AppDelegate.swift in Sources */,
@@ -540,6 +540,7 @@
 				CB5E28B51EB8F2EA00BBDB6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB5E28B61EB8F2EA00BBDB6E /* Build configuration list for PBXNativeTarget "StockVersusTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +549,7 @@
 				CB5E28B81EB8F2EA00BBDB6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB5E28B91EB8F2EA00BBDB6E /* Build configuration list for PBXNativeTarget "StockVersusUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +558,7 @@
 				CB5E28BB1EB8F2EA00BBDB6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

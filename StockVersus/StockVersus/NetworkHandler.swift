@@ -43,6 +43,12 @@ class NetworkHandler {
         p1.balance_m = 11121.41
         p1.balance_q = 11120.01
         p1.balance_y = 10111.31
+        p1.ranking_d = 1
+        p1.ranking_w = 50
+        p1.ranking_m = 51
+        p1.ranking_q = 60
+        p1.ranking_y = 100
+        p1.ranking_a = 7
         p1.addToBuys(aapl)
         p1.addToPuts(msft)
 

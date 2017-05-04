@@ -55,10 +55,10 @@ class FeedPaneView: UIView {
         balance_label.text = "$\(portfolio!.balance.with2DecimalPlaces)"
         date_label.text = "\(Date().prettyDateTimeDescription)"
         name_label.text = "\(portfolio!.name!)"
-        dollar_change_label.text = "+$\((portfolio!.balance - portfolio!.balance_d).with2DecimalPlaces)"
-        percent_change_label.text = "+\((portfolio!.balance / portfolio!.balance_d).with2DecimalPlaces)%"
+        dollar_change_label.text = dollarChangeString(for: portfolio!.balance, since: portfolio!.balance_d)
+        percent_change_label.text = percentChangeString(for: portfolio!.balance, since: portfolio!.balance_d)
         period_label.text = "Day:"
-        ranking_label.text = "\(portfolio!.ranking_d)"
+        ranking_label.text = rankPercentString(for: portfolio!.ranking_d)
         next_period_label.text = "Week >"
     }
 }

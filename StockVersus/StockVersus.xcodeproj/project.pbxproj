@@ -21,6 +21,7 @@
 		CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */; };
 		CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */; };
 		CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */; };
+		CBD3581A1EBBB1ED00CA1A67 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD358191EBBB1ED00CA1A67 /* Portfolio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		CBD358191EBBB1ED00CA1A67 /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		CB5E288A1EB8F2E900BBDB6E /* StockVersus */ = {
 			isa = PBXGroup;
 			children = (
+				CBD358191EBBB1ED00CA1A67 /* Portfolio.swift */,
 				CB5E288B1EB8F2E900BBDB6E /* AppDelegate.swift */,
 				CB5E28C21EB8F42200BBDB6E /* Global.swift */,
 				CB5E28C01EB8F41A00BBDB6E /* Network.swift */,
@@ -285,6 +288,7 @@
 				CB5E28C11EB8F41A00BBDB6E /* Network.swift in Sources */,
 				CB5E28BF1EB8F40500BBDB6E /* FeedPaneVIew.swift in Sources */,
 				CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */,
+				CBD3581A1EBBB1ED00CA1A67 /* Portfolio.swift in Sources */,
 				CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */,
 				CB5E28941EB8F2E900BBDB6E /* StockVersus.xcdatamodeld in Sources */,
 				CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */,

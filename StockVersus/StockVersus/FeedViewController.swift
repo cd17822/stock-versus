@@ -22,4 +22,3 @@ class FeedViewController: UIViewController {
 
 
 }
-

@@ -9,7 +9,8 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController {
-    
+    var portfolios = [Portfolio]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +33,7 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return portfolios.count
     }
 
     /*

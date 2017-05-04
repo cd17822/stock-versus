@@ -7,17 +7,38 @@
         <attribute name="balance_q" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="balance_w" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="balance_y" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="buys" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="puts" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="ranking_a" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_d" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_m" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_q" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_w" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_y" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time_init" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="buys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stock" inverseName="buy_portfolios" inverseEntity="Stock" syncable="YES"/>
+        <relationship name="puts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stock" inverseName="put_portfolios" inverseEntity="Stock" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="portfolios" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Stock" representedClassName="Stock" syncable="YES" codeGenerationType="class">
+        <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_a" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_d" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_m" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_q" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_w" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="balance_y" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buy_portfolios" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="buys" inverseEntity="Portfolio" syncable="YES"/>
+        <relationship name="put_portfolios" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="puts" inverseEntity="Portfolio" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="portfolios" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="user" inverseEntity="Portfolio" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Portfolio" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="Portfolio" positionX="-315" positionY="-396" width="128" height="298"/>
+        <element name="Stock" positionX="-153" positionY="-342" width="128" height="193"/>
+        <element name="User" positionX="-173" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

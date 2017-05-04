@@ -9,17 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--StockVersus-->
         <scene sceneID="K1T-Fx-ho4">
             <objects>
-                <tableViewController id="o7M-kk-Pg1" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="375" sectionHeaderHeight="28" sectionFooterHeight="28" id="3zh-Ht-44V">
+                <tableViewController id="o7M-kk-Pg1" customClass="FeedTableViewController" customModule="StockVersus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="375" sectionHeaderHeight="28" sectionFooterHeight="28" id="3zh-Ht-44V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedCell" id="C9I-6r-4Iv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="C9I-6r-4Iv" customClass="FeedTableViewCell" customModule="StockVersus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="375"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C9I-6r-4Iv" id="tLW-1F-i7I">
@@ -35,12 +36,16 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="x39-0Z-mgm" firstAttribute="centerY" secondItem="tLW-1F-i7I" secondAttribute="centerY" id="3Sb-Jj-bpq"/>
                                         <constraint firstItem="x39-0Z-mgm" firstAttribute="centerX" secondItem="tLW-1F-i7I" secondAttribute="centerX" id="gUM-Ya-Ahg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="pane_canvas_view" destination="x39-0Z-mgm" id="cvS-gF-xMM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,7 +53,7 @@
                             <outlet property="delegate" destination="o7M-kk-Pg1" id="YDH-7S-R5I"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="x3F-iw-goM"/>
+                    <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM"/>
                     <connections>
                         <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="kNo-ZK-FTn"/>
                         <segue destination="a5b-11-lVq" kind="show" identifier="FeedToLeaderboard" id="4QI-O1-qck"/>

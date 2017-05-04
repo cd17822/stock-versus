@@ -14,6 +14,9 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getPortfolios()
+
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -21,9 +24,30 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func getPortfolios() {
+        CoreDataHandler.fetchPortfolios(belongingTo: USER) { portfolios, err in
+            if err != nil {
+                print(err!)
+                return
+            }
+
+            self.portfolios = portfolios
+            print(portfolios)
+            tableView.reloadData()
+            print("datad")
+        }
+
+        NetworkHandler.getPortfolios(belongingTo: USER) { portfolios, err in
+            if err != nil {
+                print(err!)
+                return
+            }
+
+            self.portfolios = portfolios
+            print(portfolios)
+            tableView.reloadData()
+            print("networked")
+        }
     }
 
     // MARK: - Table view data source
@@ -36,15 +60,14 @@ class FeedTableViewController: UITableViewController {
         return portfolios.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
+        cell.portfolio = portfolios[indexPath.row]
+        print("CELLPORT")
+        print(cell.portfolio ?? "NIL HOE tableview")
+        cell.fillCanvas()
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

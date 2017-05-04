@@ -9,12 +9,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedPaneView" customModule="StockVersus" customModuleProvider="target">
+            <connections>
+                <outlet property="balance_label" destination="fJu-N6-MDa" id="owZ-Bf-OwX"/>
+                <outlet property="content_view" destination="iN0-l3-epB" id="jsA-sd-b2m"/>
+                <outlet property="date_label" destination="zpb-MB-f0V" id="hLk-tj-xIJ"/>
+                <outlet property="dollar_change_label" destination="chr-4h-CNw" id="41q-Tc-kae"/>
+                <outlet property="inner_border_view" destination="NmS-H4-g2D" id="P3c-En-UfQ"/>
+                <outlet property="name_label" destination="mJF-3J-3lN" id="MFO-fx-Wys"/>
+                <outlet property="next_period_label" destination="PD8-5b-P2v" id="pOg-dD-msW"/>
+                <outlet property="percent_change_label" destination="JrX-zM-z4h" id="SLY-bc-FTT"/>
+                <outlet property="period_label" destination="QRz-NR-l3F" id="IAv-ce-vWz"/>
+                <outlet property="ranking_label" destination="vYG-bU-8ix" id="1fE-MM-VuT"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="355" height="355"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-H4-g2D">
+                    <rect key="frame" x="5" y="5" width="345" height="345"/>
+                    <color key="backgroundColor" red="0.1066021697" green="0.1066021697" blue="0.1066021697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$23.47" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chr-4h-CNw">
                     <rect key="frame" x="40" y="129" width="275.5" height="98"/>
                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="74"/>
@@ -22,8 +39,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech Heavy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-3J-3lN">
-                    <rect key="frame" x="95" y="81" width="166" height="40"/>
-                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="30"/>
+                    <rect key="frame" x="89" y="86.5" width="177" height="42.5"/>
+                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
                     <color key="textColor" red="0.0095653882687469771" green="0.91556998229098707" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -51,10 +68,16 @@
                     <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 10, 2017 9:41 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpb-MB-f0V">
-                    <rect key="frame" x="151" y="20" width="187.5" height="22.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 10, 2017 9:41AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpb-MB-f0V">
+                    <rect key="frame" x="160" y="20" width="178.5" height="23"/>
                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$110,354.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-N6-MDa">
+                    <rect key="frame" x="16" y="19" width="114" height="26.5"/>
+                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="20"/>
+                    <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -62,19 +85,26 @@
             <constraints>
                 <constraint firstItem="JrX-zM-z4h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2LQ-Pj-4hK"/>
                 <constraint firstAttribute="bottom" secondItem="QRz-NR-l3F" secondAttribute="bottom" constant="20" id="4GY-cq-HL2"/>
-                <constraint firstItem="chr-4h-CNw" firstAttribute="top" secondItem="mJF-3J-3lN" secondAttribute="bottom" constant="8" id="6jy-OA-F3g"/>
+                <constraint firstItem="fJu-N6-MDa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="4y7-pn-Jkl"/>
+                <constraint firstItem="fJu-N6-MDa" firstAttribute="centerY" secondItem="zpb-MB-f0V" secondAttribute="centerY" id="5JE-W2-stG"/>
+                <constraint firstItem="chr-4h-CNw" firstAttribute="top" secondItem="mJF-3J-3lN" secondAttribute="bottom" id="6jy-OA-F3g"/>
+                <constraint firstItem="NmS-H4-g2D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="D68-YN-ug3"/>
                 <constraint firstItem="chr-4h-CNw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Doe-st-t6U"/>
                 <constraint firstItem="JrX-zM-z4h" firstAttribute="top" secondItem="chr-4h-CNw" secondAttribute="bottom" constant="1.5" id="KaY-t7-Pcy"/>
                 <constraint firstItem="zpb-MB-f0V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Qy4-R0-Vds"/>
                 <constraint firstItem="mJF-3J-3lN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VJd-qv-dCG"/>
                 <constraint firstItem="PD8-5b-P2v" firstAttribute="centerY" secondItem="QRz-NR-l3F" secondAttribute="centerY" id="XDC-th-hBm"/>
+                <constraint firstItem="NmS-H4-g2D" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cLg-eo-55N"/>
+                <constraint firstItem="NmS-H4-g2D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="eDK-a0-Ivu"/>
                 <constraint firstAttribute="trailing" secondItem="zpb-MB-f0V" secondAttribute="trailing" constant="16.5" id="ewK-j3-U6V"/>
                 <constraint firstItem="chr-4h-CNw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="j4h-1D-vKm"/>
                 <constraint firstItem="vYG-bU-8ix" firstAttribute="leading" secondItem="QRz-NR-l3F" secondAttribute="trailing" constant="8" id="jx5-ct-IP6"/>
                 <constraint firstAttribute="trailing" secondItem="PD8-5b-P2v" secondAttribute="trailing" constant="16" id="pEp-WP-Aqv"/>
                 <constraint firstItem="QRz-NR-l3F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="vxZ-WI-QHL"/>
                 <constraint firstItem="vYG-bU-8ix" firstAttribute="centerY" secondItem="QRz-NR-l3F" secondAttribute="centerY" id="yvj-6h-Fq7"/>
+                <constraint firstItem="NmS-H4-g2D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zd9-WD-xoP"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="136.5" y="54.5"/>
         </view>

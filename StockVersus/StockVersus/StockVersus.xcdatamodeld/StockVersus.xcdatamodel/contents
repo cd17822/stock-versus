@@ -28,6 +28,7 @@
         <attribute name="balance_w" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="balance_y" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticker" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="buy_portfolios" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="buys" inverseEntity="Portfolio" syncable="YES"/>
         <relationship name="put_portfolios" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="puts" inverseEntity="Portfolio" syncable="YES"/>
     </entity>
@@ -38,7 +39,7 @@
     </entity>
     <elements>
         <element name="Portfolio" positionX="-315" positionY="-396" width="128" height="298"/>
-        <element name="Stock" positionX="-153" positionY="-342" width="128" height="193"/>
+        <element name="Stock" positionX="-153" positionY="-342" width="128" height="210"/>
         <element name="User" positionX="-173" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

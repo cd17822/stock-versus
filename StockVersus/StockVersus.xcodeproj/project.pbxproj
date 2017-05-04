@@ -14,12 +14,13 @@
 		CB5E28991EB8F2E900BBDB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB5E28971EB8F2E900BBDB6E /* LaunchScreen.storyboard */; };
 		CB5E28A41EB8F2E900BBDB6E /* StockVersusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28A31EB8F2E900BBDB6E /* StockVersusTests.swift */; };
 		CB5E28AF1EB8F2EA00BBDB6E /* StockVersusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28AE1EB8F2EA00BBDB6E /* StockVersusUITests.swift */; };
-		CB5E28BD1EB8F3F100BBDB6E /* FeedPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5E28BC1EB8F3F100BBDB6E /* FeedPane.xib */; };
-		CB5E28BF1EB8F40500BBDB6E /* FeedPaneVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28BE1EB8F40500BBDB6E /* FeedPaneVIew.swift */; };
+		CB5E28BD1EB8F3F100BBDB6E /* FeedPaneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5E28BC1EB8F3F100BBDB6E /* FeedPaneView.xib */; };
+		CB5E28BF1EB8F40500BBDB6E /* FeedPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28BE1EB8F40500BBDB6E /* FeedPaneView.swift */; };
 		CB5E28C11EB8F41A00BBDB6E /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C01EB8F41A00BBDB6E /* NetworkHandler.swift */; };
 		CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C21EB8F42200BBDB6E /* Global.swift */; };
 		CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */; };
 		CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */; };
+		CBC847A11EBBC7BE0004E448 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */; };
 		CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */; };
 		CBD3581C1EBBB7A900CA1A67 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3581B1EBBB7A900CA1A67 /* CoreDataHandler.swift */; };
 /* End PBXBuildFile section */
@@ -55,12 +56,13 @@
 		CB5E28AA1EB8F2E900BBDB6E /* StockVersusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockVersusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5E28AE1EB8F2EA00BBDB6E /* StockVersusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockVersusUITests.swift; sourceTree = "<group>"; };
 		CB5E28B01EB8F2EA00BBDB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB5E28BC1EB8F3F100BBDB6E /* FeedPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedPane.xib; sourceTree = "<group>"; };
-		CB5E28BE1EB8F40500BBDB6E /* FeedPaneVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPaneVIew.swift; sourceTree = "<group>"; };
+		CB5E28BC1EB8F3F100BBDB6E /* FeedPaneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedPaneView.xib; sourceTree = "<group>"; };
+		CB5E28BE1EB8F40500BBDB6E /* FeedPaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPaneView.swift; sourceTree = "<group>"; };
 		CB5E28C01EB8F41A00BBDB6E /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		CB5E28C21EB8F42200BBDB6E /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		CBD3581B1EBBB7A900CA1A67 /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,8 +119,9 @@
 				CB5E28C21EB8F42200BBDB6E /* Global.swift */,
 				CBD3581B1EBBB7A900CA1A67 /* CoreDataHandler.swift */,
 				CB5E28C01EB8F41A00BBDB6E /* NetworkHandler.swift */,
-				CB5E28BE1EB8F40500BBDB6E /* FeedPaneVIew.swift */,
-				CB5E28BC1EB8F3F100BBDB6E /* FeedPane.xib */,
+				CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */,
+				CB5E28BE1EB8F40500BBDB6E /* FeedPaneView.swift */,
+				CB5E28BC1EB8F3F100BBDB6E /* FeedPaneView.xib */,
 				CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */,
 				CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */,
 				CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */,
@@ -258,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5E28991EB8F2E900BBDB6E /* LaunchScreen.storyboard in Resources */,
-				CB5E28BD1EB8F3F100BBDB6E /* FeedPane.xib in Resources */,
+				CB5E28BD1EB8F3F100BBDB6E /* FeedPaneView.xib in Resources */,
 				CB5E28961EB8F2E900BBDB6E /* Assets.xcassets in Resources */,
 				CB5E28911EB8F2E900BBDB6E /* Main.storyboard in Resources */,
 			);
@@ -286,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5E28C11EB8F41A00BBDB6E /* NetworkHandler.swift in Sources */,
-				CB5E28BF1EB8F40500BBDB6E /* FeedPaneVIew.swift in Sources */,
+				CB5E28BF1EB8F40500BBDB6E /* FeedPaneView.swift in Sources */,
 				CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */,
 				CBD3581C1EBBB7A900CA1A67 /* CoreDataHandler.swift in Sources */,
 				CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */,
@@ -294,6 +297,7 @@
 				CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */,
 				CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */,
 				CB5E288C1EB8F2E900BBDB6E /* AppDelegate.swift in Sources */,
+				CBC847A11EBBC7BE0004E448 /* FeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

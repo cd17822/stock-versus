@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 class CoreDataHandler {
-    private static var persistentContainer: NSPersistentContainer = {
+    public static var context: NSManagedObjectContext = {
         let container = NSPersistentContainer(name: "StockVersus")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 fatalError("Unresolved error: \(error)")
             }
         })
-        return container
+        return container.viewContext
     }()
 //
 //    public static var default_level_1: Level {
@@ -28,6 +28,18 @@ class CoreDataHandler {
 //        return level
 //    }
 //
+
+    public static func fetchPortfolios(belongingTo username: String, _ cb: ([Portfolio], Error?) -> ()) {
+        let request = NSFetchRequest<Portfolio>(entityName: "Portfolio")
+
+        do {
+            let portfolios = try context.fetch(request)
+            cb(portfolios, nil)
+        } catch let error as NSError {
+            cb([], error)
+        }
+    }
+
 //    private static func fetchLevels(_ callback: ((_ levels: [Level], _ error: NSError?) -> Void)) {
 //        let request = NSFetchRequest<Level>(entityName: "Level")
 //        do {
@@ -90,19 +102,13 @@ class CoreDataHandler {
 //        }
 //    }
 //
-//    public static func save(level: Level, _ callback: @escaping ((_ error: NSError?) -> Void)) {
-//        let level_to_save = Level(context: persistentContainer.viewContext)
-//        level_to_save.number = level.number
-//        level_to_save.best = level.best
-//        level_to_save.isCurrent = true
-//        print(level_to_save)
-//
-//        do {
-//            try self.persistentContainer.viewContext.save()
-//            callback(nil)
-//        } catch let error as NSError {
-//            callback(error)
-//        }
-//    }
+    public static func save(_ cb: (Error?) -> ()) {
+        do {
+            try self.context.save()
+            cb(nil)
+        } catch let error as NSError {
+            cb(error)
+        }
+    }
 }
 

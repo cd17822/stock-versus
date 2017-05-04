@@ -9,11 +9,13 @@
 import UIKit
 
 class PortfolioViewController: UIViewController {
+    var portfolio: Portfolio?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
+        
     }
 
     override func didReceiveMemoryWarning() {

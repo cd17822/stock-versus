@@ -15,36 +15,58 @@
                 <tableViewController id="o7M-kk-Pg1" customClass="FeedTableViewController" customModule="StockVersus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="375" sectionHeaderHeight="28" sectionFooterHeight="28" id="3zh-Ht-44V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="C9I-6r-4Iv" customClass="FeedTableViewCell" customModule="StockVersus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GreetingCell" rowHeight="50" id="C9I-6r-4Iv">
+                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C9I-6r-4Iv" id="tLW-1F-i7I">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Day Charles!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC4-se-Q1A">
+                                            <rect key="frame" x="45" y="13.5" width="285" height="43"/>
+                                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
+                                            <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="PC4-se-Q1A" firstAttribute="centerX" secondItem="tLW-1F-i7I" secondAttribute="centerX" id="aa7-OY-PNY"/>
+                                        <constraint firstItem="PC4-se-Q1A" firstAttribute="centerY" secondItem="tLW-1F-i7I" secondAttribute="centerY" constant="10" id="saZ-4D-hgr"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedTableViewCell" rowHeight="375" id="8Jd-lS-jHZ" customClass="FeedTableViewCell" customModule="StockVersus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="78" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Jd-lS-jHZ" id="2f3-Oa-xAm">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x39-0Z-mgm">
-                                            <rect key="frame" x="19.5" y="19.5" width="335" height="335"/>
-                                            <color key="backgroundColor" red="0.1066021697" green="0.1066021697" blue="0.1066021697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q17-hk-t9D">
+                                            <rect key="frame" x="19.5" y="20.5" width="335" height="335"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="335" id="0zm-zq-ijh"/>
-                                                <constraint firstAttribute="height" constant="335" id="okH-wz-FWi"/>
+                                                <constraint firstAttribute="width" constant="335" id="9TO-58-C24"/>
+                                                <constraint firstAttribute="height" constant="335" id="Du4-fe-Ett"/>
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="x39-0Z-mgm" firstAttribute="centerY" secondItem="tLW-1F-i7I" secondAttribute="centerY" id="3Sb-Jj-bpq"/>
-                                        <constraint firstItem="x39-0Z-mgm" firstAttribute="centerX" secondItem="tLW-1F-i7I" secondAttribute="centerX" id="gUM-Ya-Ahg"/>
+                                        <constraint firstItem="q17-hk-t9D" firstAttribute="centerY" secondItem="2f3-Oa-xAm" secondAttribute="centerY" id="imh-ja-l7O"/>
+                                        <constraint firstItem="q17-hk-t9D" firstAttribute="centerX" secondItem="2f3-Oa-xAm" secondAttribute="centerX" id="wfP-3D-gj5"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="pane_canvas_view" destination="x39-0Z-mgm" id="cvS-gF-xMM"/>
+                                    <outlet property="pane_canvas_view" destination="q17-hk-t9D" id="ayF-Mz-b0G"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,6 +76,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="kNo-ZK-FTn"/>
                         <segue destination="a5b-11-lVq" kind="show" identifier="FeedToLeaderboard" id="4QI-O1-qck"/>
@@ -61,7 +84,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F3-8C-ttX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="136"/>
+            <point key="canvasLocation" x="136.80000000000001" y="135.38230884557723"/>
         </scene>
         <!--Portfolio View Controller-->
         <scene sceneID="zdq-JV-mtd">
@@ -85,14 +108,14 @@
         <scene sceneID="jsw-xk-f6m">
             <objects>
                 <navigationController id="47r-UO-YtF" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gsh-hx-YCC">
+                    <navigationBar key="navigationBar" alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="gsh-hx-YCC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="24"/>
                             <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>

@@ -13,6 +13,7 @@ class LeaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
         // Do any additional setup after loading the view.
     }
 

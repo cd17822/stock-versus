@@ -26,9 +26,8 @@ class FeedTableViewController: UITableViewController {
             }
 
             self.portfolios = portfolios
-            print(portfolios)
             tableView.reloadData()
-            print("datad")
+
         }
 
         NetworkHandler.getPortfolios(belongingTo: USER) { portfolios, err in
@@ -38,9 +37,7 @@ class FeedTableViewController: UITableViewController {
             }
 
             self.portfolios = portfolios
-            print(portfolios)
             tableView.reloadData()
-            print("networked")
         }
     }
 

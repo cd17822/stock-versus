@@ -23,7 +23,6 @@ class FeedTableViewCell: UITableViewCell {
     }
 
     func fillCanvas() {
-        print(self.portfolio ?? "NIL HOE fillcanvas")
         let pane_view = FeedPaneView()
         pane_view.portfolio = portfolio
         pane_view.drawLabels()

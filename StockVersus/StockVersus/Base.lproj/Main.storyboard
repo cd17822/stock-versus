@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="135.38230884557723"/>
         </scene>
-        <!--Portfolio View Controller-->
+        <!--Portfolio-->
         <scene sceneID="zdq-JV-mtd">
             <objects>
                 <viewController id="QIR-l2-UDG" customClass="PortfolioViewController" customModule="StockVersus" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,6 +99,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Portfolio" id="dp9-k5-bfe">
+                        <barButtonItem key="backBarButtonItem" title="Feed" id="iHF-Fb-ak1"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6K-RA-YiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,11 +112,10 @@
             <objects>
                 <navigationController id="47r-UO-YtF" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" alpha="0.69999999999999996" contentMode="scaleToFill" barStyle="black" id="gsh-hx-YCC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="24"/>
                             <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

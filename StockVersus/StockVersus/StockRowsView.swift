@@ -22,6 +22,7 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
     */
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        print("not even getting here right")
         return 1
     }
 

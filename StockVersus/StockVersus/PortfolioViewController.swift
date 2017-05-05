@@ -59,11 +59,11 @@ class PortfolioViewController: UIViewController {
     func addTablesToCanvases() {
         buys_table.stocks = portfolio!.buys!.map { $0 as! Stock }
         buys_table.frame = buys_canvas.bounds
+        buys_canvas.addSubview(buys_table)
 
         puts_table.stocks = portfolio!.puts!.map { $0 as! Stock }
         puts_table.frame = puts_canvas.bounds
-
-        
+        puts_canvas.addSubview(puts_table)
     }
 
     func timeUnitPressed() {

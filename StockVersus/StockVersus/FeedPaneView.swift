@@ -42,7 +42,7 @@ class FeedPaneView: UIView {
         Bundle.main.loadNibNamed("FeedPaneView", owner: self, options: nil)
         guard let content = content_view else { return }
         content.frame = self.bounds
-        self.addSubview(content)
+        addSubview(content)
     }
 
 

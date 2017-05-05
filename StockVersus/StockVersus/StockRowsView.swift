@@ -9,6 +9,7 @@
 import UIKit
 
 class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var content_view: UIView!
     @IBOutlet weak var table_view: UITableView!
 
     var stocks = [Stock]()
@@ -20,6 +21,24 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
         // Drawing code
     }
     */
+
+    override init(frame: CGRect) { // for using CustomView in code
+        super.init(frame: frame)
+        self.loadNib()
+    }
+
+
+    required init?(coder aDecoder: NSCoder) { // for using CustomView in IB
+        super.init(coder: aDecoder)
+        self.loadNib()
+    }
+
+    private func loadNib() {
+        Bundle.main.loadNibNamed("StockRowsView", owner: self, options: nil)
+        guard let content = content_view else { return }
+        content.frame = self.bounds
+        addSubview(content)
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         print("not even getting here right")
@@ -42,10 +61,10 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     func updateCells(for tu: TimeUnit) {
         mode = tu
-        for cell in table_view.visibleCells {
-            if let c = cell as? StockRowsViewCell {
-                c.updateLabels(for: mode)
-            }
-        }
+//        for cell in table_view.visibleCells {
+//            if let c = cell as? StockRowsViewCell {
+//                c.updateLabels(for: mode)
+//            }
+//        }
     }
 }

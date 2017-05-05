@@ -8,8 +8,9 @@
 
 import Foundation
 
-let USER = "cd17822"
-let NUM_PORTFOLIOS: Int32 = 100
+let USER = "cd17822" // gotta change
+let NUM_PORTFOLIOS: Int32 = 100 // fake
+let PORTFOLIO_START_VALUE: Float = 100000.00
 
 enum TimeUnit {
     case day, week, month, quarter, year, alltime
@@ -33,15 +34,19 @@ func rankPercentString(for ranking: Int32) -> String {
 }
 
 func dollarChangeString(for balance: Float, since balanceOld: Float) -> String {
-    let pm = balance >= balanceOld ? "+" : ""
+    let pm = balance >= balanceOld ? "+" : "-"
 
     return pm + "$" + abs(balance - balanceOld).with2DecimalPlaces
 }
 
-func percentChangeString(for balance: Float, since balanceOld: Float) -> String {
-    let pm = balance >= balanceOld ? "+" : "-"
+func percentChangeString(for balance: Float, since balanceOld: Float, withoutPlusMinus: Bool=false) -> String {
+    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : "-"
 
     return pm + (balance/balanceOld).with2DecimalPlaces + "%"
+}
+
+func priceChangeString(for balance: Float, since balanceOld: Float) -> String {
+    return "\(dollarChangeString(for: balance, since: balanceOld)) (\(percentChangeString(for: balance, since: balanceOld, withoutPlusMinus: true)))"
 }
 
 extension Date {

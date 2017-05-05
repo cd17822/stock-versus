@@ -152,34 +152,9 @@
                                 <state key="normal" title="D">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCo-pQ-FgJ">
-                                <rect key="frame" x="316.5" y="211" width="30" height="44"/>
-                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
-                                <state key="normal" title="A">
-                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Iw-MNZ">
-                                <rect key="frame" x="259" y="211" width="30" height="44"/>
-                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
-                                <state key="normal" title="Y">
-                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-ON-EPv">
-                                <rect key="frame" x="201.5" y="211" width="30" height="44"/>
-                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
-                                <state key="normal" title="Q">
-                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHk-4g-NVy">
-                                <rect key="frame" x="143.5" y="211" width="30" height="44"/>
-                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
-                                <state key="normal" title="M">
-                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <connections>
+                                    <action selector="dPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="SZl-S0-4vv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BE2-6C-iHB">
                                 <rect key="frame" x="86" y="211" width="30" height="44"/>
@@ -187,6 +162,49 @@
                                 <state key="normal" title="W">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="wPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="MVh-GF-xqk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHk-4g-NVy">
+                                <rect key="frame" x="143" y="211" width="30" height="44"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
+                                <state key="normal" title="M">
+                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="mPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="mQz-RF-MWh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-ON-EPv">
+                                <rect key="frame" x="201" y="211" width="30" height="44"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
+                                <state key="normal" title="Q">
+                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="qPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="qub-Wc-DwI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Iw-MNZ">
+                                <rect key="frame" x="259" y="211" width="30" height="44"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
+                                <state key="normal" title="Y">
+                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="yPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="FRx-5K-8Tg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCo-pQ-FgJ">
+                                <rect key="frame" x="316" y="211" width="30" height="44"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
+                                <state key="normal" title="A">
+                                    <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="aPressed:" destination="QIR-l2-UDG" eventType="touchUpInside" id="GSk-Oq-Frd"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOf-RT-rlF" userLabel="Underline">
                                 <rect key="frame" x="33.5" y="250" width="20" height="1"/>
@@ -242,6 +260,20 @@
                     <navigationItem key="navigationItem" title="Portfolio" id="dp9-k5-bfe">
                         <barButtonItem key="backBarButtonItem" title="Feed" id="iHF-Fb-ak1"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="a_button" destination="iCo-pQ-FgJ" id="MN3-qU-E25"/>
+                        <outlet property="balance_label" destination="Zzh-Mh-oGy" id="okJ-Lg-2B4"/>
+                        <outlet property="buys_canvas" destination="z8r-Td-1Oo" id="bbU-D2-DJH"/>
+                        <outlet property="cash_label" destination="1Sn-Ne-IPw" id="8Ip-xw-Gpr"/>
+                        <outlet property="change_label" destination="QD0-a9-iHy" id="eEm-lU-U8Q"/>
+                        <outlet property="d_button" destination="13O-Ha-9Qr" id="Gr4-bN-Wno"/>
+                        <outlet property="m_button" destination="wHk-4g-NVy" id="aab-Lz-PM6"/>
+                        <outlet property="puts_canvas" destination="kS1-cf-IX7" id="oxp-fk-vEP"/>
+                        <outlet property="q_button" destination="WE2-ON-EPv" id="IY6-tb-tOe"/>
+                        <outlet property="underline_view" destination="eOf-RT-rlF" id="vIx-o5-dwo"/>
+                        <outlet property="w_button" destination="BE2-6C-iHB" id="NAg-0V-0ii"/>
+                        <outlet property="y_button" destination="GfZ-Iw-MNZ" id="Sqc-fG-Xum"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6K-RA-YiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

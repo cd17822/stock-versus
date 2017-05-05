@@ -9,6 +9,8 @@
 import UIKit
 
 class StockRowsViewCell: UITableViewCell {
+    @IBOutlet weak var ticker_label: UILabel!
+    @IBOutlet weak var price_change_label: UILabel!
     var stock: Stock?
 
     override func awakeFromNib() {
@@ -23,7 +25,10 @@ class StockRowsViewCell: UITableViewCell {
     }
 
     func updateLabels(for tu: TimeUnit) {
-        let balances = [stock!]
+        let balances = [stock!.balance_d, stock!.balance_w, stock!.balance_m, stock!.balance_q, stock!.balance_y, stock!.balance_a]
+
+        ticker_label.text = stock!.name
+        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[tu.hashValue])
     }
 
 }

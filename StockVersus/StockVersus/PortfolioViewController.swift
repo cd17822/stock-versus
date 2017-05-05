@@ -9,20 +9,105 @@
 import UIKit
 
 class PortfolioViewController: UIViewController {
+    @IBOutlet weak var balance_label: UILabel!
+    @IBOutlet weak var change_label: UILabel!
+    @IBOutlet weak var d_button: UIButton!
+    @IBOutlet weak var w_button: UIButton!
+    @IBOutlet weak var m_button: UIButton!
+    @IBOutlet weak var q_button: UIButton!
+    @IBOutlet weak var y_button: UIButton!
+    @IBOutlet weak var a_button: UIButton!
+    var time_unit_buttons: [UIButton] {
+        return [d_button, w_button, m_button, q_button, y_button, a_button]
+    }
+    @IBOutlet weak var underline_view: UIView!
+    @IBOutlet weak var buys_canvas: UIView!
+    @IBOutlet weak var puts_canvas: UIView!
+    @IBOutlet weak var cash_label: UILabel!
+
     var portfolio: Portfolio?
+    let buys_table = StockRowsView()
+    let puts_table = StockRowsView()
+    var stock_tables: [StockRowsView] {
+        return [buys_table, puts_table]
+    }
+    var mode = TimeUnit.day
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
-        
+        setLabels()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        addTablesToCanvases()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func setLabels() {
+        let balances = [portfolio!.balance_d, portfolio!.balance_w, portfolio!.balance_m, portfolio!.balance_q, portfolio!.balance_y, PORTFOLIO_START_VALUE]
+
+        balance_label.text = "$\(portfolio!.balance.with2DecimalPlaces)"
+        change_label.text = priceChangeString(for: portfolio!.balance, since: balances[mode.hashValue])
+    }
+
+    func addTablesToCanvases() {
+        buys_table.stocks = portfolio!.buys!.map { $0 as! Stock }
+        buys_table.frame = buys_canvas.bounds
+
+        puts_table.stocks = portfolio!.puts!.map { $0 as! Stock }
+        puts_table.frame = puts_canvas.bounds
+
+        
+    }
+
+    func timeUnitPressed() {
+        moveUnderline()
+        for t in stock_tables {
+            t.updateCells(for: mode)
+        }
+    }
+
+    @IBAction func dPressed(_ sender: Any) {
+        mode = .day
+        timeUnitPressed()
+    }
+
+    @IBAction func wPressed(_ sender: Any) {
+        mode = .week
+        timeUnitPressed()
+    }
+
+    @IBAction func mPressed(_ sender: Any) {
+        mode = .month
+        timeUnitPressed()
+    }
+
+    @IBAction func qPressed(_ sender: Any) {
+        mode = .quarter
+        timeUnitPressed()
+    }
+
+    @IBAction func yPressed(_ sender: Any) {
+        mode = .year
+        timeUnitPressed()
+    }
+
+    @IBAction func aPressed(_ sender: Any) {
+        mode = .alltime
+        timeUnitPressed()
+    }
+
+    func moveUnderline() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.underline_view.frame = self.underline_view.frame.offsetBy(dx: 5 + self.time_unit_buttons[self.mode.hashValue].frame.minX - self.underline_view.frame.minX , dy: 0)
+        })
+    }
 
     /*
     // MARK: - Navigation

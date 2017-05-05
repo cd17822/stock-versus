@@ -30,7 +30,34 @@
             <subviews>
                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-H4-g2D">
                     <rect key="frame" x="5" y="5" width="345" height="345"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$110,354.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-N6-MDa">
+                            <rect key="frame" x="8" y="8" width="102.5" height="24"/>
+                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="18"/>
+                            <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 10, 2017 9:41AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpb-MB-f0V">
+                            <rect key="frame" x="169" y="8" width="168" height="21.5"/>
+                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="16"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRz-NR-l3F">
+                            <rect key="frame" x="8" y="302" width="52" height="34.5"/>
+                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
+                            <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.1066021697" green="0.1066021697" blue="0.1066021697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="QRz-NR-l3F" firstAttribute="leading" secondItem="NmS-H4-g2D" secondAttribute="leading" constant="8" id="Oqx-9z-81C"/>
+                        <constraint firstItem="fJu-N6-MDa" firstAttribute="top" secondItem="NmS-H4-g2D" secondAttribute="top" constant="8" id="Rwv-5c-1cT"/>
+                        <constraint firstAttribute="trailing" secondItem="zpb-MB-f0V" secondAttribute="trailing" constant="8" id="h95-qO-co4"/>
+                        <constraint firstItem="zpb-MB-f0V" firstAttribute="top" secondItem="NmS-H4-g2D" secondAttribute="top" constant="8" id="sk0-mF-el3"/>
+                        <constraint firstItem="fJu-N6-MDa" firstAttribute="leading" secondItem="NmS-H4-g2D" secondAttribute="leading" constant="8" id="t4W-37-OcV"/>
+                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$23.47" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chr-4h-CNw">
                     <rect key="frame" x="40" y="129" width="275.5" height="98"/>
@@ -50,58 +77,35 @@
                     <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRz-NR-l3F">
-                    <rect key="frame" x="16" y="300.5" width="52" height="34.5"/>
-                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
-                    <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 20%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYG-bU-8ix">
-                    <rect key="frame" x="76" y="300.5" width="113.5" height="34.5"/>
+                    <rect key="frame" x="76" y="307" width="113.5" height="34.5"/>
                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
                     <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD8-5b-P2v">
-                    <rect key="frame" x="249" y="300" width="90" height="34.5"/>
+                    <rect key="frame" x="249" y="307" width="90" height="34.5"/>
                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
                     <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 10, 2017 9:41AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpb-MB-f0V">
-                    <rect key="frame" x="160" y="20" width="178.5" height="23"/>
-                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$110,354.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-N6-MDa">
-                    <rect key="frame" x="16" y="19" width="114" height="26.5"/>
-                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="20"/>
-                    <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.10660216968911918" green="0.10660216968911918" blue="0.10660216968911918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="JrX-zM-z4h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2LQ-Pj-4hK"/>
-                <constraint firstAttribute="bottom" secondItem="QRz-NR-l3F" secondAttribute="bottom" constant="20" id="4GY-cq-HL2"/>
-                <constraint firstItem="fJu-N6-MDa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="4y7-pn-Jkl"/>
-                <constraint firstItem="fJu-N6-MDa" firstAttribute="centerY" secondItem="zpb-MB-f0V" secondAttribute="centerY" id="5JE-W2-stG"/>
                 <constraint firstItem="chr-4h-CNw" firstAttribute="top" secondItem="mJF-3J-3lN" secondAttribute="bottom" id="6jy-OA-F3g"/>
+                <constraint firstItem="PD8-5b-P2v" firstAttribute="bottom" secondItem="QRz-NR-l3F" secondAttribute="bottom" id="8bM-b6-H62"/>
+                <constraint firstItem="vYG-bU-8ix" firstAttribute="bottom" secondItem="QRz-NR-l3F" secondAttribute="bottom" id="C0d-Kc-Nkr"/>
                 <constraint firstItem="NmS-H4-g2D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="D68-YN-ug3"/>
                 <constraint firstItem="chr-4h-CNw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Doe-st-t6U"/>
                 <constraint firstItem="JrX-zM-z4h" firstAttribute="top" secondItem="chr-4h-CNw" secondAttribute="bottom" constant="1.5" id="KaY-t7-Pcy"/>
-                <constraint firstItem="zpb-MB-f0V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Qy4-R0-Vds"/>
+                <constraint firstAttribute="bottom" secondItem="QRz-NR-l3F" secondAttribute="bottom" constant="13.5" id="Lkn-jS-r5G"/>
                 <constraint firstItem="mJF-3J-3lN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VJd-qv-dCG"/>
-                <constraint firstItem="PD8-5b-P2v" firstAttribute="centerY" secondItem="QRz-NR-l3F" secondAttribute="centerY" id="XDC-th-hBm"/>
                 <constraint firstItem="NmS-H4-g2D" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cLg-eo-55N"/>
                 <constraint firstItem="NmS-H4-g2D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="eDK-a0-Ivu"/>
-                <constraint firstAttribute="trailing" secondItem="zpb-MB-f0V" secondAttribute="trailing" constant="16.5" id="ewK-j3-U6V"/>
                 <constraint firstItem="chr-4h-CNw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="j4h-1D-vKm"/>
-                <constraint firstItem="vYG-bU-8ix" firstAttribute="leading" secondItem="QRz-NR-l3F" secondAttribute="trailing" constant="8" id="jx5-ct-IP6"/>
                 <constraint firstAttribute="trailing" secondItem="PD8-5b-P2v" secondAttribute="trailing" constant="16" id="pEp-WP-Aqv"/>
-                <constraint firstItem="QRz-NR-l3F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="vxZ-WI-QHL"/>
-                <constraint firstItem="vYG-bU-8ix" firstAttribute="centerY" secondItem="QRz-NR-l3F" secondAttribute="centerY" id="yvj-6h-Fq7"/>
+                <constraint firstItem="vYG-bU-8ix" firstAttribute="leading" secondItem="QRz-NR-l3F" secondAttribute="trailing" constant="11" id="rKu-KL-Eg9"/>
                 <constraint firstItem="NmS-H4-g2D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zd9-WD-xoP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

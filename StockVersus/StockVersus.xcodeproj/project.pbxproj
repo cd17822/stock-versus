@@ -21,6 +21,10 @@
 		CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */; };
 		CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */; };
 		CBC847A11EBBC7BE0004E448 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */; };
+		CBC847A51EBC12240004E448 /* StockRowsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC847A41EBC12240004E448 /* StockRowsView.xib */; };
+		CBC847A71EBC15600004E448 /* StockRowsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC847A61EBC15600004E448 /* StockRowsViewCell.xib */; };
+		CBC847A91EBC158C0004E448 /* StockRowsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC847A81EBC158C0004E448 /* StockRowsViewCell.swift */; };
+		CBC847AB1EBC15B60004E448 /* StockRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC847AA1EBC15B60004E448 /* StockRowsView.swift */; };
 		CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */; };
 		CBD3581C1EBBB7A900CA1A67 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD3581B1EBBB7A900CA1A67 /* CoreDataHandler.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +67,10 @@
 		CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		CBC847A41EBC12240004E448 /* StockRowsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockRowsView.xib; sourceTree = "<group>"; };
+		CBC847A61EBC15600004E448 /* StockRowsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockRowsViewCell.xib; sourceTree = "<group>"; };
+		CBC847A81EBC158C0004E448 /* StockRowsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockRowsViewCell.swift; sourceTree = "<group>"; };
+		CBC847AA1EBC15B60004E448 /* StockRowsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockRowsView.swift; sourceTree = "<group>"; };
 		CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		CBD3581B1EBBB7A900CA1A67 /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +132,10 @@
 				CB5E28BC1EB8F3F100BBDB6E /* FeedPaneView.xib */,
 				CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */,
 				CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */,
+				CBC847AA1EBC15B60004E448 /* StockRowsView.swift */,
+				CBC847A41EBC12240004E448 /* StockRowsView.xib */,
+				CBC847A81EBC158C0004E448 /* StockRowsViewCell.swift */,
+				CBC847A61EBC15600004E448 /* StockRowsViewCell.xib */,
 				CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */,
 				CB5E288F1EB8F2E900BBDB6E /* Main.storyboard */,
 				CB5E28951EB8F2E900BBDB6E /* Assets.xcassets */,
@@ -260,8 +272,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC847A71EBC15600004E448 /* StockRowsViewCell.xib in Resources */,
 				CB5E28991EB8F2E900BBDB6E /* LaunchScreen.storyboard in Resources */,
 				CB5E28BD1EB8F3F100BBDB6E /* FeedPaneView.xib in Resources */,
+				CBC847A51EBC12240004E448 /* StockRowsView.xib in Resources */,
 				CB5E28961EB8F2E900BBDB6E /* Assets.xcassets in Resources */,
 				CB5E28911EB8F2E900BBDB6E /* Main.storyboard in Resources */,
 			);
@@ -292,9 +306,11 @@
 				CB5E28BF1EB8F40500BBDB6E /* FeedPaneView.swift in Sources */,
 				CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */,
 				CBD3581C1EBBB7A900CA1A67 /* CoreDataHandler.swift in Sources */,
+				CBC847AB1EBC15B60004E448 /* StockRowsView.swift in Sources */,
 				CBD358181EBBAEE700CA1A67 /* FeedTableViewController.swift in Sources */,
 				CB5E28941EB8F2E900BBDB6E /* StockVersus.xcdatamodeld in Sources */,
 				CB5E28C51EB8F49F00BBDB6E /* PortfolioViewController.swift in Sources */,
+				CBC847A91EBC158C0004E448 /* StockRowsViewCell.swift in Sources */,
 				CB5E28C71EB8F4A900BBDB6E /* LeaderboardViewController.swift in Sources */,
 				CB5E288C1EB8F2E900BBDB6E /* AppDelegate.swift in Sources */,
 				CBC847A11EBBC7BE0004E448 /* FeedTableViewCell.swift in Sources */,

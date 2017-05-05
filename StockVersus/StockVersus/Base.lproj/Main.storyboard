@@ -107,7 +107,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qk1-HE-TIg">
-                                <rect key="frame" x="183" y="252.5" width="10" height="372.5"/>
+                                <rect key="frame" x="182.5" y="265" width="10" height="360"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="sbe-Uf-GpP"/>
@@ -139,96 +139,104 @@
                                 </constraints>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8r-Td-1Oo">
-                                <rect key="frame" x="0.0" y="252.5" width="183" height="372.5"/>
+                                <rect key="frame" x="0.0" y="265" width="183" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kS1-cf-IX7">
-                                <rect key="frame" x="192" y="252.5" width="183" height="372.5"/>
+                                <rect key="frame" x="192" y="265" width="183" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13O-Ha-9Qr">
-                                <rect key="frame" x="28.5" y="182" width="30" height="44"/>
+                                <rect key="frame" x="28.5" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="D">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCo-pQ-FgJ">
-                                <rect key="frame" x="316.5" y="182" width="30" height="44"/>
+                                <rect key="frame" x="316.5" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="A">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Iw-MNZ">
-                                <rect key="frame" x="259" y="182" width="30" height="44"/>
+                                <rect key="frame" x="259" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="Y">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-ON-EPv">
-                                <rect key="frame" x="201.5" y="182" width="30" height="44"/>
+                                <rect key="frame" x="201.5" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="Q">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHk-4g-NVy">
-                                <rect key="frame" x="143.5" y="182" width="30" height="44"/>
+                                <rect key="frame" x="143.5" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="M">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BE2-6C-iHB">
-                                <rect key="frame" x="86" y="182" width="30" height="44"/>
+                                <rect key="frame" x="86" y="211" width="30" height="44"/>
                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                 <state key="normal" title="W">
                                     <color key="titleColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOf-RT-rlF" userLabel="Underline">
-                                <rect key="frame" x="33.5" y="221" width="20" height="1"/>
+                                <rect key="frame" x="33.5" y="250" width="20" height="1"/>
                                 <color key="backgroundColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="xAa-BU-Y4q"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$23.47 (0.23%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QD0-a9-iHy">
+                                <rect key="frame" x="121.5" y="162" width="131.5" height="23"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
+                                <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qk1-HE-TIg" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" id="0eL-FO-heF"/>
+                            <constraint firstItem="QD0-a9-iHy" firstAttribute="top" secondItem="Zzh-Mh-oGy" secondAttribute="bottom" constant="-0.5" id="2F6-6t-ai7"/>
                             <constraint firstItem="0r9-Am-KXB" firstAttribute="top" secondItem="z8r-Td-1Oo" secondAttribute="bottom" id="32K-0U-9zJ"/>
                             <constraint firstItem="13O-Ha-9Qr" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="3:13" id="3ce-ol-Df9"/>
                             <constraint firstItem="0r9-Am-KXB" firstAttribute="top" secondItem="kS1-cf-IX7" secondAttribute="bottom" id="46P-X4-cEb"/>
                             <constraint firstItem="0r9-Am-KXB" firstAttribute="top" secondItem="qk1-HE-TIg" secondAttribute="bottom" id="5Ed-of-a5h"/>
+                            <constraint firstItem="GfZ-Iw-MNZ" firstAttribute="centerY" secondItem="iCo-pQ-FgJ" secondAttribute="centerY" id="6Ie-cP-0pd"/>
+                            <constraint firstItem="BE2-6C-iHB" firstAttribute="centerY" secondItem="wHk-4g-NVy" secondAttribute="centerY" id="8lH-DW-bre"/>
                             <constraint firstItem="WE2-ON-EPv" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="15:13" id="9ev-hc-eLH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kS1-cf-IX7" secondAttribute="trailing" constant="-16" id="AHQ-vb-Z10"/>
                             <constraint firstItem="Zzh-Mh-oGy" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" id="AJx-s8-VAr"/>
                             <constraint firstItem="0r9-Am-KXB" firstAttribute="width" secondItem="Y7E-hC-ANd" secondAttribute="width" id="D5i-T3-HR4"/>
                             <constraint firstItem="13O-Ha-9Qr" firstAttribute="centerX" secondItem="eOf-RT-rlF" secondAttribute="centerX" id="I6Q-hu-HTr"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="Zzh-Mh-oGy" secondAttribute="bottom" constant="90" id="SRP-EJ-g6l"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="GfZ-Iw-MNZ" secondAttribute="bottom" constant="26.5" id="TG5-xV-9B3"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="wHk-4g-NVy" secondAttribute="bottom" constant="26.5" id="WYP-39-AhN"/>
+                            <constraint firstItem="QD0-a9-iHy" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" id="Sud-Sz-w0C"/>
+                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="13O-Ha-9Qr" secondAttribute="bottom" constant="10" id="WZR-QM-EyU"/>
                             <constraint firstItem="z8r-Td-1Oo" firstAttribute="leading" secondItem="Y7E-hC-ANd" secondAttribute="leadingMargin" constant="-16" id="YGh-m7-8Zd"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="WE2-ON-EPv" secondAttribute="bottom" constant="26.5" id="auE-Hg-9fZ"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="13O-Ha-9Qr" secondAttribute="bottom" constant="26.5" id="boa-n1-Yv5"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="BE2-6C-iHB" secondAttribute="bottom" constant="26.5" id="f1M-1X-1OS"/>
+                            <constraint firstItem="13O-Ha-9Qr" firstAttribute="centerY" secondItem="BE2-6C-iHB" secondAttribute="centerY" id="btf-sj-I1W"/>
                             <constraint firstItem="0r9-Am-KXB" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" id="fVR-cu-VtI"/>
                             <constraint firstItem="iCo-pQ-FgJ" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="23:13" id="g2J-nh-iw2"/>
+                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="QD0-a9-iHy" secondAttribute="bottom" constant="80" id="hwz-ps-pjI"/>
                             <constraint firstItem="BE2-6C-iHB" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="7:13" id="jk4-m1-FE3"/>
                             <constraint firstItem="ppQ-Hh-DW2" firstAttribute="top" secondItem="0r9-Am-KXB" secondAttribute="bottom" id="kb1-EW-yjn"/>
                             <constraint firstItem="kS1-cf-IX7" firstAttribute="top" secondItem="qk1-HE-TIg" secondAttribute="top" id="nAG-37-d8V"/>
                             <constraint firstItem="kS1-cf-IX7" firstAttribute="leading" secondItem="qk1-HE-TIg" secondAttribute="trailing" constant="-0.5" id="ngd-ZB-gV2"/>
                             <constraint firstItem="qk1-HE-TIg" firstAttribute="leading" secondItem="z8r-Td-1Oo" secondAttribute="trailing" constant="-0.5" id="rAe-3g-1Ap"/>
                             <constraint firstItem="Zzh-Mh-oGy" firstAttribute="top" secondItem="3Uv-Dx-jxa" secondAttribute="bottom" constant="40" id="roO-mg-e3D"/>
+                            <constraint firstItem="WE2-ON-EPv" firstAttribute="centerY" secondItem="GfZ-Iw-MNZ" secondAttribute="centerY" id="s1A-9K-NxB"/>
                             <constraint firstItem="eOf-RT-rlF" firstAttribute="top" secondItem="13O-Ha-9Qr" secondAttribute="bottom" constant="-5" id="sji-3q-kc7"/>
-                            <constraint firstItem="qk1-HE-TIg" firstAttribute="top" secondItem="iCo-pQ-FgJ" secondAttribute="bottom" constant="26.5" id="smU-Me-nHA"/>
                             <constraint firstItem="eOf-RT-rlF" firstAttribute="width" secondItem="13O-Ha-9Qr" secondAttribute="width" constant="-10" id="uZE-i4-1Vk"/>
                             <constraint firstItem="z8r-Td-1Oo" firstAttribute="top" secondItem="qk1-HE-TIg" secondAttribute="top" id="vJa-GI-ftt"/>
                             <constraint firstItem="GfZ-Iw-MNZ" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="19:13" id="wmm-qI-YxG"/>
                             <constraint firstItem="wHk-4g-NVy" firstAttribute="centerX" secondItem="Y7E-hC-ANd" secondAttribute="centerX" multiplier="11:13" id="yEt-6k-yux"/>
+                            <constraint firstItem="wHk-4g-NVy" firstAttribute="centerY" secondItem="WE2-ON-EPv" secondAttribute="centerY" id="yaq-Gp-73i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Portfolio" id="dp9-k5-bfe">

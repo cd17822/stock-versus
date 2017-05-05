@@ -11,6 +11,10 @@ import Foundation
 let USER = "cd17822"
 let NUM_PORTFOLIOS: Int32 = 100
 
+enum TimeUnit {
+    case day, week, month, quarter, year, alltime
+}
+
 func rankPercentString(for ranking: Int32) -> String {
     let rp = (Float(ranking) - 0.5) / Float(NUM_PORTFOLIOS)
     let nearest5 = Int(rp * 100 / 20) + 1

@@ -1,5 +1,5 @@
 //
-//  StockRowsViewViewCell.swift
+//  StockRowsViewCell.swift
 //  StockVersus
 //
 //  Created by Charlie DiGiovanna on 5/4/17.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-class StockRowsViewViewCell: UITableViewCell {
+class StockRowsViewCell: UITableViewCell {
+    var stock: Stock?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,10 @@ class StockRowsViewViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func updateLabels(for tu: TimeUnit) {
+        let balances = [stock!]
     }
 
 }

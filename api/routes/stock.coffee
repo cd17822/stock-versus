@@ -12,7 +12,7 @@ router.get '/:ticker', (req, res, next) ->
     else
       if stock then res.send stock: stock
       else
-        market.getStock ticker, (err, stock) ->
+        market.getStockNow ticker, (err, stock) ->
           if err then next err
           else res.send stock: stock
 

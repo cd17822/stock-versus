@@ -4,7 +4,7 @@ rek = require 'rekuire'
 configs = rek 'config'
 Stock = rek 'models/stock'
 
-module.exports.getStock = (ticker, cb) ->
+module.exports.getStockNow = (ticker, cb) ->
   request
     url: "http://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{ticker}&interval=1min&apikey=#{configs.ALPHA_VANTAGE_KEY}&outputsize=compact"
     method: 'GET'

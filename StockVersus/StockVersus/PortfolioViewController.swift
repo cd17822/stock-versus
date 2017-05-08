@@ -33,6 +33,9 @@ class PortfolioViewController: UIViewController {
     }
     var mode = TimeUnit.day
 
+    var outside_of_new_order_view: UIView?
+    var new_order_view: NewOrderView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -114,22 +117,46 @@ class PortfolioViewController: UIViewController {
     }
 
     public func presentNewOrderView() {
-        for sv in view.subviews { // dim errything
-            sv.alpha = 0.6
-        }
+        dimEverything()
 
-        let new_order_view = NewOrderView()
-        new_order_view.vc = self
-        view.addSubview(new_order_view)
+        outside_of_new_order_view = UIView(frame: view.bounds)
+        outside_of_new_order_view!.alpha = 0.1
+        outside_of_new_order_view!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(outsideOfNewOrderViewTapped(_:))))
+        outside_of_new_order_view!.isUserInteractionEnabled = true
+        view.addSubview(outside_of_new_order_view!)
+
+        new_order_view = NewOrderView()
+        new_order_view!.vc = self
+        view.addSubview(new_order_view!)
         let w: CGFloat = 220
         let h: CGFloat = 220
-        new_order_view.frame = CGRect(x: view.frame.width/2-w/2, y: view.frame.height/2-h/2, width: w, height: h)
+        new_order_view!.frame = CGRect(x: view.frame.width/2-w/2, y: view.frame.height/2-h/2, width: w, height: h)
+    }
+
+    func outsideOfNewOrderViewTapped(_ sender: Any) {
+        print("in here")
+        new_order_view?.removeFromSuperview()
+        new_order_view = nil
+        outside_of_new_order_view?.removeFromSuperview()
+        outside_of_new_order_view = nil
+
+        undimEverything()
     }
 
     public func placeOrder(ticker: String, shares: Int) {
         print("placeOrder")
 
+        undimEverything()
+    }
+
+    func dimEverything() {
         for sv in view.subviews { // dim errything
+            sv.alpha = 0.6
+        }
+    }
+
+    func undimEverything() {
+        for sv in view.subviews { // undim errything
             sv.alpha = 1
         }
     }

@@ -19,15 +19,39 @@ class CoreDataHandler {
         })
         return container.viewContext
     }()
-//
-//    public static var default_level_1: Level {
-//        let level = Level(context: persistentContainer.viewContext)
-//        level.number = 1
-//        level.best = 0
-//        level.isCurrent = true
-//        return level
-//    }
-//
+
+
+    public static func storeUser(_ cb: (User, Error?) -> ()) {
+        let user = User(context: context)
+        user.username = USER_USERNAME
+        user.name = USER_NAME
+
+        save { err in
+            cb(user, err)
+        }
+    }
+
+    public static func fetchUser(_ cb: (User?, Error?) -> ()) {
+        let request = NSFetchRequest<User>(entityName: "User")
+
+        do {
+            let users = try context.fetch(request)
+            let user = users.filter { $0.username == USER_USERNAME }.first
+            if user == nil {
+                cb(user, nil)
+            } else {
+                storeUser { user, err in
+                    if err != nil {
+                        print(err!)
+                        return
+                    }
+                    cb(user, err)
+                }
+            }
+        } catch let error as NSError {
+            cb(nil, error)
+        }
+    }
 
     public static func fetchPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
         let request = NSFetchRequest<Portfolio>(entityName: "Portfolio")

@@ -8,12 +8,16 @@
 
 import Foundation
 
-var USER: User {
-    let u = User()
-    u.name = "Charlie DiGiovanna"
-    u.username = "cd17822"
-    return u
-}
+//var USER: User {
+//    let u = User()
+//    u.name = "Charlie DiGiovanna"
+//    u.username = "cd17822"
+//    return u
+//}
+
+var USER_ID = "3427892378425302349"
+var USER_NAME = "Charlie DiGiovanna"
+var USER_USERNAME  = "cd17822"
 
 let NUM_PORTFOLIOS: Int32 = 100 // fake
 let PORTFOLIO_START_VALUE: Float = 100000.00

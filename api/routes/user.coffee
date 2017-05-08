@@ -5,8 +5,8 @@ User = rek 'models/user'
 
 # create new user
 router.post '/', (req, res, next) ->
-  user = new User _.pick req.body, 'first_name', 'last_name', 'username', 'password'
-
+  user = new User _.pick req.body, 'name', 'username', 'password'
+  console.log req.body
   user.save (err, user) ->
     if err then next err
     else (res.status 201).send user: user

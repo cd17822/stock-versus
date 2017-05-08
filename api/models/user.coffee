@@ -5,14 +5,13 @@ idValidator = require 'mongoose-id-validator'
 bcrypt = require 'bcrypt'
 
 schema = mongoose.Schema
-  first_name: String
-  last_name: String
+  name: String
   username: String
   password: String
   # portfolios: [{type: mongoose.Schema.Types.ObjectId, ref: 'portfolio'}]
 
 schema.set 'toJSON', transform: (doc, ret, options) ->
-  _.pick doc, 'id', 'first_name', 'last_name', 'created_at'
+  _.pick doc, 'id', 'name', 'username', 'created_at'
 
 schema.pre 'save', (next) ->
   #hash password
@@ -23,25 +22,15 @@ schema.plugin idValidator, message : 'Invalid {PATH}.'
 schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
 
 # validation
-(schema.path 'first_name').required yes, 'First name is required.'
+(schema.path 'name').required yes, 'Name is required.'
 
-(schema.path 'first_name').validate (val) ->
+(schema.path 'name').validate (val) ->
   val?.length > 1
-,'First name is too short.'
+,'Name is too short.'
 
-(schema.path 'first_name').validate (val) ->
+(schema.path 'name').validate (val) ->
   val?.length <= 100
-, 'First name is too long.'
-
-(schema.path 'last_name').required yes, 'Last name is required.'
-
-(schema.path 'last_name').validate (val) ->
-  val?.length > 1
-,'Last name is too short.'
-
-(schema.path 'last_name').validate (val) ->
-  val?.length <= 100
-, 'Last name is too long.'
+, 'Name is too long.'
 
 (schema.path 'password').required yes, 'Password is required.'
 
@@ -54,7 +43,6 @@ schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
 ,'Password is too long.'
 
 # santization
-(schema.path 'first_name').set (val) -> val.trim()
-(schema.path 'last_name').set (val) -> val.trim()
+(schema.path 'name').set (val) -> val.trim()
 
 module.exports = User = mongoose.model 'user', schema

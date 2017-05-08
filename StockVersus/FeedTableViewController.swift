@@ -19,25 +19,32 @@ class FeedTableViewController: UITableViewController {
     }
 
     func getPortfolios() {
-        CoreDataHandler.fetchPortfolios(belongingTo: USER) { portfolios, err in
+        CoreDataHandler.fetchUser() { user, err in
             if err != nil {
                 print(err!)
                 return
             }
 
-            self.portfolios = portfolios
-            tableView.reloadData()
+            CoreDataHandler.fetchPortfolios(belongingTo: user!) { portfolios, err in
+                if err != nil {
+                    print(err!)
+                    return
+                }
 
-        }
+                self.portfolios = portfolios
+                tableView.reloadData()
 
-        NetworkHandler.getPortfolios(belongingTo: USER) { portfolios, err in
-            if err != nil {
-                print(err!)
-                return
             }
 
-            self.portfolios = portfolios
-            tableView.reloadData()
+            NetworkHandler.getPortfolios(belongingTo: user!) { portfolios, err in
+                if err != nil {
+                    print(err!)
+                    return
+                }
+                
+                self.portfolios = portfolios
+                tableView.reloadData()
+            }
         }
     }
 
@@ -107,6 +114,10 @@ class FeedTableViewController: UITableViewController {
         return true
     }
     */
+
+    @IBAction func test(_ sender: Any) {
+        Tests.performAll()
+    }
 
     // MARK: - Navigation
 

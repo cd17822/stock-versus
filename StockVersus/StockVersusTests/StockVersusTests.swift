@@ -24,6 +24,7 @@ class StockVersusTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssert(1 == 1)
     }
     
     func testPerformanceExample() {
@@ -34,26 +35,28 @@ class StockVersusTests: XCTestCase {
     }
 
     // API/NETWORK TESTS
-    var users = [User]()
-    var portfolios = [Portfolio]()
 
-    func postUser() {
+    func testPostUser() {
         let name = "Charlie DiGiovanna"
         let username = "testusername@\(Date().description)"
         NetworkHandler.createUser(name: name, username: username, password: "password") { user, err in
+            print("callingback")
             XCTAssert(err == nil)
-            XCTAssert(user.name == name)
-            XCTAssert(user.username == username)
-            users.append(user)
+            XCTAssert(user!.name == name)
+            XCTAssert(user!.username == username)
         }
+        print("last")
     }
 
-    func postPorfolio() {
+    func testPostPorfolio() {
         let name = "testporfolio@\(Date().description)"
         NetworkHandler.createPortfolio(named: "testporfolio@\(Date().description)") { portfolio, err in
+            print("callingback")
             XCTAssert(err == nil)
             XCTAssert(portfolio.name == name)
-            portfolios.append(portfolio)
+            XCTAssert(portfolio.user?.name == USER_NAME)
+            XCTAssert(portfolio.user?.username == USER_USERNAME)
         }
+        print("last")
     }
 }

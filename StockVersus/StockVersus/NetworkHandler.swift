@@ -15,7 +15,7 @@ class NetworkHandler {
                 cb([], err)
                 return
             }
-
+            print("anywhere")
             let aapl = Stock(context: CoreDataHandler.context)
             aapl.ticker = "AAPL"
             aapl.name = "Apple, Inc."
@@ -61,44 +61,49 @@ class NetworkHandler {
             p1.addToPuts(msft)
             
             CoreDataHandler.save { err in
-                CoreDataHandler.fetchPortfolios(belongingTo: USER) { portfolios, err in
+                CoreDataHandler.fetchPortfolios(belongingTo: user) { portfolios, err in
                     cb(portfolios, err)
                 }
             }
         }
     }
 
-    private static func post(_ endpoint: String, _ data: [String:String], _ cb: (Data?, Error?) -> ()) {
+    private static func post(_ endpoint: String, _ data: [String:String], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
         var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
         request.httpMethod = "POST"
 
-        // let postString = data.reduce("?") { $0.key + "=" + $0.value + "&" + $1.key + "=" + $1.value } // lol xcode doesn't like this
-        var post_string = "?"
-        for d in data {
-            post_string += "\(d.key)=\(d.value)&"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        } catch let error {
+            print(error.localizedDescription)
         }
-        post_string.remove(at: post_string.endIndex) // remove trailing &
-        request.httpBody = post_string.data(using: .utf8)
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else { // check for fundamental networking error
                 print("error=\(error!)")
+                cb(nil, error)
                 return
             }
-
-            print("RAWDATA: \(data)")
 
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 { // check for http errors
                 print("statusCode should be 201, but is \(httpStatus.statusCode)")
                 print("response = \(response!)")
             }
 
-
-
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString!)")
+
+            do {
+                let data = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                cb(data, nil)
+            } catch let error {
+                print(error)
+                cb(nil, error)
+            }
         }
-        
+
         task.resume()
     }
 
@@ -112,17 +117,55 @@ class NetworkHandler {
         cb(50.00, nil)
     }
 
-    public static func createUser(name: String, username: String, password: String, _ cb: (User, Error?) -> ()) {
+    public static func createUser(name: String, username: String, password: String, _ cb: @escaping (User?, Error?) -> ()) {
+        post("/users", ["name": name, "username": username, "password": password]) { data, err in
+            if err != nil {
+                print("Error creating user: \(err!)")
+                cb(nil, err)
+            }
 
+            if let user = data?["user"] as? [String: Any] {
+                USER_ID = user["id"] as! String
+                USER_NAME = user["name"] as! String
+                USER_USERNAME = user["username"] as! String
+
+                CoreDataHandler.storeUser { user, err in
+                    if err != nil {
+                        print("err: \(err!)")
+                    }
+
+                    cb(user, err)
+                }
+            }
+        }
     }
 
-    public static func createPortfolio(named name: String, _ cb: (Portfolio, Error?) -> ()) {
-        post("/portfolios", ["name": name, "username": USER.username!, "balance": "\(PORTFOLIO_START_VALUE)", "cash": "\(PORTFOLIO_START_VALUE)"]) { data, err in
+    public static func createPortfolio(named name: String, _ cb: @escaping (Portfolio, Error?) -> ()) {
+        post("/portfolios", ["name": name, "username": USER_USERNAME, "balance": "\(PORTFOLIO_START_VALUE)", "cash": "\(PORTFOLIO_START_VALUE)"]) { data, err in
             if err != nil {
                 print("Error creating portfolio: \(err!)")
                 return
             }
-            print("GOTTEN DATA: \(data!)")
+
+            if let portfolio_data = data?["portfolio"] as? [String:Any] {
+                let id = portfolio_data["id"] as! String
+                let name = portfolio_data["name"] as! String
+                var buys = portfolio_data["buys"] as? [String: Any]
+                if buys == nil {
+                    buys = [String:Any]()
+                }
+                var puts = portfolio_data["puts"] as? [String: Any]
+                if puts == nil {
+                    puts = [String:Any]()
+                }
+                // still have to deal with balances and rankings
+
+//                CoreDataHandler.storePortfolio(portfolio) {
+//
+//                }
+
+                cb(Portfolio(context: CoreDataHandler.context), nil)
+            }
         }
     }
 }

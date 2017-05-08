@@ -4,6 +4,7 @@ mongoose = require 'mongoose'
 bodyParser = require 'body-parser'
 rek = require 'rekuire'
 userRouter = rek 'routes/user'
+portfolioRouter = rek 'routes/portfolio'
 configs = rek 'config'
 server = rek 'components/server'
 
@@ -24,6 +25,7 @@ app.set 'views', 'views'
 
 # configure routes
 app.use '/users', userRouter
+app.use '/portfolios', portfolioRouter
 
 # configure error handling
 app.use (err, req, res, next) ->

@@ -77,7 +77,14 @@
                             <outlet property="delegate" destination="o7M-kk-Pg1" id="YDH-7S-R5I"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM"/>
+                    <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM">
+                        <barButtonItem key="rightBarButtonItem" title="Test" id="SO0-14-Nq2">
+                            <color key="tintColor" red="1" green="0.28101432790000003" blue="0.32284946799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="test:" destination="o7M-kk-Pg1" id="xYe-Qg-48T"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="kNo-ZK-FTn"/>

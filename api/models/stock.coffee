@@ -4,7 +4,6 @@ timestamps = require 'mongoose-timestamp'
 idValidator = require 'mongoose-id-validator'
 
 schema = mongoose.Schema
-  name: String
   ticker: String
   balance: Number
   balance_d: Number

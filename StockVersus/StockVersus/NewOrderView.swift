@@ -53,6 +53,8 @@ class NewOrderView: UIView {
 
     func updatePriceLabels() {
         if ticker_price == nil || shares_field.text == nil || Int(shares_field.text!) == nil {
+            individual_cost_label.text = "$0.00"
+            total_cost_label.text = "$0.00"
             return
         }
 
@@ -64,6 +66,8 @@ class NewOrderView: UIView {
     @IBAction func tickerFieldEditingDidBegin(_ sender: Any) {
         ticker_price = nil
         confirm_button.isEnabled = false
+        shares_field.text = "0"
+        updatePriceLabels()
     }
 
     @IBAction func tickerFieldEditingDidEnd(_ sender: Any) {
@@ -74,9 +78,9 @@ class NewOrderView: UIView {
                 return
             }
 
-            ticker_price = tickerPrice
-            checkForConfirmability()
-            updatePriceLabels()
+            self.ticker_price = tickerPrice
+            self.checkForConfirmability()
+            self.updatePriceLabels()
         }
     }
 

@@ -68,6 +68,37 @@ class NetworkHandler {
         }
     }
 
+    private static func get(_ endpoint: String, _ cb: @escaping ([String:Any]?, Error?) -> ()) {
+        var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else { // check for fundamental networking error
+                print("error=\(error!)")
+                cb(nil, error)
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 { // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response!)")
+            }
+
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString!)")
+
+            do {
+                let data = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                cb(data, nil)
+            } catch let error {
+                print(error)
+                cb(nil, error)
+            }
+        }
+        
+        task.resume()
+    }
+
     private static func post(_ endpoint: String, _ data: [String:String], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
         var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
         request.httpMethod = "POST"
@@ -112,9 +143,21 @@ class NetworkHandler {
         simulateGetPortfolios(belongingTo: user, cb)
     }
 
-    public static func getPrice(of ticker: String, _ cb: (Float?, Error?) -> ()) {
-        // MISSING IMPLEMENTATION
-        cb(50.00, nil)
+    public static func getPrice(of ticker: String, _ cb: @escaping (Float?, Error?) -> ()) {
+        get("/stocks/\(ticker)") { data, err in
+            if err != nil {
+                print(err!)
+                cb(nil, err)
+                return
+            }
+
+            if let price = (data?["stock"] as? [String:Any])?["balance"] as? Float {
+                cb(price, nil)
+            } else {
+                cb(nil, NSError(domain: "bad response", code: 400, userInfo: nil))
+            }
+
+        }
     }
 
     public static func createUser(name: String, username: String, password: String, _ cb: @escaping (User?, Error?) -> ()) {
@@ -140,10 +183,11 @@ class NetworkHandler {
         }
     }
 
-    public static func createPortfolio(named name: String, _ cb: @escaping (Portfolio, Error?) -> ()) {
+    public static func createPortfolio(named name: String, _ cb: @escaping (Portfolio?, Error?) -> ()) {
         post("/portfolios", ["name": name, "username": USER_USERNAME, "balance": "\(PORTFOLIO_START_VALUE)", "cash": "\(PORTFOLIO_START_VALUE)"]) { data, err in
             if err != nil {
                 print("Error creating portfolio: \(err!)")
+                cb(nil, err)
                 return
             }
 
@@ -165,6 +209,8 @@ class NetworkHandler {
 //                }
 
                 cb(Portfolio(context: CoreDataHandler.context), nil)
+            } else {
+                cb(nil, NSError(domain: "bad response", code: 400, userInfo: nil))
             }
         }
     }

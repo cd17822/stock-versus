@@ -3,7 +3,6 @@ app = express()
 mongoose = require 'mongoose'
 bodyParser = require 'body-parser'
 rek = require 'rekuire'
-indexRouter = rek 'routes/index'
 userRouter = rek 'routes/user'
 configs = rek 'config'
 server = rek 'components/server'

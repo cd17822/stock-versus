@@ -9,13 +9,17 @@
 import UIKit
 
 class StockRowsViewCell: UITableViewCell {
+    @IBOutlet weak var content_view: UIView!
     @IBOutlet weak var ticker_label: UILabel!
     @IBOutlet weak var price_change_label: UILabel!
     var stock: Stock?
+    var balances: [Float] {
+        return [stock!.balance_d, stock!.balance_w, stock!.balance_m, stock!.balance_q, stock!.balance_y, stock!.balance_a]
+    }
+    var mode: TimeUnit?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,11 +28,17 @@ class StockRowsViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func updateLabels(for tu: TimeUnit) {
-        let balances = [stock!.balance_d, stock!.balance_w, stock!.balance_m, stock!.balance_q, stock!.balance_y, stock!.balance_a]
+    func setTickerLabel() {
+        ticker_label.text = "\(stock!.ticker!) (x\(stock!.shares))"
+    }
 
-        ticker_label.text = stock!.name
-        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[tu.hashValue])
+    func setPriceChangeLabel(for tu: TimeUnit) {
+        mode = tu
+
+        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[mode!.hashValue])
+        print(stock!.balance)
+        print(balances[mode!.hashValue])
+        print(price_change_label.text!)
     }
 
 }

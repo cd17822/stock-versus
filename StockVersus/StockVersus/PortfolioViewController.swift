@@ -59,10 +59,14 @@ class PortfolioViewController: UIViewController {
     func addTablesToCanvases() {
         buys_table.stocks = portfolio!.buys!.map { $0 as! Stock }
         buys_table.frame = buys_canvas.bounds
+        buys_table.title_label.text = "BUYS"
+        buys_table.vc = self
         buys_canvas.addSubview(buys_table)
 
         puts_table.stocks = portfolio!.puts!.map { $0 as! Stock }
         puts_table.frame = puts_canvas.bounds
+        puts_table.title_label.text = "PUTS"
+        puts_table.vc = self
         puts_canvas.addSubview(puts_table)
     }
 
@@ -107,6 +111,27 @@ class PortfolioViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations: {
             self.underline_view.frame = self.underline_view.frame.offsetBy(dx: 5 + self.time_unit_buttons[self.mode.hashValue].frame.minX - self.underline_view.frame.minX , dy: 0)
         })
+    }
+
+    public func presentNewOrderView() {
+        for sv in view.subviews { // dim errything
+            sv.alpha = 0.6
+        }
+
+        let new_order_view = NewOrderView()
+        new_order_view.vc = self
+        view.addSubview(new_order_view)
+        let w: CGFloat = 220
+        let h: CGFloat = 220
+        new_order_view.frame = CGRect(x: view.frame.width/2-w/2, y: view.frame.height/2-h/2, width: w, height: h)
+    }
+
+    public func placeOrder(ticker: String, shares: Int) {
+        print("placeOrder")
+
+        for sv in view.subviews { // dim errything
+            sv.alpha = 1
+        }
     }
 
     /*

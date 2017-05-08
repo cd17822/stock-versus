@@ -11,9 +11,12 @@ import UIKit
 class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var content_view: UIView!
     @IBOutlet weak var table_view: UITableView!
+    @IBOutlet weak var title_label: UILabel!
 
     var stocks = [Stock]()
     var mode = TimeUnit.day
+    var vc: PortfolioViewController?
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -38,10 +41,10 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
         guard let content = content_view else { return }
         content.frame = self.bounds
         addSubview(content)
+        table_view.register(StockRowsViewCell.self, forCellReuseIdentifier: "StockRowsViewCell")
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("not even getting here right")
         return 1
     }
 
@@ -50,21 +53,26 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StockRowsViewCell", for: indexPath) as! StockRowsViewCell
-        cell.stock = stocks[indexPath.row]
+        let nib: NSArray = Bundle.main.loadNibNamed("StockRowsViewCell", owner: self)! as NSArray
+        let cell = nib[0] as? StockRowsViewCell
 
+        cell!.stock = stocks[indexPath.row]
+        cell!.setTickerLabel()
+        cell!.setPriceChangeLabel(for: mode)
 
-        cell.updateLabels(for: mode)
-
-        return cell
+        return cell!
     }
 
-    func updateCells(for tu: TimeUnit) {
+    @IBAction func plusPressed(_ sender: Any) {
+        vc!.presentNewOrderView()
+    }
+
+    public func updateCells(for tu: TimeUnit) {
         mode = tu
-//        for cell in table_view.visibleCells {
-//            if let c = cell as? StockRowsViewCell {
-//                c.updateLabels(for: mode)
-//            }
-//        }
+        for cell in table_view.visibleCells {
+            if let c = cell as? StockRowsViewCell {
+                c.setPriceChangeLabel(for: mode)
+            }
+        }
     }
 }

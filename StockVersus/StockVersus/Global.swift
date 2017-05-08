@@ -40,7 +40,7 @@ func dollarChangeString(for balance: Float, since balanceOld: Float) -> String {
 }
 
 func percentChangeString(for balance: Float, since balanceOld: Float, withoutPlusMinus: Bool=false) -> String {
-    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : "-"
+    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : ""
 
     return pm + (balance/balanceOld).with2DecimalPlaces + "%"
 }

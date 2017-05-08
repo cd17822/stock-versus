@@ -10,42 +10,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StockRowsViewCell" customModule="StockVersus" customModuleProvider="target">
-            <connections>
-                <outlet property="price_change_label" destination="eWj-u5-hf6" id="srk-KX-THb"/>
-                <outlet property="ticker_label" destination="elm-4T-tp9" id="itg-5P-wcS"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StockRowsViewCell" id="gbA-qa-MwS">
-            <rect key="frame" x="0.0" y="0.0" width="183" height="36"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StockRowsViewCell" id="gbA-qa-MwS" customClass="StockRowsViewCell" customModule="StockVersus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbA-qa-MwS" id="REx-vz-P5Q">
-                <rect key="frame" x="0.0" y="0.0" width="183" height="35.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="183" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AAPL (x32)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elm-4T-tp9">
-                        <rect key="frame" x="3" y="9" width="67" height="18"/>
+                        <rect key="frame" x="8" y="12" width="67" height="18"/>
                         <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
                         <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$60.03 (7.04%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWj-u5-hf6">
-                        <rect key="frame" x="79.5" y="8.5" width="100.5" height="18"/>
+                        <rect key="frame" x="79.5" y="13" width="100.5" height="18"/>
                         <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
                         <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="eWj-u5-hf6" secondAttribute="trailing" constant="-5" id="1Y0-58-OKu"/>
                     <constraint firstItem="elm-4T-tp9" firstAttribute="centerY" secondItem="REx-vz-P5Q" secondAttribute="centerY" id="CLa-YE-CoZ"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="elm-4T-tp9" secondAttribute="leading" constant="5" id="ehS-4u-dM4"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="elm-4T-tp9" secondAttribute="leading" id="ehS-4u-dM4"/>
                     <constraint firstItem="eWj-u5-hf6" firstAttribute="centerY" secondItem="REx-vz-P5Q" secondAttribute="centerY" id="yGV-6e-HRg"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="129" y="334"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="content_view" destination="REx-vz-P5Q" id="mbN-J1-Hk9"/>
+                <outlet property="price_change_label" destination="eWj-u5-hf6" id="cJT-6p-0gH"/>
+                <outlet property="ticker_label" destination="elm-4T-tp9" id="wo4-r7-yw4"/>
+            </connections>
+            <point key="canvasLocation" x="128.5" y="334"/>
         </tableViewCell>
     </objects>
 </document>

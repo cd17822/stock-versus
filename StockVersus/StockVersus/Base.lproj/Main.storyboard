@@ -107,10 +107,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qk1-HE-TIg">
-                                <rect key="frame" x="182.5" y="265" width="10" height="360"/>
+                                <rect key="frame" x="185.5" y="265" width="4" height="360"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="sbe-Uf-GpP"/>
+                                    <constraint firstAttribute="width" constant="4" id="sbe-Uf-GpP"/>
                                 </constraints>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0r9-Am-KXB">
@@ -139,11 +139,11 @@
                                 </constraints>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8r-Td-1Oo">
-                                <rect key="frame" x="0.0" y="265" width="183" height="360"/>
+                                <rect key="frame" x="0.0" y="265" width="186" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kS1-cf-IX7">
-                                <rect key="frame" x="192" y="265" width="183" height="360"/>
+                                <rect key="frame" x="189" y="265" width="186" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13O-Ha-9Qr">

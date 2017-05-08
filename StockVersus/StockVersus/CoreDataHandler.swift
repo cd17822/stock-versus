@@ -40,6 +40,23 @@ class CoreDataHandler {
         }
     }
 
+    public static func deleteAllPortfolios(belongingTo username: String, _ cb: (Error?) -> ()) {
+        fetchPortfolios(belongingTo: username) { portfolios, err in
+            if err != nil {
+                cb(err)
+                return
+            }
+
+            for p in portfolios {
+                context.delete(p)
+            }
+
+            save { err in
+                cb(err)
+            }
+        }
+    }
+
 //    private static func fetchLevels(_ callback: ((_ levels: [Level], _ error: NSError?) -> Void)) {
 //        let request = NSFetchRequest<Level>(entityName: "Level")
 //        do {

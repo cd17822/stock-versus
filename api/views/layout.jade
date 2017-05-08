@@ -1,0 +1,19 @@
+extends header
+
+block title
+  title=title
+
+block content
+  .container-fluid
+    br
+    .row
+      .col-xs-12.col-sm-3
+        include links
+      .col-sm-1
+        //offset
+      .col-xs-12.col-sm-4(align='center')
+        block form
+      .col-sm-1
+        //offset
+      .col-xs-12.col-sm-3(align='center')
+        include pic

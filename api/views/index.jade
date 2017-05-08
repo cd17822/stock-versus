@@ -1,0 +1,11 @@
+extends layout
+include formbuilder
+
+block form
+  +endpoint('POST', '/users')
+    +input('first_name', 'Charlie')
+    +input('last_name', 'DiGiovanna')
+    +input('email', 'cd17822@gmail.com')
+    +input('password', 'password')
+    +input('phone', '6319016772')
+    +button('Create User')

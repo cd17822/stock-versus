@@ -8,9 +8,23 @@
 
 import Foundation
 
-let USER = "cd17822" // gotta change
+var USER: User {
+    let u = User()
+    u.name = "Charlie DiGiovanna"
+    u.username = "cd17822"
+    return u
+}
+
 let NUM_PORTFOLIOS: Int32 = 100 // fake
 let PORTFOLIO_START_VALUE: Float = 100000.00
+
+#if (arch(i386) || arch(x86_64)) && os(iOS) // if running on simulator, route to localhost
+let API_URL = "http://localhost:3939"
+let TESTING = true
+#else                                       // otherwise, route to CharlieD.me server
+let API_URL = "http://104.131.167.230:3939"
+let TESTING = false
+#endif
 
 enum TimeUnit {
     case day, week, month, quarter, year, alltime

@@ -9,8 +9,8 @@
 import Foundation
 
 class NetworkHandler {
-    private static func simulateGetPortfolios(belongingTo username: String, _ cb: ([Portfolio], Error?) -> ()) {
-        CoreDataHandler.deleteAllPortfolios(belongingTo: username) { err in
+    private static func simulateGetPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
+        CoreDataHandler.deleteAllPortfolios(belongingTo: user) { err in
             if err != nil {
                 cb([], err)
                 return
@@ -44,7 +44,7 @@ class NetworkHandler {
             p1.name = "iPad > Surface"
             p1.time_init = NSDate()
             p1.user = User(context: CoreDataHandler.context)
-            p1.user!.username = username
+            p1.user!.username = user.username!
             p1.balance = 11133.44
             p1.balance_d = 11133.19
             p1.balance_w = 11130.90
@@ -68,13 +68,61 @@ class NetworkHandler {
         }
     }
 
-    public static func getPortfolios(belongingTo username: String, _ cb: ([Portfolio], Error?) -> ()) {
+    private static func post(_ endpoint: String, _ data: [String:String], _ cb: (Data?, Error?) -> ()) {
+        var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
+        request.httpMethod = "POST"
+
+        // let postString = data.reduce("?") { $0.key + "=" + $0.value + "&" + $1.key + "=" + $1.value } // lol xcode doesn't like this
+        var post_string = "?"
+        for d in data {
+            post_string += "\(d.key)=\(d.value)&"
+        }
+        post_string.remove(at: post_string.endIndex) // remove trailing &
+        request.httpBody = post_string.data(using: .utf8)
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else { // check for fundamental networking error
+                print("error=\(error!)")
+                return
+            }
+
+            print("RAWDATA: \(data)")
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 { // check for http errors
+                print("statusCode should be 201, but is \(httpStatus.statusCode)")
+                print("response = \(response!)")
+            }
+
+
+
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString!)")
+        }
+        
+        task.resume()
+    }
+
+    public static func getPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
         // MISSING IMPLEMENTATION
-        simulateGetPortfolios(belongingTo: username, cb)
+        simulateGetPortfolios(belongingTo: user, cb)
     }
 
     public static func getPrice(of ticker: String, _ cb: (Float?, Error?) -> ()) {
         // MISSING IMPLEMENTATION
         cb(50.00, nil)
+    }
+
+    public static func createUser(name: String, username: String, password: String, _ cb: (User, Error?) -> ()) {
+
+    }
+
+    public static func createPortfolio(named name: String, _ cb: (Portfolio, Error?) -> ()) {
+        post("/portfolios", ["name": name, "username": USER.username!, "balance": "\(PORTFOLIO_START_VALUE)", "cash": "\(PORTFOLIO_START_VALUE)"]) { data, err in
+            if err != nil {
+                print("Error creating portfolio: \(err!)")
+                return
+            }
+            print("GOTTEN DATA: \(data!)")
+        }
     }
 }

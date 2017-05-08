@@ -32,5 +32,28 @@ class StockVersusTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
+    // API/NETWORK TESTS
+    var users = [User]()
+    var portfolios = [Portfolio]()
+
+    func postUser() {
+        let name = "Charlie DiGiovanna"
+        let username = "testusername@\(Date().description)"
+        NetworkHandler.createUser(name: name, username: username, password: "password") { user, err in
+            XCTAssert(err == nil)
+            XCTAssert(user.name == name)
+            XCTAssert(user.username == username)
+            users.append(user)
+        }
+    }
+
+    func postPorfolio() {
+        let name = "testporfolio@\(Date().description)"
+        NetworkHandler.createPortfolio(named: "testporfolio@\(Date().description)") { portfolio, err in
+            XCTAssert(err == nil)
+            XCTAssert(portfolio.name == name)
+            portfolios.append(portfolio)
+        }
+    }
 }

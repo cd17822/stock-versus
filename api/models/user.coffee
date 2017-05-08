@@ -9,7 +9,7 @@ schema = mongoose.Schema
   last_name: String
   username: String
   password: String
-  portfolios: [{type: mongoose.Schema.Types.ObjectId, ref: 'portfolio'}]
+  # portfolios: [{type: mongoose.Schema.Types.ObjectId, ref: 'portfolio'}]
 
 schema.set 'toJSON', transform: (doc, ret, options) ->
   _.pick doc, 'id', 'first_name', 'last_name', 'created_at'

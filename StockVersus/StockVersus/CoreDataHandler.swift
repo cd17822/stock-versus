@@ -29,7 +29,7 @@ class CoreDataHandler {
 //    }
 //
 
-    public static func fetchPortfolios(belongingTo username: String, _ cb: ([Portfolio], Error?) -> ()) {
+    public static func fetchPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
         let request = NSFetchRequest<Portfolio>(entityName: "Portfolio")
 
         do {
@@ -40,8 +40,8 @@ class CoreDataHandler {
         }
     }
 
-    public static func deleteAllPortfolios(belongingTo username: String, _ cb: (Error?) -> ()) {
-        fetchPortfolios(belongingTo: username) { portfolios, err in
+    public static func deleteAllPortfolios(belongingTo user: User, _ cb: (Error?) -> ()) {
+        fetchPortfolios(belongingTo: user) { portfolios, err in
             if err != nil {
                 cb(err)
                 return

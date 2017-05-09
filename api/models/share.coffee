@@ -4,17 +4,14 @@ timestamps = require 'mongoose-timestamp'
 idValidator = require 'mongoose-id-validator'
 
 schema = mongoose.Schema
-  ticker: String
-  balance: Number
-  balance_d: Number
-  balance_w: Number
-  balance_m: Number
-  balance_q: Number
-  balance_y: Number
-  num_shares: Number
+  stock: {type: mongoose.Schema.Types.ObjectId, ref: 'stock'}
+  balance_a: Number
+  shares: Number
+  buy: Boolean
+  portfolio: {type: mongoose.Schema.Types.ObjectId, ref: 'portfolio'}
 
 schema.set 'toJSON', transform: (doc, ret, options) ->
-  _.pick doc, 'id', 'name', 'ticker', 'balance', 'balance_d', 'balance_w', 'balance_m', 'balance_q', 'balance_y', 'num_shares', 'created_at'
+  _.pick doc, 'id', 'name', 'stock', 'balance_a', 'portfolio', 'stock', 'created_at'
 
 schema.plugin idValidator, message : 'Invalid {PATH}.'
 schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
@@ -25,4 +22,4 @@ schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
 # santization
 # (none)
 
-module.exports = User = mongoose.model 'stock', schema
+module.exports = User = mongoose.model 'share', schema

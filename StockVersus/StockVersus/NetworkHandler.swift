@@ -15,7 +15,7 @@ class NetworkHandler {
                 cb([], err)
                 return
             }
-            print("anywhere")
+            
             let aapl = Stock(context: CoreDataHandler.context)
             aapl.ticker = "AAPL"
             aapl.balance = 133.44

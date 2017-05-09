@@ -27,7 +27,9 @@ class DataParser {
                 if let portfolio_data = data["portfolio"] as? [String: Any] {
                     let id = portfolio_data["id"] as! String
                     let portfolio = portfolios.filter({ $0.id == id }).first ?? Portfolio(context: CoreDataHandler.context)
-                    portfolio.id = portfolio_data["id"] as? String
+
+                    portfolio.id = id
+                    portfolio.user = user
                     portfolio.time_init = dateFromString(portfolio_data["created_at"] as! String) as NSDate
                     portfolio.name = portfolio_data["name"] as? String
                     portfolio.cash = portfolio_data["cash"] as! Float

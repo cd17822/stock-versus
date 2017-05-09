@@ -18,7 +18,6 @@ class NetworkHandler {
             print("anywhere")
             let aapl = Stock(context: CoreDataHandler.context)
             aapl.ticker = "AAPL"
-            aapl.name = "Apple, Inc."
             aapl.balance = 133.44
             aapl.balance_d = 133.19
             aapl.balance_w = 130.90
@@ -30,7 +29,6 @@ class NetworkHandler {
 
             let msft = Stock(context: CoreDataHandler.context)
             msft.ticker = "MSFT"
-            msft.name = "Miscrosoft, Inc."
             msft.balance = 133.44
             msft.balance_d = 133.19
             msft.balance_w = 130.90
@@ -99,7 +97,7 @@ class NetworkHandler {
         task.resume()
     }
 
-    private static func post(_ endpoint: String, _ data: [String:String], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
+    private static func post(_ endpoint: String, _ data: [String: Any], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
         var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
         request.httpMethod = "POST"
 
@@ -143,6 +141,25 @@ class NetworkHandler {
         simulateGetPortfolios(belongingTo: user, cb)
     }
 
+    public static func createOrder(buy: Bool, ticker: String, shares: Int, portfolio: Portfolio, _ cb: @escaping (Portfolio?, Error?) -> ()) {
+        post("/portfolio/\(buy ? "buy" : "put")", ["ticker": ticker, "shares": shares, "portfolio": portfolio.id!]) { data, err in
+            if err != nil {
+                print("Error creating order: \(err!)")
+                cb(nil, err)
+                return
+            }
+
+            DataParser.parseAndSavePortfolio(data!) { portfolio, err in
+                if err != nil {
+                    print(err!)
+                    cb(nil, err)
+                }
+
+                cb(portfolio, nil)
+            }
+        }
+    }
+
     public static func getPrice(of ticker: String, _ cb: @escaping (Float?, Error?) -> ()) {
         get("/stocks/\(ticker)") { data, err in
             if err != nil {
@@ -165,6 +182,7 @@ class NetworkHandler {
             if err != nil {
                 print("Error creating user: \(err!)")
                 cb(nil, err)
+                return
             }
 
             if let user = data?["user"] as? [String: Any] {
@@ -191,26 +209,14 @@ class NetworkHandler {
                 return
             }
 
-            if let portfolio_data = data?["portfolio"] as? [String:Any] {
-                let id = portfolio_data["id"] as! String
-                let name = portfolio_data["name"] as! String
-                var buys = portfolio_data["buys"] as? [String: Any]
-                if buys == nil {
-                    buys = [String:Any]()
+            DataParser.parseAndSavePortfolio(data!) { portfolio, err in
+                if err != nil {
+                    print(err!)
+                    cb(nil, err)
+                    return
                 }
-                var puts = portfolio_data["puts"] as? [String: Any]
-                if puts == nil {
-                    puts = [String:Any]()
-                }
-                // still have to deal with balances and rankings
 
-//                CoreDataHandler.storePortfolio(portfolio) {
-//
-//                }
-
-                cb(Portfolio(context: CoreDataHandler.context), nil)
-            } else {
-                cb(nil, NSError(domain: "bad response", code: 400, userInfo: nil))
+                cb(portfolio, nil)
             }
         }
     }

@@ -57,6 +57,7 @@ class PortfolioViewController: UIViewController {
 
         balance_label.text = "$\(portfolio!.balance.with2DecimalPlaces)"
         change_label.text = priceChangeString(for: portfolio!.balance, since: balances[mode.hashValue])
+        cash_label.text = "$\(portfolio!.cash)"
     }
 
     func addTablesToCanvases() {
@@ -127,14 +128,14 @@ class PortfolioViewController: UIViewController {
 
         new_order_view = NewOrderView()
         new_order_view!.vc = self
+        new_order_view!.cash = portfolio!.cash
         view.addSubview(new_order_view!)
         let w: CGFloat = 220
         let h: CGFloat = 220
         new_order_view!.frame = CGRect(x: view.frame.width/2-w/2, y: view.frame.height/2-h/2, width: w, height: h)
     }
 
-    func outsideOfNewOrderViewTapped(_ sender: Any) {
-        print("in here")
+    func outsideOfNewOrderViewTapped(_ sender: Any?) {
         new_order_view?.removeFromSuperview()
         new_order_view = nil
         outside_of_new_order_view?.removeFromSuperview()
@@ -143,10 +144,14 @@ class PortfolioViewController: UIViewController {
         undimEverything()
     }
 
-    public func placeOrder(ticker: String, shares: Int) {
-        print("placeOrder")
+    public func placeOrder(buy: Bool, ticker: String, shares: Int) {
+        NetworkHandler.createOrder(buy: buy, ticker: ticker, shares: shares, portfolio: portfolio!) { portfolio, err in
+            if err != nil {
+                
+            }
+        }
 
-        undimEverything()
+        outsideOfNewOrderViewTapped(nil)
     }
 
     func dimEverything() {

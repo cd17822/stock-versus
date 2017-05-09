@@ -67,6 +67,27 @@ func priceChangeString(for balance: Float, since balanceOld: Float) -> String {
     return "\(dollarChangeString(for: balance, since: balanceOld)) (\(percentChangeString(for: balance, since: balanceOld, withoutPlusMinus: true)))"
 }
 
+func dateFromString(_ dateString: String) -> Date {
+    let dateFormatter: DateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZ"
+
+    var date = dateFormatter.date(from: dateString)
+
+    if (date == nil) {
+        print("ERROR:", "Could not parse date: \(dateString). Using NOW as date")
+        date = Date()
+    }
+
+    return date!
+}
+
+func stringFromDate(_ date: Date) -> String {
+    let dateFormatter: DateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZ"
+
+    return dateFormatter.string(from: date)
+}
+
 extension Date {
     var prettyButShortDateTimeDescription: String {
         let formatter = DateFormatter()

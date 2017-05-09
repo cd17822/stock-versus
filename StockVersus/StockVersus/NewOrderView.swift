@@ -20,6 +20,8 @@ class NewOrderView: UIView {
 
     var vc: PortfolioViewController?
     var ticker_price: Float?
+    var cash: Float?
+    var buy: Bool?
 
     override init(frame: CGRect) { // for using CustomView in code
         super.init(frame: frame)
@@ -48,7 +50,7 @@ class NewOrderView: UIView {
     }
 
     func checkForConfirmability() {
-        confirm_button.isEnabled = shares_field.text != nil && Int(shares_field.text!) != nil && ticker_price != nil
+        confirm_button.isEnabled = shares_field.text != nil && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.startIndex))! <= cash!
     }
 
     func updatePriceLabels() {
@@ -91,7 +93,7 @@ class NewOrderView: UIView {
 
 
     @IBAction func confirmPressed(_ sender: Any) {
-        vc!.placeOrder(ticker: ticker_field.text!, shares: Int(shares_field.text!)!)
+        vc!.placeOrder(buy: buy!, ticker: ticker_field.text!, shares: Int(shares_field.text!)!)
         removeFromSuperview()
     }
 }

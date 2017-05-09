@@ -143,7 +143,48 @@ class CoreDataHandler {
 //        }
 //    }
 //
+    public static func addStock(buy: Bool, ticker: String, shares: Int, to portfolio: Portfolio, _ cb: (Portfolio?, Error?) -> ()) {
+        var stock: Stock? = nil
+
+        for s in (buy ? portfolio.buys!.map({ $0 as! Stock }) : portfolio.puts!.map({ $0 as! Stock })) {
+            if s.ticker == ticker {
+                s.shares = Int32(shares)
+                stock = s
+            }
+        }
+
+        if stock == nil {
+            stock = Stock(context: context)
+            stock!.ticker = ticker
+            stock!.shares = Int32(shares)
+            stock!.buy_portfolio = buy ? portfolio : nil
+            stock!.put_portfolio = buy ? nil : portfolio
+        }
+
+        save { err in
+            if err != nil {
+                cb(nil, err)
+                return
+            }
+
+            print("PORTFOLIO")
+            print(portfolio)
+            cb(portfolio, err)
+        }
+    }
+
+    public static func delete(_ objects: [NSManagedObject]) {
+        for o in objects {
+            context.delete(o)
+        }
+    }
+
     public static func save(_ cb: (Error?) -> ()) {
+        if !context.hasChanges {
+            cb(nil)
+            return
+        }
+
         do {
             try self.context.save()
             cb(nil)

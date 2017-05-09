@@ -142,7 +142,7 @@ class NetworkHandler {
     }
 
     public static func createOrder(buy: Bool, ticker: String, shares: Int, portfolio: Portfolio, _ cb: @escaping (Portfolio?, Error?) -> ()) {
-        post("/portfolio/\(buy ? "buy" : "put")", ["ticker": ticker, "shares": shares, "portfolio": portfolio.id!]) { data, err in
+        post("/portfolio/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id!]) { data, err in
             if err != nil {
                 print("Error creating order: \(err!)")
                 cb(nil, err)

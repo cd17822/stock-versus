@@ -12,6 +12,7 @@ class Tests {
     public static func performAll() {
         testPostUser()
         testPostPorfolio()
+        testPostOrder()
     }
 
     public static func testPostUser() {
@@ -31,12 +32,30 @@ class Tests {
         let name = "testporfolio@\(Date().description)"
         NetworkHandler.createPortfolio(named: name) { portfolio, err in
             print("callingback")
-//            assert(err == nil)
-//            assert(portfolio.name == name)
-//            assert(portfolio.user?.name == USER_NAME)
-//            assert(portfolio.user?.username == USER_USERNAME)
-//            print("testPostPortfolio tests passed.")
+            assert(err == nil)
+            assert(portfolio?.name == name)
+            assert(portfolio?.user?.name == USER_NAME)
+            assert(portfolio?.user?.username == USER_USERNAME)
+            print("testPostPortfolio tests passed.")
         }
         print("last")
+    }
+
+    // should be put order
+    public static func testPostOrder() {
+        let name = "testporfolio@\(Date().description)"
+        CoreDataHandler.fetchUser() { user, err in
+            CoreDataHandler.fetchPortfolios(belongingTo: user!) { portfolios, err in
+                NetworkHandler.createOrder(buy: true, ticker: "AAPL", shares: 10, portfolio: portfolios.first!) { portfolio, err in
+                    print("callingback")
+                    assert(err == nil)
+                    assert(portfolio?.name == name)
+                    assert(portfolio?.user?.name == USER_NAME)
+                    assert(portfolio?.user?.username == USER_USERNAME)
+                    print("testPostOrder tests passed.")
+                }
+            }
+        }
+
     }
 }

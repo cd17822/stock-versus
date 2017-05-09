@@ -45,7 +45,6 @@ class StockVersusTests: XCTestCase {
             XCTAssert(user!.name == name)
             XCTAssert(user!.username == username)
         }
-        print("last")
     }
 
     func testPostPorfolio() {
@@ -53,10 +52,9 @@ class StockVersusTests: XCTestCase {
         NetworkHandler.createPortfolio(named: "testporfolio@\(Date().description)") { portfolio, err in
             print("callingback")
             XCTAssert(err == nil)
-            XCTAssert(portfolio.name == name)
-            XCTAssert(portfolio.user?.name == USER_NAME)
-            XCTAssert(portfolio.user?.username == USER_USERNAME)
+            XCTAssert(portfolio?.name == name)
+            XCTAssert(portfolio?.user?.name == USER_NAME)
+            XCTAssert(portfolio?.user?.username == USER_USERNAME)
         }
-        print("last")
     }
 }

@@ -73,7 +73,7 @@ module.exports.getStockHistory = (ticker, cb) ->
       else if response.statusCode isnt 200 then cb new Error "unable to get task: #{JSON.stringify body}"
       else
         stock.balance_m = Number (_.values(body['Monthly Time Series'])[0])["4. close"]
-        stock.balance_y = Number (_.values(body['Monthly Time Series'])[Date().month+1])["4. close"]
+        stock.balance_y = Number (_.values(body['Monthly Time Series'])[(new Date).getMonth()+1])["4. close"]
         hits += 1
         tryCallingBack()
 

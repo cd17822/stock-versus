@@ -82,8 +82,40 @@ class NetworkHandler {
                 print("response = \(response!)")
             }
 
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString!)")
+            do {
+                let data = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                cb(data, nil)
+            } catch let error {
+                print(error)
+                cb(nil, error)
+            }
+        }
+        
+        task.resume()
+    }
+
+    private static func put(_ endpoint: String, _ data: [String: Any], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
+        var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
+        request.httpMethod = "PUT"
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        } catch let error {
+            print(error.localizedDescription)
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else { // check for fundamental networking error
+                print("error=\(error!)")
+                cb(nil, error)
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 { // check for http errors
+                print("statusCode should be 201, but is \(httpStatus.statusCode)")
+                print("response = \(response!)")
+            }
 
             do {
                 let data = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
@@ -104,7 +136,6 @@ class NetworkHandler {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
         } catch let error {
             print(error.localizedDescription)
         }
@@ -120,9 +151,6 @@ class NetworkHandler {
                 print("statusCode should be 201, but is \(httpStatus.statusCode)")
                 print("response = \(response!)")
             }
-
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString!)")
 
             do {
                 let data = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
@@ -142,7 +170,8 @@ class NetworkHandler {
     }
 
     public static func createOrder(buy: Bool, ticker: String, shares: Int, portfolio: Portfolio, _ cb: @escaping (Portfolio?, Error?) -> ()) {
-        post("/portfolio/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id!]) { data, err in
+        // THIS CODE IS FOR TESTING ONLY AND MUST BE REMOVED
+        put("/portfolios/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id ?? "59115af4beb18a82ab30b851"]) { data, err in
             if err != nil {
                 print("Error creating order: \(err!)")
                 cb(nil, err)

@@ -50,7 +50,11 @@ class NewOrderView: UIView {
     }
 
     func checkForConfirmability() {
-        confirm_button.isEnabled = shares_field.text != nil && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.startIndex))! <= cash!
+        print("CHECK")
+        print(shares_field.text)
+        print(total_cost_label.text!)
+        print(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))
+        confirm_button.isEnabled = shares_field.text != nil && shares_field.text != "" && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))! <= cash!
     }
 
     func updatePriceLabels() {
@@ -93,6 +97,10 @@ class NewOrderView: UIView {
 
 
     @IBAction func confirmPressed(_ sender: Any) {
+        print(buy!)
+        print(ticker_field.text!)
+        print(shares_field.text!)
+        print(Int(shares_field.text!)!)
         vc!.placeOrder(buy: buy!, ticker: ticker_field.text!, shares: Int(shares_field.text!)!)
         removeFromSuperview()
     }

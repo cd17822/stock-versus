@@ -71,6 +71,30 @@
                                     <outlet property="pane_canvas_view" destination="q17-hk-t9D" id="ayF-Mz-b0G"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewPortfolioCell" rowHeight="50" id="wwg-I1-WQW" customClass="FeedTableViewCell" customModule="StockVersus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="453" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wwg-I1-WQW" id="dYD-FO-l1U">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-3p-kMY">
+                                            <rect key="frame" x="86.5" y="1" width="201" height="48"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="27"/>
+                                            <state key="normal" title="+ New Portfolio">
+                                                <color key="titleColor" red="0.0" green="0.84066505869999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="p1v-3p-kMY" firstAttribute="centerY" secondItem="dYD-FO-l1U" secondAttribute="centerY" id="IrV-bP-d0g"/>
+                                        <constraint firstItem="p1v-3p-kMY" firstAttribute="centerX" secondItem="dYD-FO-l1U" secondAttribute="centerX" id="Tcs-qe-F0K"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="o7M-kk-Pg1" id="vhP-mJ-xZI"/>

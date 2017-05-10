@@ -65,12 +65,14 @@ class PortfolioViewController: UIViewController {
         buys_table.frame = buys_canvas.bounds
         buys_table.title_label.text = "BUYS"
         buys_table.vc = self
+        buys_table.buy = true
         buys_canvas.addSubview(buys_table)
 
         puts_table.stocks = portfolio!.puts!.map { $0 as! Stock }
         puts_table.frame = puts_canvas.bounds
         puts_table.title_label.text = "PUTS"
         puts_table.vc = self
+        buys_table.buy = false
         puts_canvas.addSubview(puts_table)
     }
 
@@ -117,7 +119,7 @@ class PortfolioViewController: UIViewController {
         })
     }
 
-    public func presentNewOrderView() {
+    public func presentNewOrderView(buy: Bool) {
         dimEverything()
 
         outside_of_new_order_view = UIView(frame: view.bounds)
@@ -129,6 +131,8 @@ class PortfolioViewController: UIViewController {
         new_order_view = NewOrderView()
         new_order_view!.vc = self
         new_order_view!.cash = portfolio!.cash
+        new_order_view!.buy = buy
+        print("cash: \(portfolio!.cash)")
         view.addSubview(new_order_view!)
         let w: CGFloat = 220
         let h: CGFloat = 220
@@ -147,8 +151,14 @@ class PortfolioViewController: UIViewController {
     public func placeOrder(buy: Bool, ticker: String, shares: Int) {
         NetworkHandler.createOrder(buy: buy, ticker: ticker, shares: shares, portfolio: portfolio!) { portfolio, err in
             if err != nil {
-                
+                print(err!)
             }
+
+            self.portfolio = portfolio
+            print(self.portfolio ?? "no portfolio")
+
+            self.buys_table.table_view.reloadData()
+            self.puts_table.table_view.reloadData()
         }
 
         outsideOfNewOrderViewTapped(nil)

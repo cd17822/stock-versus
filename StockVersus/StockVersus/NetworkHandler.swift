@@ -9,7 +9,7 @@
 import Foundation
 
 class NetworkHandler {
-    private static func simulateGetPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
+    private static func simulateGetPortfolios(belongingTo user: User, _ cb: @escaping ([Portfolio], Error?) -> ()) {
         CoreDataHandler.deleteAllPortfolios(belongingTo: user) { err in
             if err != nil {
                 cb([], err)
@@ -60,7 +60,7 @@ class NetworkHandler {
             
             CoreDataHandler.save { err in
                 CoreDataHandler.fetchPortfolios(belongingTo: user) { portfolios, err in
-                    cb(portfolios, err)
+                    cb(portfolios!, err)
                 }
             }
         }
@@ -164,14 +164,14 @@ class NetworkHandler {
         task.resume()
     }
 
-    public static func getPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
+    public static func getPortfolios(belongingTo user: User, _ cb: @escaping ([Portfolio], Error?) -> ()) {
         // MISSING IMPLEMENTATION
         simulateGetPortfolios(belongingTo: user, cb)
     }
 
     public static func createOrder(buy: Bool, ticker: String, shares: Int, portfolio: Portfolio, _ cb: @escaping (Portfolio?, Error?) -> ()) {
-        // THIS CODE IS FOR TESTING ONLY AND MUST BE REMOVED
-        put("/portfolios/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id ?? "59115af4beb18a82ab30b851"]) { data, err in
+        // THE .id ?? CODE IS FOR TESTING ONLY AND MUST BE REMOVED
+        put("/portfolios/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id ?? "591218e03dec1c070ab71017"]) { data, err in
             if err != nil {
                 print("Error creating order: \(err!)")
                 cb(nil, err)

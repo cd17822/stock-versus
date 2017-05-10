@@ -13,7 +13,6 @@ schema = mongoose.Schema
   balance_m: Number
   balance_q: Number
   balance_y: Number
-  ranking: Number
   ranking_d: Number
   ranking_w: Number
   ranking_m: Number
@@ -21,10 +20,9 @@ schema = mongoose.Schema
   ranking_y: Number
   ranking_a: Number
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'}
-  num_portfolios: Number
 
 schema.set 'toJSON', transform: (doc, ret, options) ->
-  _.pick doc, 'id', 'name', 'password', 'cash', 'balance', 'balance_d', 'balance_w', 'balance_m', 'balance_q', 'balance_y', 'ranking', 'ranking_d', 'ranking_w', 'ranking_m', 'ranking_q', 'ranking_y', 'ranking_a', 'user', 'buys', 'puts', 'num_portfolios', 'created_at'
+  _.pick doc, 'id', 'name', 'password', 'cash', 'balance', 'balance_d', 'balance_w', 'balance_m', 'balance_q', 'balance_y', 'ranking', 'ranking_d', 'ranking_w', 'ranking_m', 'ranking_q', 'ranking_y', 'ranking_a', 'user', 'buys', 'puts', 'created_at'
 
 schema.plugin idValidator, message : 'Invalid {PATH}.'
 schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'

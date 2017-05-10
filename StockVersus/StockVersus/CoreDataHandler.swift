@@ -53,14 +53,14 @@ class CoreDataHandler {
         }
     }
 
-    public static func fetchPortfolios(belongingTo user: User, _ cb: ([Portfolio], Error?) -> ()) {
+    public static func fetchPortfolios(belongingTo user: User, _ cb: ([Portfolio]?, Error?) -> ()) {
         let request = NSFetchRequest<Portfolio>(entityName: "Portfolio")
 
         do {
             let portfolios = try context.fetch(request)
             cb(portfolios, nil)
         } catch let error as NSError {
-            cb([], error)
+            cb(nil, error)
         }
     }
 
@@ -71,7 +71,7 @@ class CoreDataHandler {
                 return
             }
 
-            for p in portfolios {
+            for p in portfolios! {
                 context.delete(p)
             }
 

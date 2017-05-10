@@ -11,7 +11,7 @@ schema = mongoose.Schema
   portfolio: {type: mongoose.Schema.Types.ObjectId, ref: 'portfolio'}
 
 schema.set 'toJSON', transform: (doc, ret, options) ->
-  _.pick doc, 'id', 'name', 'stock', 'balance_a', 'portfolio', 'stock', 'created_at'
+  _.pick doc, 'id', 'shares', 'stock', 'balance_a', 'portfolio', 'buy', 'created_at'
 
 schema.plugin idValidator, message : 'Invalid {PATH}.'
 schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'

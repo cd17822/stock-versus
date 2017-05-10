@@ -37,7 +37,7 @@ class Tests {
     public static func testPutOrder() {
         CoreDataHandler.fetchUser() { user, err in
             CoreDataHandler.fetchPortfolios(belongingTo: user!) { portfolios, err in
-                NetworkHandler.createOrder(buy: true, ticker: "AAPL", shares: 10, portfolio: portfolios.first!) { portfolio, err in
+                NetworkHandler.createOrder(buy: true, ticker: "AAPL", shares: 10, portfolio: portfolios!.first!) { portfolio, err in
                     print("testPostOrder")
                     print(err ?? "no error")
                     print(portfolio ?? "nil portfolio")

@@ -16,6 +16,7 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
     var stocks = [Stock]()
     var mode = TimeUnit.day
     var vc: PortfolioViewController?
+    var buy: Bool?
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -64,7 +65,7 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     @IBAction func plusPressed(_ sender: Any) {
-        vc!.presentNewOrderView()
+        vc!.presentNewOrderView(buy: buy!)
     }
 
     public func updateCells(for tu: TimeUnit) {

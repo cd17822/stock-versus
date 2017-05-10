@@ -31,7 +31,7 @@ class FeedTableViewController: UITableViewController {
                     return
                 }
 
-                self.portfolios = portfolios
+                self.portfolios = portfolios!
                 tableView.reloadData()
 
             }
@@ -43,7 +43,7 @@ class FeedTableViewController: UITableViewController {
                 }
                 
                 self.portfolios = portfolios
-                tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }

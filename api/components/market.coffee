@@ -20,9 +20,12 @@ module.exports.getStockNow = (ticker, cb) ->
         
         cb null, stock
 
+
+# NOT TAKING CARE OF QUARTER HERE
 module.exports.getStockHistory = (ticker, cb) ->
   hits = 0
   stock = new Stock()
+  stock.ticker = ticker
 
   # now
   request
@@ -63,7 +66,7 @@ module.exports.getStockHistory = (ticker, cb) ->
         hits += 1
         tryCallingBack()      
   
-  # month and year
+  # month, quarter, year
   request
     url: "http://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=#{ticker}&interval=1min&apikey=#{configs.ALPHA_VANTAGE_KEY}"
     method: 'GET'
@@ -72,7 +75,8 @@ module.exports.getStockHistory = (ticker, cb) ->
       if error then cb error
       else if response.statusCode isnt 200 then cb new Error "unable to get task: #{JSON.stringify body}"
       else
-        stock.balance_m = Number (_.values(body['Monthly Time Series'])[0])["4. close"]
+        stock.balance_m = Number (_.values(body['Monthly Time Series'])[1])["4. close"]
+        stock.balance_q = Number (_.values(body['Monthly Time Series'])[Math.floor(((new Date).getMonth()+1)/3)*3-1])["4. close"]
         stock.balance_y = Number (_.values(body['Monthly Time Series'])[(new Date).getMonth()+1])["4. close"]
         hits += 1
         tryCallingBack()

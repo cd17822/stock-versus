@@ -7,13 +7,7 @@
 //
 
 import Foundation
-
-//var USER: User {
-//    let u = User()
-//    u.name = "Charlie DiGiovanna"
-//    u.username = "cd17822"
-//    return u
-//}
+import UIKit
 
 var USER_ID = "3427892378425302349"
 var USER_NAME = "Charlie DiGiovanna"
@@ -52,15 +46,15 @@ func rankPercentString(for ranking: Int32) -> String {
 }
 
 func dollarChangeString(for balance: Float, since balanceOld: Float, times: Float = 1) -> String {
-    let pm = balance >= balanceOld ? "+" : "-"
+    let pm = balance >= balanceOld ? "+" : ""
 
-    return pm + "$" + abs(Float(times) * (balance - balanceOld)).with2DecimalPlaces
+    return pm + (Float(times) * (balance - balanceOld)).dollarString
 }
 
 func percentChangeString(for balance: Float, since balanceOld: Float, withoutPlusMinus: Bool=false) -> String {
-//    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : ""
+    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : ""
 
-    return (100 * (balance/balanceOld - 1)).with2DecimalPlaces + "%"
+    return pm + (100 * (balance/balanceOld - 1)).with2DecimalPlaces + "%"
 }
 
 func priceChangeString(for balance: Float, since balanceOld: Float, times: Float = 1) -> String {
@@ -79,6 +73,10 @@ func dateFromString(_ dateString: String) -> Date {
     }
 
     return date!
+}
+
+func changeColor(for balance: Float, since balanceOld: Float, opposite: Bool = false) -> UIColor {
+    return (balance >= balanceOld) != opposite ? .appGreen : .appRed
 }
 
 func stringFromDate(_ date: Date) -> String {
@@ -121,12 +119,29 @@ extension Date {
 }
 
 extension Float {
-    var with2DecimalPlaces: String {
-        let fmt = NumberFormatter()
-        fmt.maximumFractionDigits = 2
-        fmt.minimumFractionDigits = 2
-        let pre = self < 1 && self > -1 ? "" : ""
+    var dollarString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter.string(from: self as NSNumber)!
+    }
 
-        return pre + fmt.string(from: NSNumber(value: self))! // ?? self.description
+    var with2DecimalPlaces: String {
+        let negative = self < 0
+        let abs_val = abs(self)
+        let index1 = abs_val.dollarString.index(after: abs_val.dollarString.startIndex)
+        let without_dollar_string = abs_val.dollarString.substring(from: index1)
+        let prefix =  negative ? "-" : ""
+        return prefix + without_dollar_string
+    }
+}
+
+
+extension UIColor {
+    static var appGreen: UIColor {
+        return UIColor(red:0.40, green:0.79, blue:0.30, alpha:1.00)
+    }
+
+    static var appRed: UIColor {
+        return UIColor(red:0.93, green:0.34, blue:0.35, alpha:1.00)
     }
 }

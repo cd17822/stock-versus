@@ -22,6 +22,7 @@ class NewOrderView: UIView {
     var ticker_price: Float?
     var cash: Float?
     var buy: Bool?
+    var plus: Bool?
 
     override init(frame: CGRect) { // for using CustomView in code
         super.init(frame: frame)
@@ -50,11 +51,20 @@ class NewOrderView: UIView {
     }
 
     func checkForConfirmability() {
-        print("CHECK")
-        print(shares_field.text!)
-        print(total_cost_label.text!)
-        print(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))
-        confirm_button.isEnabled = shares_field.text != nil && shares_field.text != "" && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))! <= cash!
+        if plus! {
+            confirm_button.isEnabled = shares_field.text != nil && shares_field.text != "" && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))! <= cash!
+        } else {
+            if buy! {
+                if let _ = vc!.portfolio!.buys!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
+                    confirm_button.isEnabled = true
+                }
+            } else {
+                if let _ = vc!.portfolio!.puts!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
+                    confirm_button.isEnabled = true
+                }
+            }
+
+        }
     }
 
     func updatePriceLabels() {
@@ -64,9 +74,9 @@ class NewOrderView: UIView {
             return
         }
 
-        individual_cost_label.text = "$\(ticker_price!.with2DecimalPlaces)"
+        individual_cost_label.text = ticker_price!.dollarString
 
-        total_cost_label.text = "$\((ticker_price! * Float(shares_field.text!)!).with2DecimalPlaces)"
+        total_cost_label.text = (ticker_price! * Float(shares_field.text!)!).dollarString
     }
 
     @IBAction func tickerFieldEditingDidBegin(_ sender: Any) {
@@ -97,11 +107,23 @@ class NewOrderView: UIView {
 
 
     @IBAction func confirmPressed(_ sender: Any) {
-        print(buy!)
-        print(ticker_field.text!)
-        print(shares_field.text!)
-        print(Int(shares_field.text!)!)
-        vc!.placeOrder(buy: buy!, ticker: ticker_field.text!, shares: Int(shares_field.text!)!)
-        removeFromSuperview()
+        let shares_multiplier = plus! ? 1 : -1
+        vc!.placeOrder(buy: buy!, ticker: ticker_field.text!, shares: shares_multiplier * Int(shares_field.text!)!)
+    }
+
+    public func initLabels() {
+        if buy! {
+            if plus! {
+                buy_label.text = "BUY"
+            } else {
+                buy_label.text = "SELL"
+            }
+        } else {
+            if plus! {
+                buy_label.text = "PURCHASE PUT"
+            } else {
+                buy_label.text = "SELL PUT"
+            }
+        }
     }
 }

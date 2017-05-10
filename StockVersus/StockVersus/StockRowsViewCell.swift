@@ -17,6 +17,7 @@ class StockRowsViewCell: UITableViewCell {
         return [stock!.balance_d, stock!.balance_w, stock!.balance_m, stock!.balance_q, stock!.balance_y, stock!.balance_a]
     }
     var mode: TimeUnit?
+    var buy: Bool?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +37,7 @@ class StockRowsViewCell: UITableViewCell {
         mode = tu
 
         price_change_label.text = priceChangeString(for: stock!.balance, since: balances[mode!.hashValue], times: Float(stock!.shares))
-        print(stock!.balance)
-        print(balances[mode!.hashValue])
-        print(price_change_label.text!)
+        price_change_label.textColor = changeColor(for: stock!.balance, since: balances[mode!.hashValue], opposite: !buy!)
     }
 
 }

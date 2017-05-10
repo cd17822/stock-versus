@@ -40,6 +40,7 @@ class PortfolioViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
+
         setLabels()
     }
 
@@ -55,9 +56,12 @@ class PortfolioViewController: UIViewController {
     func setLabels() {
         let balances = [portfolio!.balance_d, portfolio!.balance_w, portfolio!.balance_m, portfolio!.balance_q, portfolio!.balance_y, PORTFOLIO_START_VALUE]
 
-        balance_label.text = "$\(portfolio!.balance.with2DecimalPlaces)"
+        balance_label.text = portfolio!.balance.dollarString
+        balance_label.textColor = changeColor(for: portfolio!.balance, since: balances[mode.hashValue])
         change_label.text = priceChangeString(for: portfolio!.balance, since: balances[mode.hashValue])
-        cash_label.text = "$\(portfolio!.cash)"
+        change_label.textColor = changeColor(for: portfolio!.balance, since: balances[mode.hashValue])
+
+        cash_label.text = portfolio!.cash.dollarString
     }
 
     func addTablesToCanvases() {
@@ -119,7 +123,7 @@ class PortfolioViewController: UIViewController {
         })
     }
 
-    public func presentNewOrderView(buy: Bool) {
+    public func presentNewOrderView(buy: Bool, plus: Bool) {
         dimEverything()
 
         outside_of_new_order_view = UIView(frame: view.bounds)
@@ -132,6 +136,8 @@ class PortfolioViewController: UIViewController {
         new_order_view!.vc = self
         new_order_view!.cash = portfolio!.cash
         new_order_view!.buy = buy
+        new_order_view!.plus = plus
+        new_order_view!.initLabels()
         print("cash: \(portfolio!.cash)")
         view.addSubview(new_order_view!)
         let w: CGFloat = 220

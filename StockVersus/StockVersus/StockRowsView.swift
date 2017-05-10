@@ -58,14 +58,20 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
         let cell = nib[0] as? StockRowsViewCell
 
         cell!.stock = stocks[indexPath.row]
+        cell!.buy = buy
         cell!.setTickerLabel()
         cell!.setPriceChangeLabel(for: mode)
+
 
         return cell!
     }
 
     @IBAction func plusPressed(_ sender: Any) {
-        vc!.presentNewOrderView(buy: buy!)
+        vc!.presentNewOrderView(buy: buy!, plus: true)
+    }
+
+    @IBAction func minusPressed(_ sender: Any) {
+        vc!.presentNewOrderView(buy: buy!, plus: false)
     }
 
     public func updateCells(for tu: TimeUnit) {

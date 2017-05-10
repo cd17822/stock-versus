@@ -45,18 +45,21 @@ class FeedPaneView: UIView {
         addSubview(content)
     }
 
-
     func drawLabels() {
         if portfolio == nil { return }
 
         inner_border_view.layer.borderWidth = 1
         inner_border_view.layer.borderColor = UIColor.darkGray.cgColor
 
-        balance_label.text = "$\(portfolio!.balance.with2DecimalPlaces)"
+        balance_label.text = portfolio!.balance.dollarString
         date_label.text = "\(Date().prettyDateTimeDescription)"
-        name_label.text = "\(portfolio!.name!)"
+        name_label.text = portfolio!.name!
+
         dollar_change_label.text = dollarChangeString(for: portfolio!.balance, since: portfolio!.balance_d)
+        dollar_change_label.textColor = changeColor(for: portfolio!.balance, since: portfolio!.balance_d)
         percent_change_label.text = percentChangeString(for: portfolio!.balance, since: portfolio!.balance_d)
+        percent_change_label.textColor = changeColor(for: portfolio!.balance, since: portfolio!.balance_d)
+
         period_label.text = "Day:"
         ranking_label.text = rankPercentString(for: portfolio!.ranking_d)
 //        next_period_label.text = ...

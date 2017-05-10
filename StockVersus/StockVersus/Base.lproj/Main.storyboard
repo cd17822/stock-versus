@@ -78,13 +78,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-3p-kMY">
-                                            <rect key="frame" x="86.5" y="1" width="201" height="48"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-3p-kMY">
+                                            <rect key="frame" x="86.5" y="-8" width="201" height="66"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="27"/>
-                                            <state key="normal" title="+ New Portfolio">
+                                            <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                            <state key="normal" title="New Portfolio">
                                                 <color key="titleColor" red="0.0" green="0.84066505869999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="newPortfolioTapped:" destination="o7M-kk-Pg1" eventType="touchUpInside" id="cBk-1w-bGc"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

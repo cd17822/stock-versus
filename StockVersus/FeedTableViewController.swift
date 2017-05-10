@@ -33,7 +33,6 @@ class FeedTableViewController: UITableViewController {
 
                 self.portfolios = portfolios!
                 tableView.reloadData()
-
             }
 
             NetworkHandler.getPortfolios(belongingTo: user!) { portfolios, err in
@@ -51,29 +50,32 @@ class FeedTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : portfolios.count
+        return section == 1 ? portfolios.count : 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GreetingCell", for: indexPath)
             return cell
-        } else {
+        } else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
             cell.portfolio = portfolios[indexPath.row]
 
 
             cell.fillCanvas()
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewPortfolioCell", for: indexPath)
+            return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 100 : view.frame.width
+        return indexPath.section == 1 ? view.frame.width : 100
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,6 +116,37 @@ class FeedTableViewController: UITableViewController {
         return true
     }
     */
+
+    @IBAction func newPortfolioTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "New Portfolio", message: "Enter the name of the new portfolio you'd like to create.", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let saveAction = UIAlertAction(title: "Create", style: .default, handler: {
+            alert -> Void in
+            let field = alertController.textFields![0] as UITextField
+            if let name = field.text {
+                NetworkHandler.createPortfolio(named: name) { portfolio, err in
+                    if err != nil {
+                        print(err!)
+                        return
+                    }
+
+                    self.getPortfolios()
+                }
+            }
+        })
+
+
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "My Portfolio"
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     @IBAction func test(_ sender: Any) {
         Tests.performAll()

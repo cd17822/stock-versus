@@ -140,12 +140,17 @@ class PortfolioViewController: UIViewController {
     }
 
     func outsideOfNewOrderViewTapped(_ sender: Any?) {
-        new_order_view?.removeFromSuperview()
-        new_order_view = nil
-        outside_of_new_order_view?.removeFromSuperview()
-        outside_of_new_order_view = nil
+        UIView.animate(withDuration: 0.25, animations: {
+            self.new_order_view?.alpha = 0
+        }, completion: { _ in
+            self.new_order_view?.removeFromSuperview()
+            self.new_order_view = nil
+            self.outside_of_new_order_view?.removeFromSuperview()
+            self.outside_of_new_order_view = nil
 
-        undimEverything()
+            self.undimEverything()
+        })
+
     }
 
     public func placeOrder(buy: Bool, ticker: String, shares: Int) {

@@ -40,8 +40,7 @@ class FeedTableViewController: UITableViewController {
                 }
 
                 self.portfolios = portfolios!
-                print("core data portfolios")
-                print(portfolios!)
+
                 DispatchQueue.main.async() {
                     self.tableView.reloadData()
                 }
@@ -54,8 +53,7 @@ class FeedTableViewController: UITableViewController {
                 }
                 
                 self.portfolios = portfolios!
-                print("network portfolios")
-                print(portfolios!)
+
                 DispatchQueue.main.async() {
                     self.tableView.reloadData()
                 }

@@ -130,31 +130,25 @@ class NetworkHandler {
     }
 
     private static func post(_ endpoint: String, _ data: [String: Any], _ cb: @escaping ([String:Any]?, Error?) -> ()) {
-        print("POST \(endpoint)")
         var request = URLRequest(url: URL(string: "\(API_URL)\(endpoint)")!)
         request.httpMethod = "POST"
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            print("do did")
         } catch let error {
-            print("do caught")
             print(error.localizedDescription)
             cb(nil, error)
             return
         }
 
-        print("past do")
-        print(request)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            print("tasked")
             guard let data = data, error == nil else { // check for fundamental networking error
                 print("error=\(error!)")
                 cb(nil, error)
                 return
             }
-            print("past guard")
+
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 { // check for http errors
                 print("statusCode should be 201, but is \(httpStatus.statusCode)")
                 print("response = \(response!)")
@@ -185,8 +179,6 @@ class NetworkHandler {
 
             if let portfolios_data = data!["portfolios"] as? [[String: Any]] {
                 for portfolio_data in portfolios_data {
-                    print("fweafaeawfawefaeafweaae")
-                    print(portfolio_data)
                     DataParser.parseAndSavePortfolio(portfolio_data) { portfolio, err in
                         if err != nil {
                             print(err!)
@@ -195,12 +187,10 @@ class NetworkHandler {
                         }
 
                         network_portfolios.append(portfolio!)
-                        print("first")
                     }
                 }
             }
 
-            print("second")
             CoreDataHandler.fetchPortfolios(belongingTo: user) { portfolios, err in
                 if err != nil {
                     print(err!)
@@ -266,9 +256,7 @@ class NetworkHandler {
     }
 
     public static func createUser(name: String, username: String, password: String, _ cb: @escaping (User?, Error?) -> ()) {
-        print("createUser")
         post("/users", ["name": name, "username": username, "password": password]) { data, err in
-            print("post cb")
             if err != nil {
                 print("Error creating user: \(err!)")
                 cb(nil, err)
@@ -277,7 +265,6 @@ class NetworkHandler {
 
             if let user = data?["user"] as? [String: Any] {
                 USER_ID = user["id"] as! String
-                print("USER_ID: \(USER_ID)")
                 USER_NAME = user["name"] as! String
                 USER_USERNAME = user["username"] as! String
 

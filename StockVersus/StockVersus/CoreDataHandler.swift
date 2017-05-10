@@ -107,8 +107,6 @@ class CoreDataHandler {
                 return
             }
 
-            print("PORTFOLIO")
-            print(portfolio)
             cb(portfolio, err)
         }
     }

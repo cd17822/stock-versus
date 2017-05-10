@@ -71,7 +71,6 @@ class NoUserViewController: UIViewController {
     }
 
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        print("confirmButtonTapped")
         NetworkHandler.createUser(name: name_field.text!, username: username_field.text!, password: password_field.text!) { user, err in
             if err != nil {
                 print(err!)

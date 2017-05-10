@@ -138,11 +138,12 @@ class PortfolioViewController: UIViewController {
         new_order_view!.buy = buy
         new_order_view!.plus = plus
         new_order_view!.initLabels()
-        print("cash: \(portfolio!.cash)")
-        view.addSubview(new_order_view!)
+
         let w: CGFloat = 220
         let h: CGFloat = 220
         new_order_view!.frame = CGRect(x: view.frame.width/2-w/2, y: view.frame.height/2-h/2, width: w, height: h)
+
+        view.addSubview(new_order_view!)
     }
 
     func outsideOfNewOrderViewTapped(_ sender: Any?) {
@@ -160,14 +161,12 @@ class PortfolioViewController: UIViewController {
     }
 
     public func placeOrder(buy: Bool, ticker: String, shares: Int) {
-        print("place \(buy ? "buy" : "put") order")
         NetworkHandler.createOrder(buy: buy, ticker: ticker, shares: shares, portfolio: portfolio!) { portfolio, err in
             if err != nil {
                 print(err!)
             }
 
             self.portfolio = portfolio
-            print(self.portfolio ?? "no portfolio")
 
             DispatchQueue.main.async() {
                 self.buys_table.table_view.reloadData()

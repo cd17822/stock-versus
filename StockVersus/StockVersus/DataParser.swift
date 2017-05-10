@@ -10,24 +10,20 @@ import Foundation
 
 class DataParser {
     public static func parseAndSavePortfolio(_ data: [String: Any], _ cb: (Portfolio?, Error?) -> ()) {
-        print("c0o")
         CoreDataHandler.fetchUser() { user, err in
             if err != nil {
                 print(err!)
                 cb(nil, err)
                 return
             }
-            print("come")
+
             CoreDataHandler.fetchPortfolios(belongingTo: user!) { portfolios, err in
                 if err != nil {
                     print(err!)
                     cb(nil, err)
                     return
                 }
-//                print("data: \(data)")
-//                print(data["id"])
-//                print(data["portfolio"])
-                print("comeon")
+
                 let id = data["id"] as! String
                 let portfolio = portfolios?.filter({ $0.id == id }).first ?? Portfolio(context: CoreDataHandler.context)
 
@@ -57,15 +53,12 @@ class DataParser {
                 var buy_data = data["buys"] as? [[String: Any]]
                 if buy_data == nil {
                     buy_data = [[String:Any]]()
-                } else {
-                    //                        print("BUY_DATA: \(buy_data!)")
                 }
 
                 if portfolio.buys != nil {
                     // for each of the saved buys
                     for buy in portfolio.buys! {
                         let b = buy as! Stock
-                        //                            print("B: \(b)")
                         let before_count = buy_data!.count
                         // if we find a match, sieve it out of the json data because we don't need to do anything with it
                         buy_data = buy_data!.filter {
@@ -88,7 +81,6 @@ class DataParser {
 
                     let stock = b["stock"] as! [String: Any]
                     s.ticker = stock["ticker"] as? String
-                    //                        print("TICKER: \(String(describing: s.ticker))")
                     s.balance = stock["balance"] as! Float
                     s.balance_d = stock["balance_d"] as! Float
                     s.balance_w = stock["balance_w"] as! Float
@@ -111,7 +103,6 @@ class DataParser {
                 if portfolio.puts != nil {
                     for put in portfolio.puts! {
                         let p = put as! Stock
-                        //                            print("P: \(p)")
                         let before_count = put_data!.count
                         put_data = put_data!.filter {
                             !(($0["stock"] as! [String: Any])["ticker"] as! String == p.ticker! &&
@@ -130,7 +121,6 @@ class DataParser {
 
                     let stock = p["stock"] as! [String: Any]
                     s.ticker = stock["ticker"] as? String
-                    //                        print("TICKER: \(String(describing: s.ticker))")
                     s.balance = stock["balance"] as! Float
                     s.balance_d = stock["balance_d"] as! Float
                     s.balance_w = stock["balance_w"] as! Float
@@ -148,7 +138,6 @@ class DataParser {
                 print("stocks to delete: \(stocks_to_delete)")
                 CoreDataHandler.delete(stocks_to_delete)
                 print("stocks to save: \(stocks_to_save)")
-                print(portfolio)
                 CoreDataHandler.save { err in
                     if err != nil {
                         print(err!)

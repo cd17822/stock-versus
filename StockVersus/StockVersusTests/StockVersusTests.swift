@@ -40,7 +40,6 @@ class StockVersusTests: XCTestCase {
         let name = "Charlie DiGiovanna"
         let username = "testusername@\(Date().description)"
         NetworkHandler.createUser(name: name, username: username, password: "password") { user, err in
-            print("callingback")
             XCTAssert(err == nil)
             XCTAssert(user!.name == name)
             XCTAssert(user!.username == username)
@@ -50,7 +49,6 @@ class StockVersusTests: XCTestCase {
     func testPostPorfolio() {
         let name = "testporfolio@\(Date().description)"
         NetworkHandler.createPortfolio(named: "testporfolio@\(Date().description)") { portfolio, err in
-            print("callingback")
             XCTAssert(err == nil)
             XCTAssert(portfolio?.name == name)
             XCTAssert(portfolio?.user?.name == USER_NAME)

@@ -23,6 +23,7 @@ class CoreDataHandler {
 
     public static func storeUser(_ cb: (User, Error?) -> ()) {
         let user = User(context: context)
+        user.id = USER_ID
         user.username = USER_USERNAME
         user.name = USER_NAME
 
@@ -36,17 +37,18 @@ class CoreDataHandler {
 
         do {
             let users = try context.fetch(request)
-            let user = users.filter { $0.username == USER_USERNAME }.first
+//            let user = users.filter { $0.username == USER_USERNAME }.first
+            let user = users.first
+
             if user == nil {
-                cb(user, nil)
+                cb(nil, nil)
+                return
             } else {
-                storeUser { user, err in
-                    if err != nil {
-                        print(err!)
-                        return
-                    }
-                    cb(user, err)
-                }
+                USER_ID = user!.id!
+                USER_NAME = user!.name!
+                USER_USERNAME = user!.username!
+
+                cb(user, nil)
             }
         } catch let error as NSError {
             cb(nil, error)
@@ -81,68 +83,6 @@ class CoreDataHandler {
         }
     }
 
-//    private static func fetchLevels(_ callback: ((_ levels: [Level], _ error: NSError?) -> Void)) {
-//        let request = NSFetchRequest<Level>(entityName: "Level")
-//        do {
-//            let levels = try persistentContainer.viewContext.fetch(request)
-//            callback(levels, nil)
-//        } catch let error as NSError {
-//            callback([], error)
-//        }
-//    }
-//
-//    public static func getCurrentLevel(_ callback: @escaping ((_ level: Level, _ error: NSError?) -> Void)) {
-//        fetchLevels { levels, error in
-//            if error != nil {
-//                callback(self.default_level_1, error)
-//            }else{
-//                print("calling conv init")
-//                var current_level = self.default_level_1
-//                print("called")
-//                for level in levels {
-//                    if level.isCurrent {
-//                        current_level = level
-//                        print("got something")
-//                        break
-//                    }
-//                }
-//                print("got nothin")
-//                callback(current_level, nil)
-//            }
-//        }
-//    }
-//
-//    public static func makeCurrentLevel(_ number: Int16, _ callback: ((_ error: NSError?) -> Void)) {
-//        print("makecurrentlevel")
-//        print(number)
-//        fetchLevels { levels, error in
-//            if error != nil {
-//                callback(error)
-//            } else {
-//                let level_to_save = Level(context: persistentContainer.viewContext)
-//                level_to_save.number = number
-//
-//
-//                for level in levels {
-//                    if level.number == number {
-//                        level_to_save.best = level.best
-//                    }
-//                    level.isCurrent = false
-//                }
-//
-//                level_to_save.isCurrent = true
-//                print("LEVEL TO SAVE")
-//                print(level_to_save)
-//                do {
-//                    try persistentContainer.viewContext.save()
-//                    callback(nil)
-//                } catch let error as NSError {
-//                    callback(error)
-//                }
-//            }
-//        }
-//    }
-//
     public static func addStock(buy: Bool, ticker: String, shares: Int, to portfolio: Portfolio, _ cb: (Portfolio?, Error?) -> ()) {
         var stock: Stock? = nil
 
@@ -176,6 +116,27 @@ class CoreDataHandler {
     public static func delete(_ objects: [NSManagedObject]) {
         for o in objects {
             context.delete(o)
+        }
+    }
+
+    public static func deleteEverything(_ cb: (Error?) -> ()) {
+        let user_fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let user_request = NSBatchDeleteRequest(fetchRequest: user_fetch)
+
+        let portfolio_fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Portfolio")
+        let portfolio_request = NSBatchDeleteRequest(fetchRequest: portfolio_fetch)
+
+        let stock_fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Stock")
+        let stock_request = NSBatchDeleteRequest(fetchRequest: stock_fetch)
+
+        do {
+            try context.execute(user_request)
+            try context.execute(portfolio_request)
+            try context.execute(stock_request)
+
+            cb(nil)
+        } catch let error {
+            cb(error)
         }
     }
 

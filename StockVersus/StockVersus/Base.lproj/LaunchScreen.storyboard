@@ -28,11 +28,15 @@
                             <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Omf-UX-sHD">
                                 <rect key="frame" x="0.0" y="-10" width="375" height="74"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="24"/>
+                                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                                     <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="StockVersus" prompt=" " id="GCN-Io-ipG"/>
+                                    <navigationItem title="StockVersus" prompt=" " id="GCN-Io-ipG">
+                                        <barButtonItem key="rightBarButtonItem" id="BOX-RO-hv1">
+                                            <color key="tintColor" red="1" green="0.28101432790000003" blue="0.32284946799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3B1CA81EC37AB500543693 /* NoUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B1CA71EC37AB500543693 /* NoUserViewController.swift */; };
 		CB5E288C1EB8F2E900BBDB6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E288B1EB8F2E900BBDB6E /* AppDelegate.swift */; };
 		CB5E28911EB8F2E900BBDB6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB5E288F1EB8F2E900BBDB6E /* Main.storyboard */; };
 		CB5E28941EB8F2E900BBDB6E /* StockVersus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB5E28921EB8F2E900BBDB6E /* StockVersus.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3B1CA71EC37AB500543693 /* NoUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoUserViewController.swift; sourceTree = "<group>"; };
 		CB5E28881EB8F2E900BBDB6E /* StockVersus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockVersus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5E288B1EB8F2E900BBDB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB5E28901EB8F2E900BBDB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,14 +142,15 @@
 				CBC847A01EBBC7BE0004E448 /* FeedTableViewCell.swift */,
 				CB5E28BE1EB8F40500BBDB6E /* FeedPaneView.swift */,
 				CB5E28BC1EB8F3F100BBDB6E /* FeedPaneView.xib */,
-				CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */,
-				CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */,
 				CBC847AA1EBC15B60004E448 /* StockRowsView.swift */,
 				CBC847A41EBC12240004E448 /* StockRowsView.xib */,
 				CBC847A81EBC158C0004E448 /* StockRowsViewCell.swift */,
 				CBC847A61EBC15600004E448 /* StockRowsViewCell.xib */,
 				CB8FA1B11EBFDFE600DCBACB /* NewOrderView.swift */,
 				CB8FA1B31EBFDFEE00DCBACB /* NewOrderView.xib */,
+				CBD358171EBBAEE700CA1A67 /* FeedTableViewController.swift */,
+				CB5E28C41EB8F49F00BBDB6E /* PortfolioViewController.swift */,
+				CB3B1CA71EC37AB500543693 /* NoUserViewController.swift */,
 				CB5E28C61EB8F4A900BBDB6E /* LeaderboardViewController.swift */,
 				CB5E288F1EB8F2E900BBDB6E /* Main.storyboard */,
 				CB5E28951EB8F2E900BBDB6E /* Assets.xcassets */,
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3B1CA81EC37AB500543693 /* NoUserViewController.swift in Sources */,
 				CB5E28C11EB8F41A00BBDB6E /* NetworkHandler.swift in Sources */,
 				CB5E28BF1EB8F40500BBDB6E /* FeedPaneView.swift in Sources */,
 				CB5E28C31EB8F42200BBDB6E /* Global.swift in Sources */,

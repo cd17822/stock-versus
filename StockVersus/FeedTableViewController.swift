@@ -10,11 +10,14 @@ import UIKit
 
 class FeedTableViewController: UITableViewController {
     var portfolios = [Portfolio]()
+    @IBOutlet weak var logout_button: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
+        logout_button.setTitleTextAttributes( [NSFontAttributeName : UIFont(name: "Euphemia UCAS", size: 18)!], for: .normal)
+        
         getPortfolios()
     }
 
@@ -25,6 +28,11 @@ class FeedTableViewController: UITableViewController {
                 return
             }
 
+            if user == nil {
+                self.performSegue(withIdentifier: "FeedToNoUser", sender: nil)
+                return
+            }
+
             CoreDataHandler.fetchPortfolios(belongingTo: user!) { portfolios, err in
                 if err != nil {
                     print(err!)
@@ -32,6 +40,8 @@ class FeedTableViewController: UITableViewController {
                 }
 
                 self.portfolios = portfolios!
+                print("core data portfolios")
+                print(portfolios!)
                 tableView.reloadData()
             }
 
@@ -41,7 +51,9 @@ class FeedTableViewController: UITableViewController {
                     return
                 }
                 
-                self.portfolios = portfolios
+                self.portfolios = portfolios!
+                print("network portfolios")
+                print(portfolios!)
                 self.tableView.reloadData()
             }
         }
@@ -148,8 +160,27 @@ class FeedTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    @IBAction func test(_ sender: Any) {
-        Tests.performAll()
+    @IBAction func logout(_ sender: Any) {
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+
+        let cancel_action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let logout_action = UIAlertAction(title: "Logout", style: .default, handler: {
+            alert -> Void in
+            CoreDataHandler.deleteEverything() { err in
+                if err != nil {
+                    print(err!)
+                    return
+                }
+                
+                self.getPortfolios()
+            }
+        })
+
+        alertController.addAction(cancel_action)
+        alertController.addAction(logout_action)
+
+        self.present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Navigation

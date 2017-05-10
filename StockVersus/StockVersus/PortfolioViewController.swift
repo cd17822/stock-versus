@@ -72,7 +72,7 @@ class PortfolioViewController: UIViewController {
         puts_table.frame = puts_canvas.bounds
         puts_table.title_label.text = "PUTS"
         puts_table.vc = self
-        buys_table.buy = false
+        puts_table.buy = false
         puts_canvas.addSubview(puts_table)
     }
 
@@ -154,6 +154,7 @@ class PortfolioViewController: UIViewController {
     }
 
     public func placeOrder(buy: Bool, ticker: String, shares: Int) {
+        print("place \(buy ? "buy" : "put") order")
         NetworkHandler.createOrder(buy: buy, ticker: ticker, shares: shares, portfolio: portfolio!) { portfolio, err in
             if err != nil {
                 print(err!)

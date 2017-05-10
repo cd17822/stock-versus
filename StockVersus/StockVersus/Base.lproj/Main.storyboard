@@ -78,28 +78,60 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-3p-kMY">
-                                            <rect key="frame" x="86.5" y="-8" width="201" height="66"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="27"/>
-                                            <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
-                                            <state key="normal" title="New Portfolio">
-                                                <color key="titleColor" red="0.0" green="0.84066505869999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="newPortfolioTapped:" destination="o7M-kk-Pg1" eventType="touchUpInside" id="cBk-1w-bGc"/>
-                                            </connections>
-                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMN-FG-RbI">
+                                            <rect key="frame" x="82" y="-8" width="211" height="66"/>
+                                            <subviews>
+                                                <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVP-qh-LHt">
+                                                    <rect key="frame" x="5" y="5" width="201" height="56"/>
+                                                    <subviews>
+                                                        <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTR-Jj-OcY">
+                                                            <rect key="frame" x="1" y="1" width="199" height="54"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-3p-kMY">
+                                                                    <rect key="frame" x="-6" y="-6" width="211" height="66"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
+                                                                    <inset key="contentEdgeInsets" minX="20" minY="15" maxX="20" maxY="15"/>
+                                                                    <state key="normal" title="New Portfolio">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="15"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="newPortfolioTapped:" destination="o7M-kk-Pg1" eventType="touchUpInside" id="cBk-1w-bGc"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="LTR-Jj-OcY" firstAttribute="top" secondItem="FVP-qh-LHt" secondAttribute="top" constant="1" id="9rU-bk-nIP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LTR-Jj-OcY" secondAttribute="trailing" constant="1" id="T5j-ht-2ik"/>
+                                                        <constraint firstItem="LTR-Jj-OcY" firstAttribute="leading" secondItem="FVP-qh-LHt" secondAttribute="leading" constant="1" id="VHr-3N-7t4"/>
+                                                        <constraint firstAttribute="bottom" secondItem="LTR-Jj-OcY" secondAttribute="bottom" constant="1" id="jv1-cb-e5y"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.1066021697" green="0.1066021697" blue="0.1066021697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="FVP-qh-LHt" firstAttribute="leading" secondItem="SMN-FG-RbI" secondAttribute="leading" constant="5" id="7fw-ar-jHZ"/>
+                                                <constraint firstAttribute="height" constant="66" id="7p2-k8-HeH"/>
+                                                <constraint firstItem="FVP-qh-LHt" firstAttribute="centerX" secondItem="SMN-FG-RbI" secondAttribute="centerX" id="Zsc-Fd-Wvx"/>
+                                                <constraint firstAttribute="width" constant="211" id="bW2-8s-Iru"/>
+                                                <constraint firstItem="FVP-qh-LHt" firstAttribute="centerY" secondItem="SMN-FG-RbI" secondAttribute="centerY" id="cWu-WP-PXq"/>
+                                                <constraint firstItem="FVP-qh-LHt" firstAttribute="top" secondItem="SMN-FG-RbI" secondAttribute="top" constant="5" id="ytu-xX-Ur9"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="p1v-3p-kMY" firstAttribute="centerY" secondItem="dYD-FO-l1U" secondAttribute="centerY" id="IrV-bP-d0g"/>
-                                        <constraint firstItem="p1v-3p-kMY" firstAttribute="centerX" secondItem="dYD-FO-l1U" secondAttribute="centerX" id="Tcs-qe-F0K"/>
+                                        <constraint firstItem="SMN-FG-RbI" firstAttribute="centerX" secondItem="dYD-FO-l1U" secondAttribute="centerX" id="esn-Es-xNO"/>
+                                        <constraint firstItem="SMN-FG-RbI" firstAttribute="centerY" secondItem="dYD-FO-l1U" secondAttribute="centerY" id="tJi-Cf-0Xi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -111,22 +143,135 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM">
-                        <barButtonItem key="rightBarButtonItem" title="Test" id="SO0-14-Nq2">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="SO0-14-Nq2">
                             <color key="tintColor" red="1" green="0.28101432790000003" blue="0.32284946799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="test:" destination="o7M-kk-Pg1" id="xYe-Qg-48T"/>
+                                <action selector="logout:" destination="o7M-kk-Pg1" id="3dp-ht-lbT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="logout_button" destination="SO0-14-Nq2" id="oRi-zZ-hDT"/>
                         <segue destination="QIR-l2-UDG" kind="show" identifier="FeedToPortfolio" id="kNo-ZK-FTn"/>
                         <segue destination="a5b-11-lVq" kind="show" identifier="FeedToLeaderboard" id="4QI-O1-qck"/>
+                        <segue destination="boa-6f-Xcw" kind="presentation" identifier="FeedToNoUser" id="3tR-wL-FgD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F3-8C-ttX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="135.38230884557723"/>
+        </scene>
+        <!--No User View Controller-->
+        <scene sceneID="rOw-WB-JBR">
+            <objects>
+                <viewController id="boa-6f-Xcw" customClass="NoUserViewController" customModule="StockVersus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iDO-Vj-x3F"/>
+                        <viewControllerLayoutGuide type="bottom" id="tP4-Sv-VAw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X6q-hv-tXb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnr-AA-DWT">
+                                <rect key="frame" x="114" y="46" width="146" height="43"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqD-LC-ZfH">
+                                <rect key="frame" x="100" y="112" width="176" height="43"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6EP-V8-shY">
+                                <rect key="frame" x="100" y="116" width="176" height="35"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <action selector="nameEditingChanged:" destination="boa-6f-Xcw" eventType="editingChanged" id="TXt-fr-j6J"/>
+                                    <action selector="nameEditingDidBegin:" destination="boa-6f-Xcw" eventType="editingDidBegin" id="4dz-bu-6zu"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLX-a1-xjU">
+                                <rect key="frame" x="99" y="182" width="176" height="43"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUl-vg-LjX">
+                                <rect key="frame" x="99" y="186" width="176" height="35"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="usernameEditingChanged:" destination="boa-6f-Xcw" eventType="editingChanged" id="knk-jg-uwk"/>
+                                    <action selector="usernameEditingDidBegin:" destination="boa-6f-Xcw" eventType="editingDidBegin" id="iRo-WM-QUX"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ph-QB-69H">
+                                <rect key="frame" x="99" y="252" width="176" height="43"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="32"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjA-km-CpE">
+                                <rect key="frame" x="99" y="256" width="176" height="35"/>
+                                <color key="textColor" red="0.0095653882690000004" green="0.91556998229999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordEditingChanged:" destination="boa-6f-Xcw" eventType="editingChanged" id="6YP-Ok-xAC"/>
+                                    <action selector="passwordEditingDidBegin:" destination="boa-6f-Xcw" eventType="editingDidBegin" id="bDk-Fv-MLZ"/>
+                                </connections>
+                            </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7n-WO-MX6">
+                                <rect key="frame" x="150.5" y="326" width="73" height="35"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
+                                <state key="normal" title="CONFIRM">
+                                    <color key="titleColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmButtonTapped:" destination="boa-6f-Xcw" eventType="touchUpInside" id="zNq-81-j4m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tjA-km-CpE" firstAttribute="centerY" secondItem="5ph-QB-69H" secondAttribute="centerY" id="0nO-zP-eUs"/>
+                            <constraint firstItem="tjA-km-CpE" firstAttribute="top" secondItem="xUl-vg-LjX" secondAttribute="bottom" constant="35" id="6uU-q9-z9v"/>
+                            <constraint firstItem="xUl-vg-LjX" firstAttribute="top" secondItem="6EP-V8-shY" secondAttribute="bottom" constant="35" id="BlA-c3-4eh"/>
+                            <constraint firstItem="xUl-vg-LjX" firstAttribute="centerX" secondItem="X6q-hv-tXb" secondAttribute="centerX" id="CB2-e9-TxV"/>
+                            <constraint firstItem="vnr-AA-DWT" firstAttribute="centerX" secondItem="X6q-hv-tXb" secondAttribute="centerX" id="Rw7-p2-O2o"/>
+                            <constraint firstItem="L7n-WO-MX6" firstAttribute="top" secondItem="5ph-QB-69H" secondAttribute="bottom" constant="31" id="Vql-KV-MSj"/>
+                            <constraint firstItem="vnr-AA-DWT" firstAttribute="top" secondItem="iDO-Vj-x3F" secondAttribute="bottom" constant="26" id="a83-6n-eTf"/>
+                            <constraint firstItem="tjA-km-CpE" firstAttribute="centerX" secondItem="5ph-QB-69H" secondAttribute="centerX" id="bH1-AX-KE2"/>
+                            <constraint firstItem="xUl-vg-LjX" firstAttribute="width" secondItem="SLX-a1-xjU" secondAttribute="width" id="ccR-kt-ff3"/>
+                            <constraint firstItem="6EP-V8-shY" firstAttribute="top" secondItem="vnr-AA-DWT" secondAttribute="bottom" constant="27" id="eQj-5K-0xg"/>
+                            <constraint firstItem="xUl-vg-LjX" firstAttribute="centerY" secondItem="SLX-a1-xjU" secondAttribute="centerY" id="jUf-Bt-Uir"/>
+                            <constraint firstItem="tjA-km-CpE" firstAttribute="width" secondItem="5ph-QB-69H" secondAttribute="width" id="mz5-f4-Fdd"/>
+                            <constraint firstItem="xUl-vg-LjX" firstAttribute="centerX" secondItem="SLX-a1-xjU" secondAttribute="centerX" id="oH4-xK-1fx"/>
+                            <constraint firstItem="6EP-V8-shY" firstAttribute="centerX" secondItem="X6q-hv-tXb" secondAttribute="centerX" id="pzd-2c-nvA"/>
+                            <constraint firstItem="6EP-V8-shY" firstAttribute="centerY" secondItem="uqD-LC-ZfH" secondAttribute="centerY" id="r0L-W7-EAe"/>
+                            <constraint firstItem="6EP-V8-shY" firstAttribute="width" secondItem="uqD-LC-ZfH" secondAttribute="width" id="v2w-ok-cL3"/>
+                            <constraint firstItem="tjA-km-CpE" firstAttribute="centerX" secondItem="X6q-hv-tXb" secondAttribute="centerX" id="wdc-1m-aAw"/>
+                            <constraint firstItem="6EP-V8-shY" firstAttribute="centerX" secondItem="uqD-LC-ZfH" secondAttribute="centerX" id="y2b-Jg-rQV"/>
+                            <constraint firstItem="L7n-WO-MX6" firstAttribute="centerX" secondItem="X6q-hv-tXb" secondAttribute="centerX" id="zFy-HW-Olw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirm_button" destination="L7n-WO-MX6" id="aJE-el-UPn"/>
+                        <outlet property="name_field" destination="6EP-V8-shY" id="25g-Np-pdR"/>
+                        <outlet property="password_field" destination="tjA-km-CpE" id="JtD-ij-uZm"/>
+                        <outlet property="username_field" destination="xUl-vg-LjX" id="foY-yR-Guf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="89F-5d-UNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="821"/>
         </scene>
         <!--Portfolio-->
         <scene sceneID="zdq-JV-mtd">
@@ -329,7 +474,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="24"/>
                             <color key="textColor" red="0.15932840009999999" green="0.81009148320000002" blue="0.1824735737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>

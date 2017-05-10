@@ -32,11 +32,21 @@ schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
   val?.length <= 100
 , 'Name is too long.'
 
+(schema.path 'username').required yes, 'Username is required.'
+
+(schema.path 'username').validate (val) ->
+  val?.length > 1
+,'Username is too short.'
+
+(schema.path 'username').validate (val) ->
+  val?.length <= 100
+, 'Username is too long.'
+
 (schema.path 'password').required yes, 'Password is required.'
 
-(schema.path 'password').validate (val) ->
-  val?.length > 5
-,'Passwords must have at least 6 characters.'
+# (schema.path 'password').validate (val) ->
+#   val?.length > 5
+# ,'Passwords must have at least 6 characters.'
 
 (schema.path 'password').validate (val) ->
   val?.length <= 100
@@ -44,5 +54,6 @@ schema.plugin timestamps, createdAt: 'created_at', updatedAt: 'updated_at'
 
 # santization
 (schema.path 'name').set (val) -> val.trim()
+(schema.path 'username').set (val) -> val.trim()
 
 module.exports = User = mongoose.model 'user', schema

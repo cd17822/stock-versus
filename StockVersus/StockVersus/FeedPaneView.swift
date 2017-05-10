@@ -59,6 +59,6 @@ class FeedPaneView: UIView {
         percent_change_label.text = percentChangeString(for: portfolio!.balance, since: portfolio!.balance_d)
         period_label.text = "Day:"
         ranking_label.text = rankPercentString(for: portfolio!.ranking_d)
-        next_period_label.text = "Week >"
+//        next_period_label.text = ...
     }
 }

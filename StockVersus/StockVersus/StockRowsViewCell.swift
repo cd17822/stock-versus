@@ -35,7 +35,7 @@ class StockRowsViewCell: UITableViewCell {
     func setPriceChangeLabel(for tu: TimeUnit) {
         mode = tu
 
-        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[mode!.hashValue])
+        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[mode!.hashValue], times: Float(stock!.shares))
         print(stock!.balance)
         print(balances[mode!.hashValue])
         print(price_change_label.text!)

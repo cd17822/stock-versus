@@ -51,20 +51,20 @@ func rankPercentString(for ranking: Int32) -> String {
     return return_string
 }
 
-func dollarChangeString(for balance: Float, since balanceOld: Float) -> String {
+func dollarChangeString(for balance: Float, since balanceOld: Float, times: Float = 1) -> String {
     let pm = balance >= balanceOld ? "+" : "-"
 
-    return pm + "$" + abs(balance - balanceOld).with2DecimalPlaces
+    return pm + "$" + abs(Float(times) * (balance - balanceOld)).with2DecimalPlaces
 }
 
 func percentChangeString(for balance: Float, since balanceOld: Float, withoutPlusMinus: Bool=false) -> String {
-    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : ""
+//    let pm = balance >= balanceOld && !withoutPlusMinus ? "+" : ""
 
-    return pm + (balance/balanceOld).with2DecimalPlaces + "%"
+    return (100 * (balance/balanceOld - 1)).with2DecimalPlaces + "%"
 }
 
-func priceChangeString(for balance: Float, since balanceOld: Float) -> String {
-    return "\(dollarChangeString(for: balance, since: balanceOld)) (\(percentChangeString(for: balance, since: balanceOld, withoutPlusMinus: true)))"
+func priceChangeString(for balance: Float, since balanceOld: Float, times: Float = 1) -> String {
+    return "\(dollarChangeString(for: balance, since: balanceOld, times: times)) (\(percentChangeString(for: balance, since: balanceOld, withoutPlusMinus: true)))"
 }
 
 func dateFromString(_ dateString: String) -> Date {
@@ -125,7 +125,7 @@ extension Float {
         let fmt = NumberFormatter()
         fmt.maximumFractionDigits = 2
         fmt.minimumFractionDigits = 2
-        let pre = self < 1 && self > -1 ? "0" : ""
+        let pre = self < 1 && self > -1 ? "" : ""
 
         return pre + fmt.string(from: NSNumber(value: self))! // ?? self.description
     }

@@ -7,6 +7,34 @@ Stock = rek 'models/stock'
 Share = rek 'models/share'
 market = rek 'components/market'
 
+# get portfolios of a user
+router.get '/:userId', (req, res, next) ->
+  Portfolio.find user: req.params.userId, (err, portfolios) ->
+    if err then next err
+    else
+      hits = 0
+      for i in [0...portfolios.length]
+        portfolio = portfolios[i]
+        Share.find(portfolio: portfolio.id).populate('stock').exec (err, shares) ->
+          if err then next err
+          else
+            portfolio.buys = []
+            portfolio.puts = []
+            for s in shares
+              if s.buy then portfolio.buys.push s
+              else          portfolio.puts.push s
+          
+            console.log portfolio.buys
+            hits += 1
+            tryToCallback()
+    
+      tryToCallback = ->
+        if hits == portfolios.length
+          console.log portfolios
+          console.log portfolios[0]
+          console.log portfolios[0].buys
+          (res.status 201).send portfolios: portfolios
+
 # create new portfolio
 router.post '/', (req, res, next) ->
   portfolio = new Portfolio _.pick req.body, 'name', 'balance', 'cash'
@@ -39,6 +67,7 @@ router.post '/', (req, res, next) ->
             console.log portfolio
             (res.status 201).send portfolio: portfolio
 
+# place order for a portfolio
 router.put '/order', (req, res, next) ->
   Share.findOneAndUpdate {ticker: req.body.ticker, portfolio: req.body.portfolio, buy: req.body.buy}, {$inc: {shares: req.body.shares}}, (err, share) ->
     if err then next err
@@ -90,6 +119,7 @@ router.put '/order', (req, res, next) ->
                                         if s.buy then portfolio.buys.push s
                                         else          portfolio.puts.push s
                                       console.log portfolio
+                                      console.log portfolio.buys
                                       (res.status 201).send portfolio: portfolio
             else
               share = new Share()
@@ -121,6 +151,8 @@ router.put '/order', (req, res, next) ->
                             if s.buy then portfolio.buys.push s
                             else          portfolio.puts.push s
                           console.log portfolio
+                          console.log portfolio.buys
+                          console.log portfolio.buys
                           (res.status 201).send portfolio: portfolio
       else
         console.log "last"
@@ -143,6 +175,7 @@ router.put '/order', (req, res, next) ->
                   if s.buy then portfolio.buys.push s
                   else          portfolio.puts.push s
                 console.log portfolio
+                console.log portfolio.buys
                 (res.status 201).send portfolio: portfolio
 
 module.exports = router

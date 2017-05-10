@@ -163,8 +163,10 @@ class PortfolioViewController: UIViewController {
             self.portfolio = portfolio
             print(self.portfolio ?? "no portfolio")
 
-            self.buys_table.table_view.reloadData()
-            self.puts_table.table_view.reloadData()
+            DispatchQueue.main.async() {
+                self.buys_table.table_view.reloadData()
+                self.puts_table.table_view.reloadData()
+            }
         }
 
         outsideOfNewOrderViewTapped(nil)

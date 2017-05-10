@@ -42,7 +42,9 @@ class FeedTableViewController: UITableViewController {
                 self.portfolios = portfolios!
                 print("core data portfolios")
                 print(portfolios!)
-                tableView.reloadData()
+                DispatchQueue.main.async() {
+                    self.tableView.reloadData()
+                }
             }
 
             NetworkHandler.getPortfolios(belongingTo: user!) { portfolios, err in
@@ -54,7 +56,9 @@ class FeedTableViewController: UITableViewController {
                 self.portfolios = portfolios!
                 print("network portfolios")
                 print(portfolios!)
-                self.tableView.reloadData()
+                DispatchQueue.main.async() {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

@@ -181,7 +181,7 @@ class NetworkHandler {
                 cb(nil, err)
             }
 
-            var portfolios = [Portfolio]()
+            var network_portfolios = [Portfolio]()
 
             if let portfolios_data = data!["portfolios"] as? [[String: Any]] {
                 for portfolio_data in portfolios_data {
@@ -194,12 +194,35 @@ class NetworkHandler {
                             return
                         }
 
-                        portfolios.append(portfolio!)
+                        network_portfolios.append(portfolio!)
+                        print("first")
                     }
                 }
             }
 
-            cb(portfolios, nil)
+            print("second")
+            CoreDataHandler.fetchPortfolios(belongingTo: user) { portfolios, err in
+                if err != nil {
+                    print(err!)
+                    cb(nil, err)
+                }
+
+                var portfolios_to_delete = [Portfolio]()
+
+                for portfolio in portfolios! {
+                    if !network_portfolios.contains(portfolio) {
+                        portfolios_to_delete.append(portfolio)
+                    } else {
+                        print("matched portfolio: \(portfolio.name!)")
+                    }
+                }
+
+                print("portfolios to delete: \(portfolios_to_delete.map {$0.name })")
+
+                CoreDataHandler.delete(portfolios_to_delete)
+
+                cb(network_portfolios, nil)
+            }
         }
     }
 

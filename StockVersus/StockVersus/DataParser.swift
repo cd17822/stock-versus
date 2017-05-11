@@ -63,7 +63,7 @@ class DataParser {
                         let before_count = buy_data!.count
                         // if we find a match, sieve it out of the json data because we don't need to do anything with it
                         buy_data = buy_data!.filter {
-                            $0["id"] as! String != b.id! &&
+                            $0["id"] as! String != b.id! ||
                             ($0["stock"] as! [String: Any])["balance"] as! Float != b.balance
                         }
                         // if we didn't sieve it out
@@ -89,7 +89,9 @@ class DataParser {
                     s.balance_m = stock["balance_m"] as! Float
                     s.balance_q = stock["balance_q"] as! Float
                     s.balance_y = stock["balance_y"] as! Float
-
+                    print(s.balance)
+                    print(s.balance_a)
+                    print("balances-------")
 
                     s.buy_portfolio = portfolio
                     s.put_portfolio = nil
@@ -107,7 +109,7 @@ class DataParser {
                         let p = put as! Stock
                         let before_count = put_data!.count
                         put_data = put_data!.filter {
-                            $0["id"] as! String != p.id! &&
+                            $0["id"] as! String != p.id! ||
                             ($0["stock"] as! [String: Any])["balance"] as! Float != p.balance
                         }
                         if put_data!.count == before_count {

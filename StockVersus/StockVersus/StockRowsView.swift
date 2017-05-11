@@ -77,6 +77,7 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     public func updateCells(for tu: TimeUnit) {
         mode = tu
+        print(mode.hashValue)
         for cell in table_view.visibleCells {
             if let c = cell as? StockRowsViewCell {
                 c.setPriceChangeLabel(for: mode)

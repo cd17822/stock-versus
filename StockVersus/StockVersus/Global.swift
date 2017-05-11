@@ -20,7 +20,7 @@ let PORTFOLIO_START_VALUE: Float = 100000.00
 let API_URL = "http://localhost:3939"
 let TESTING = true
 #else                                       // otherwise, route to CharlieD.me server
-let API_URL = "https://40432f6e.ngrok.io"
+let API_URL = "https://c2135a46.ngrok.io"
 let TESTING = false
 #endif
 

@@ -8,6 +8,8 @@ configs = rek 'config'
 
 module.exports.start = ->
   setInterval ->
+    console.log "Updating..."
+
     # 0 is sunday for Date.prototype.getDay()
     now = new Date()
 
@@ -30,7 +32,7 @@ module.exports.start = ->
               if err then console.log err
 
     # update stock balances (and eventually current balance for portfolio)
-    if now.getDay() > 0 and now.getDay() < 6 and (now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours < 16) or (now.getHours() == 16 and now.getHours() == 0)
+    if now.getDay() > 0 and now.getDay() < 6 and ((now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours() < 16) or (now.getHours() == 16 and now.getHours() == 0))
       Stock.find {}, (err, stocks) ->
         if err then console.log err
         else

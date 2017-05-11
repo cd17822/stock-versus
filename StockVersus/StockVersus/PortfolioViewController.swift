@@ -82,6 +82,7 @@ class PortfolioViewController: UIViewController {
     }
 
     func timeUnitPressed() {
+        print(mode)
         moveUnderline()
         for t in stock_tables {
             t.updateCells(for: mode)

@@ -49,7 +49,10 @@ module.exports.getStockHistory = (ticker, stock, cb) ->
       if error then cb error
       else if response.statusCode isnt 200 then cb new Error "unable to get task: #{JSON.stringify body}"
       else
-        stock_pieces.balance_d = Number (_.values(body['Time Series (Daily)'])[0])["1. open"]
+        if _.values(body['Time Series (Daily)'])[1]
+          stock_pieces.balance_d = Number (_.values(body['Time Series (Daily)'])[1])["4. close"]
+        else
+          stock_pieces.balance_d = Number (_.values(body['Time Series (Daily)'])[0])["1. open"]
         hits += 1
         tryCallingBack()
 
@@ -62,7 +65,10 @@ module.exports.getStockHistory = (ticker, stock, cb) ->
       if error then cb error
       else if response.statusCode isnt 200 then cb new Error "unable to get task: #{JSON.stringify body}"
       else
-        stock_pieces.balance_w = Number (_.values(body['Weekly Time Series'])[0])["1. open"]
+        if _.values(body['Weekly Time Series'])[1]
+          stock_pieces.balance_w = Number (_.values(body['Weekly Time Series'])[1])["4. close"]
+        else
+          stock_pieces.balance_w = Number (_.values(body['Weekly Time Series'])[0])["1. open"]
         hits += 1
         tryCallingBack()
 
@@ -75,7 +81,10 @@ module.exports.getStockHistory = (ticker, stock, cb) ->
       if error then cb error
       else if response.statusCode isnt 200 then cb new Error "unable to get task: #{JSON.stringify body}"
       else
-        stock_pieces.balance_m = Number (_.values(body['Monthly Time Series'])[0])["1. open"]
+        if _.values(body['Monthly Time Series'])[1]
+          stock_pieces.balance_m = Number (_.values(body['Monthly Time Series'])[1])["4. close"]
+        else
+          stock_pieces.balance_m = Number (_.values(body['Monthly Time Series'])[0])["1. open"]
 
         if _.values(body['Monthly Time Series'])[Math.floor((now.getMonth()+1)/3)*3-1]
           stock_pieces.balance_q = Number (_.values(body['Monthly Time Series'])[Math.floor((now.getMonth()+1)/3)*3-1])["4. close"]
@@ -83,7 +92,7 @@ module.exports.getStockHistory = (ticker, stock, cb) ->
           stock_pieces.balance_q = Number (_.values(body['Monthly Time Series'])[_.values(body['Monthly Time Series']).length - 1])["1. open"]
 
         if _.values(body['Monthly Time Series'])[now.getMonth()+1]
-          stock_pieces.balance_y = Number (_.values(body['Monthly Time Series'])[now.getMonth()])["1. open"]
+          stock_pieces.balance_y = Number (_.values(body['Monthly Time Series'])[now.getMonth()+1])["4. close"]
         else
           stock_pieces.balance_y = Number (_.values(body['Monthly Time Series'])[_.values(body['Monthly Time Series']).length - 1])["1. open"]
 
@@ -93,4 +102,3 @@ module.exports.getStockHistory = (ticker, stock, cb) ->
   tryCallingBack = ->
     if hits == 4
       cb null, stock, stock_pieces
-

@@ -73,7 +73,7 @@ class PortfolioViewController: UIViewController {
 
         puts_table.stocks = portfolio!.puts!.map { $0 as! Stock }
         puts_table.frame = puts_canvas.bounds
-        puts_table.title_label.text = "PUTS"
+        puts_table.title_label.text = "SHORTS"
         puts_table.vc = self
         puts_table.buy = false
         puts_canvas.addSubview(puts_table)

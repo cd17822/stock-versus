@@ -16,26 +16,27 @@ module.exports.start = ->
       Portfolio.find {}, (err, portfolios) ->
         if err then console.log err
         else
-          porfolio.balance_d = portfolio.balance
-          if now.getDay() == 1
-            porfolio.balance_w = portfolio.balance
-          if now.getDate() == 1
-            porfolio.balance_m = portfolio.balance
-            if now.getMonth() % 3 == 0
-              portfolio.balance_q = portfolio.balance
-              if now.getMonth() == 0
-                portfolio.balance_y = portfolio.balance
-          portfolio.save (err, portfolio) ->
-            if err then console.log err
+          for portfolio in portfolios
+            portfolio.balance_d = portfolio.balance
+            if now.getDay() == 1
+              portfolio.balance_w = portfolio.balance
+            if now.getDate() == 1
+              portfolio.balance_m = portfolio.balance
+              if now.getMonth() % 3 == 0
+                portfolio.balance_q = portfolio.balance
+                if now.getMonth() == 0
+                  portfolio.balance_y = portfolio.balance
+            portfolio.save (err, portfolio) ->
+              if err then console.log err
 
     # update stock balances (and eventually current balance for portfolio)
-    if now.getDay() > 0 and now.getDay() < 6 and (now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours < 16) or (now.getHours() == 16 and now.getHours() == 0)
+    if yes #now.getDay() > 0 and now.getDay() < 6 and (now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours < 16) or (now.getHours() == 16 and now.getHours() == 0)
       Stock.find {}, (err, stocks) ->
         if err then console.log err
         else
           hits = 0
           for stock in stocks
-            if now.getHours() == 9 and now.getMinutes() == 30 # opening bell
+            if yes #now.getHours() == 9 and now.getMinutes() == 30 # opening bell
               market.getStockHistory stock.ticker, stock, (err, stock, stockPieces) ->
                 if err then console.log err
                 else updateStockWithNewPieces stock, stockPieces

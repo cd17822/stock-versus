@@ -57,7 +57,7 @@ class FeedTableViewController: UITableViewController {
                 }
                 
                 self.portfolios = portfolios!
-
+                print(self.portfolios.first?.puts ?? "nil")
                 DispatchQueue.main.async() {
                     self.tableView.reloadData()
                 }

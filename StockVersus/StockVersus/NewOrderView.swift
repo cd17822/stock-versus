@@ -125,9 +125,9 @@ class NewOrderView: UIView {
             }
         } else {
             if plus! {
-                buy_label.text = "PURCHASE PUT"
+                buy_label.text = "SHORT"
             } else {
-                buy_label.text = "SELL PUT"
+                buy_label.text = "SELL SHORT"
             }
         }
     }

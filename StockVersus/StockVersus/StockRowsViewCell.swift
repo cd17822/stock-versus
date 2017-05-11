@@ -18,15 +18,17 @@ class StockRowsViewCell: UITableViewCell {
     }
     var mode: TimeUnit?
     var buy: Bool?
+    var dollars = true
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
     func setTickerLabel() {
@@ -37,11 +39,23 @@ class StockRowsViewCell: UITableViewCell {
         ticker_label.text = "\(stock!.ticker!) (x\(stock!.shares))"
     }
 
-    func setPriceChangeLabel(for tu: TimeUnit) {
+    public func setPriceChangeLabel(for tu: TimeUnit) {
         mode = tu
 
-        price_change_label.text = priceChangeString(for: stock!.balance, since: balances[mode!.hashValue], times: Float(stock!.shares))
+        price_change_label.text = dollars ? dollarChangeString(for: Float(stock!.shares) * stock!.balance, since: Float(stock!.shares) * balances[mode!.hashValue]) : percentChangeString(for: stock!.balance, since: balances[mode!.hashValue])
+
         price_change_label.textColor = changeColor(for: stock!.balance, since: balances[mode!.hashValue], opposite: !buy!)
     }
 
+    func updatePriceChangeLabelAfterTap() {
+        price_change_label.text = dollars ? dollarChangeString(for: Float(stock!.shares) * stock!.balance, since: Float(stock!.shares) * balances[mode!.hashValue]) : percentChangeString(for: stock!.balance, since: balances[mode!.hashValue])
+    }
+
+    func cellTapped(_ sender: Any?) {
+        dollars = !dollars
+
+        DispatchQueue.main.async {
+            self.updatePriceChangeLabelAfterTap()
+        }
+    }
 }

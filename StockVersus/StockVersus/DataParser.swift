@@ -62,7 +62,8 @@ class DataParser {
                         let before_count = buy_data!.count
                         // if we find a match, sieve it out of the json data because we don't need to do anything with it
                         buy_data = buy_data!.filter {
-                            $0["id"] as! String != b.id!
+                            $0["id"] as! String != b.id! &&
+                            ($0["stock"] as! [String: Any])["balance"] as! Float != b.balance
                         }
                         // if we didn't sieve it out
                         if buy_data!.count == before_count {
@@ -105,7 +106,8 @@ class DataParser {
                         let p = put as! Stock
                         let before_count = put_data!.count
                         put_data = put_data!.filter {
-                            $0["id"] as! String != p.id!
+                            $0["id"] as! String != p.id! &&
+                            ($0["stock"] as! [String: Any])["balance"] as! Float != p.balance
                         }
                         if put_data!.count == before_count {
                             stocks_to_delete.append(p)

@@ -29,7 +29,7 @@ module.exports.start = ->
             if err then console.log err
 
     # update stock balances (and eventually current balance for portfolio)
-    if yes #now.getDay() > 0 and now.getDay() < 6 and (now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours < 16) or (now.getHours() == 16 and now.getHours() == 0)
+    if now.getDay() > 0 and now.getDay() < 6 and (now.getHours() == 9 and now.getMinutes() >= 30) or (now.getHours() > 9 and now.getHours < 16) or (now.getHours() == 16 and now.getHours() == 0)
       Stock.find {}, (err, stocks) ->
         if err then console.log err
         else
@@ -75,14 +75,7 @@ module.exports.start = ->
                         else
                           for share in shares
                             inc = if share.buy then share.shares * share.stock.balance else share.shares * (2 * share.balance_a - share.stock.balance)
-                            console.log '----------'
-                            console.log share.ticker
-                            console.log share.stock.balance
-                            console.log share.shares
-                            console.log inc
-                            console.log '----------'
                             Portfolio.findByIdAndUpdate share.portfolio, {$inc: {balance: inc}}, (err, portfolio) ->
                               if err then console.log err
-                              else console.log portfolio.balance
 
   , configs.POLLING_INTERVAL

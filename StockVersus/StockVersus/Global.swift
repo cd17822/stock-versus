@@ -62,18 +62,26 @@ func priceChangeString(for balance: Float, since balanceOld: Float, times: Float
 }
 
 func dateFromString(_ dateString: String) -> Date? {
-    let dateFormatter: DateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZ"
+    let formatter: DateFormatter = DateFormatter()
 
-    let date = dateFormatter.date(from: dateString)
-
-    if (date == nil) {
-        print("ERROR:", "Could not parse date: \(dateString).") // Using NOW as date")
-//        date = Date()
+    // Format 1
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    if let date = formatter.date(from: dateString) {
+        return date
     }
 
-    return date
+    // Format 2
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:SSSZ"
+    if let date = formatter.date(from: dateString) {
+        return date
+    }
+
+    print("ERROR:", "Could not parse date: \(dateString).") // Using NOW as date")
+    //        return Date()
+
+    return nil
 }
+
 
 func changeColor(for balance: Float, since balanceOld: Float, opposite: Bool = false) -> UIColor {
     return (balance >= balanceOld) != opposite ? .appGreen : .appRed

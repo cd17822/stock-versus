@@ -111,9 +111,13 @@ class CoreDataHandler {
         }
     }
 
-    public static func delete(_ objects: [NSManagedObject]) {
+    public static func deleteAndSave(_ objects: [NSManagedObject], _ cb: (Error?) -> ()) {
         for o in objects {
             context.delete(o)
+        }
+
+        save { err in
+            cb(err)
         }
     }
 

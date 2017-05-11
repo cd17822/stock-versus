@@ -211,9 +211,13 @@ class NetworkHandler {
 
                 print("portfolios to delete: \(portfolios_to_delete.map {$0.name })")
 
-                CoreDataHandler.delete(portfolios_to_delete)
-
-                cb(network_portfolios, nil)
+                CoreDataHandler.deleteAndSave(portfolios_to_delete) { err in
+                    if err != nil {
+                        cb(nil, err)
+                    } else {
+                        cb(network_portfolios, nil)
+                    }
+                }
             }
         }
     }

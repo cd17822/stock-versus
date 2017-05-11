@@ -136,15 +136,14 @@ class DataParser {
                 }
 
                 print("stocks to delete: \(stocks_to_delete)")
-                CoreDataHandler.delete(stocks_to_delete)
                 print("stocks to save: \(stocks_to_save)")
-                CoreDataHandler.save { err in
+                CoreDataHandler.deleteAndSave(stocks_to_delete) { err in
                     if err != nil {
                         print(err!)
                         cb(nil, err)
+                    } else {
+                        cb(portfolio, nil)
                     }
-
-                    cb(portfolio, nil)
                 }
             }
         }

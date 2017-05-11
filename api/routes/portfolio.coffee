@@ -24,7 +24,6 @@ router.get '/:userId', (req, res, next) ->
               if s.buy then portfolio.buys.push s
               else          portfolio.puts.push s
 
-            console.log portfolio.buys
             hits += 1
             tryToCallback()
 
@@ -88,8 +87,6 @@ router.put '/order', (req, res, next) ->
                 share.save (err, share) ->
                   if err then next err
                   else
-                    console.log "incing by"
-                    console.log -1*share.shares*stock.balance
                     Portfolio.findByIdAndUpdate req.body.portfolio, {$inc: {cash: -1*share.shares*stock.balance}}, (err, portfolio) ->
                       if err then next err
                       else
@@ -118,8 +115,6 @@ router.put '/order', (req, res, next) ->
         share.save (err, share) ->
           if err then next err
           else
-            console.log "incing by"
-            console.log -1*share.shares*stock.balance
             inc_by = -1*share.shares*stock.balance
             Portfolio.findByIdAndUpdate req.body.portfolio, {$inc: {cash: inc_by}}, (err, portfolio) ->
               if err then next err

@@ -77,7 +77,7 @@ class NoUserViewController: UIViewController {
                 return
             }
 
-            print("USER: \(user!)")
+            print("new user: \(user!)")
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
             }

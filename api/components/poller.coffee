@@ -75,10 +75,6 @@ module.exports.start = ->
                         else
                           for share in shares
                             inc = if share.buy then share.shares * share.stock.balance else share.shares * (2 * share.balance_a - share.stock.balance)
-                            console.log share.stock.ticker
-                            console.log share.shares
-                            console.log inc
-                            console.log "INC"
                             Portfolio.findByIdAndUpdate share.portfolio, {$inc: {balance: inc}}, (err, portfolio) ->
                               if err then console.log err
 

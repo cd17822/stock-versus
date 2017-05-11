@@ -61,8 +61,6 @@ class DataParser {
                         let b = buy as! Stock
                         let before_count = buy_data!.count
                         // if we find a match, sieve it out of the json data because we don't need to do anything with it
-                        print((buy_data![0]["stock"] as! [String: Any])["id"] as! String)
-                        print(b.id!)
                         buy_data = buy_data!.filter {
                             $0["id"] as! String != b.id!
                         }

@@ -196,6 +196,7 @@ class NetworkHandler {
                 if err != nil {
                     print(err!)
                     cb(nil, err)
+                    return
                 }
 
                 var portfolios_to_delete = [Portfolio]()
@@ -230,6 +231,7 @@ class NetworkHandler {
                     if err != nil {
                         print(err!)
                         cb(nil, err)
+                        return
                     }
 
                     cb(portfolio, nil)

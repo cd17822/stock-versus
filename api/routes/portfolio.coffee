@@ -13,6 +13,13 @@ router.get '/:userId', (req, res, next) ->
     if err then next err
     else
       hits = 0
+
+      tryToCallback = ->
+        if hits == portfolios.length
+          res.send portfolios: portfolios
+
+      tryToCallback()
+
       for i in [0...portfolios.length]
         portfolio = portfolios[i]
         Share.find(portfolio: portfolio.id).populate('stock').exec (err, shares) ->
@@ -26,10 +33,6 @@ router.get '/:userId', (req, res, next) ->
 
             hits += 1
             tryToCallback()
-
-      tryToCallback = ->
-        if hits == portfolios.length
-          res.send portfolios: portfolios
 
 # create new portfolio
 router.post '/', (req, res, next) ->

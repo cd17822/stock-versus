@@ -173,6 +173,7 @@ class NetworkHandler {
             if err != nil {
                 print(err!)
                 cb(nil, err)
+                return
             }
 
             var network_portfolios = [Portfolio]()

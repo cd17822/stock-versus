@@ -57,11 +57,12 @@ class StockRowsView: UIView, UITableViewDelegate, UITableViewDataSource {
         let nib: NSArray = Bundle.main.loadNibNamed("StockRowsViewCell", owner: self)! as NSArray
         let cell = nib[0] as? StockRowsViewCell
 
-        cell!.stock = stocks[indexPath.row]
-        cell!.buy = buy
-        cell!.setTickerLabel()
-        cell!.setPriceChangeLabel(for: mode)
-
+        if stocks.count > indexPath.row {
+            cell!.stock = stocks[indexPath.row]
+            cell!.buy = buy
+            cell!.setTickerLabel()
+            cell!.setPriceChangeLabel(for: mode)
+        }
 
         return cell!
     }

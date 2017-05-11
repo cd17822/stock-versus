@@ -144,7 +144,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="StockVersus" id="x3F-iw-goM">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="SO0-14-Nq2">
-                            <color key="tintColor" red="1" green="0.28101432790000003" blue="0.32284946799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.7474435567855835" green="0.29460901021957397" blue="0.29812350869178772" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="logout:" destination="o7M-kk-Pg1" id="3dp-ht-lbT"/>
                             </connections>

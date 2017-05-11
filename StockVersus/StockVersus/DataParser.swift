@@ -61,9 +61,10 @@ class DataParser {
                         let b = buy as! Stock
                         let before_count = buy_data!.count
                         // if we find a match, sieve it out of the json data because we don't need to do anything with it
+                        print((buy_data![0]["stock"] as! [String: Any])["id"] as! String)
+                        print(b.id!)
                         buy_data = buy_data!.filter {
-                            !(($0["stock"] as! [String: Any])["ticker"] as! String == b.ticker! &&
-                                $0["shares"] as! Int32 == b.shares)
+                            $0["id"] as! String != b.id!
                         }
                         // if we didn't sieve it out
                         if buy_data!.count == before_count {
@@ -76,6 +77,7 @@ class DataParser {
                 // if there are still things left that weren't sieved out then we want to save them
                 for b in buy_data! {
                     let s = Stock(context: CoreDataHandler.context)
+                    s.id = b["id"] as? String
                     s.shares = b["shares"] as! Int32
                     s.balance_a = b["balance_a"] as! Float
 
@@ -105,8 +107,7 @@ class DataParser {
                         let p = put as! Stock
                         let before_count = put_data!.count
                         put_data = put_data!.filter {
-                            !(($0["stock"] as! [String: Any])["ticker"] as! String == p.ticker! &&
-                                $0["shares"] as! Int32 == p.shares)
+                            $0["id"] as! String != p.id!
                         }
                         if put_data!.count == before_count {
                             stocks_to_delete.append(p)
@@ -116,6 +117,7 @@ class DataParser {
 
                 for p in put_data! {
                     let s = Stock(context: CoreDataHandler.context)
+                    s.id = p["id"] as? String
                     s.shares = p["shares"] as! Int32
                     s.balance_a = p["balance_a"] as! Float
 

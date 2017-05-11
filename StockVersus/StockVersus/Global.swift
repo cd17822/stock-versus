@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-var USER_ID = "3427892378425302349"
-var USER_NAME = "Charlie DiGiovanna"
-var USER_USERNAME  = "cd17822"
+var USER_ID = ""
+var USER_NAME = ""
+var USER_USERNAME  = ""
 
 let NUM_PORTFOLIOS: Int32 = 100 // fake
 let PORTFOLIO_START_VALUE: Float = 100000.00
@@ -142,6 +142,6 @@ extension UIColor {
     }
 
     static var appRed: UIColor {
-        return UIColor(red:0.93, green:0.34, blue:0.35, alpha:1.00)
+        return UIColor(red:1.00, green:0.30, blue:0.31, alpha:1.00)
     }
 }

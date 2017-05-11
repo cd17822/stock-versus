@@ -177,7 +177,7 @@ class NetworkHandler {
 
             var network_portfolios = [Portfolio]()
 
-            if let portfolios_data = data!["portfolios"] as? [[String: Any]] {
+            if let portfolios_data = data?["portfolios"] as? [[String: Any]] {
                 for portfolio_data in portfolios_data {
                     DataParser.parseAndSavePortfolio(portfolio_data) { portfolio, err in
                         if err != nil {
@@ -217,15 +217,14 @@ class NetworkHandler {
     }
 
     public static func createOrder(buy: Bool, ticker: String, shares: Int, portfolio: Portfolio, _ cb: @escaping (Portfolio?, Error?) -> ()) {
-        // THE .id ?? CODE IS FOR TESTING ONLY AND MUST BE REMOVED
-        put("/portfolios/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id ?? "591218e03dec1c070ab71017"]) { data, err in
+        put("/portfolios/order", ["buy": buy, "ticker": ticker, "shares": shares, "portfolio": portfolio.id!]) { data, err in
             if err != nil {
                 print("Error creating order: \(err!)")
                 cb(nil, err)
                 return
             }
 
-            if let portfolio_data = data!["portfolio"] as? [String: Any] {
+            if let portfolio_data = data?["portfolio"] as? [String: Any] {
                 DataParser.parseAndSavePortfolio(portfolio_data) { portfolio, err in
                     if err != nil {
                         print(err!)

@@ -30,6 +30,10 @@ class StockRowsViewCell: UITableViewCell {
     }
 
     func setTickerLabel() {
+        if stock?.ticker == nil {
+            return
+        }
+
         ticker_label.text = "\(stock!.ticker!) (x\(stock!.shares))"
     }
 

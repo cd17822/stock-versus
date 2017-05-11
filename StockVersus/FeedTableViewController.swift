@@ -21,6 +21,10 @@ class FeedTableViewController: UITableViewController {
         getPortfolios()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        getPortfolios()
+    }
+
     func getPortfolios() {
         CoreDataHandler.fetchUser() { user, err in
             if err != nil {
@@ -74,6 +78,8 @@ class FeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GreetingCell", for: indexPath)
+            // hack attack! (safe though!)
+            (cell.subviews[0].subviews[0] as? UILabel)?.text = "Good Day \(USER_NAME)!"
             return cell
         } else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell

@@ -5,6 +5,7 @@ idValidator = require 'mongoose-id-validator'
 
 schema = mongoose.Schema
   stock: {type: mongoose.Schema.Types.ObjectId, ref: 'stock'}
+  ticker: String # technically could just get it from stock but have it here too for convenience
   balance_a: Number
   shares: Number
   buy: Boolean

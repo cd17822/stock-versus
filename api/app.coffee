@@ -6,8 +6,8 @@ rek = require 'rekuire'
 userRouter = rek 'routes/user'
 portfolioRouter = rek 'routes/portfolio'
 stockRouter = rek 'routes/stock'
+poller = rek 'components/poller'
 configs = rek 'config'
-server = rek 'components/server'
 
 # connect to mongo
 mongoose.connect configs.MONGO_URI
@@ -41,3 +41,6 @@ app.use (err, req, res, next) ->
 # start server
 PORT = 3939
 app.listen PORT, -> console.log "Listening on #{PORT}"
+
+# start polling server
+poller.start()

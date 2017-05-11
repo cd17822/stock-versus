@@ -52,37 +52,42 @@ class NewOrderView: UIView {
 
     func checkForConfirmability() {
         if plus! {
-            confirm_button.isEnabled = shares_field.text != nil && shares_field.text != "" && Int(shares_field.text!) != nil && ticker_price != nil && Float(total_cost_label.text!.substring(from: total_cost_label.text!.index(after: total_cost_label.text!.startIndex)))! <= cash!
+            confirm_button.isEnabled = shares_field.text != nil && shares_field.text != "" && Int(shares_field.text!) != nil && ticker_price != nil && Float(shares_field.text!) != nil && Float(ticker_price! * Float(shares_field.text!)!) <= cash!
         } else {
-            if buy! {
-                if let _ = vc!.portfolio!.buys!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
-                    confirm_button.isEnabled = true
-                }
+            if ticker_field.text == nil || shares_field.text == nil || Int32(shares_field.text!) == nil {
+                confirm_button.isEnabled = false
             } else {
-                if let _ = vc!.portfolio!.puts!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
-                    confirm_button.isEnabled = true
+                if buy! {
+                    if let _ = vc!.portfolio!.buys!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
+                        confirm_button.isEnabled = true
+                    }
+                } else {
+                    if let _ = vc!.portfolio!.puts!.filter({ ($0 as! Stock).ticker! == ticker_field.text! && ($0 as! Stock).shares >= Int32(shares_field.text!)! }).first {
+                        confirm_button.isEnabled = true
+                    }
                 }
             }
-
         }
     }
 
     func updatePriceLabels() {
-        if ticker_price == nil || shares_field.text == nil || Int(shares_field.text!) == nil {
-            individual_cost_label.text = "$0.00"
-            total_cost_label.text = "$0.00"
-            return
+        DispatchQueue.main.async() {
+            if self.ticker_price == nil || self.shares_field.text == nil || Int(self.shares_field.text!) == nil {
+                self.total_cost_label.text = "$0.00"
+                return
+            }
+
+            self.individual_cost_label.text = self.ticker_price!.dollarString
+
+            self.total_cost_label.text = (self.ticker_price! * Float(self.shares_field.text!)!).dollarString
         }
-
-        individual_cost_label.text = ticker_price!.dollarString
-
-        total_cost_label.text = (ticker_price! * Float(shares_field.text!)!).dollarString
     }
 
     @IBAction func tickerFieldEditingDidBegin(_ sender: Any) {
         ticker_price = nil
         confirm_button.isEnabled = false
         shares_field.text = "0"
+        individual_cost_label.text = "$0.00"
         updatePriceLabels()
     }
 

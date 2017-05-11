@@ -57,7 +57,6 @@ class PortfolioViewController: UIViewController {
         let balances = [portfolio!.balance_d, portfolio!.balance_w, portfolio!.balance_m, portfolio!.balance_q, portfolio!.balance_y, PORTFOLIO_START_VALUE]
 
         balance_label.text = portfolio!.balance.dollarString
-        balance_label.textColor = changeColor(for: portfolio!.balance, since: balances[mode.hashValue])
         change_label.text = priceChangeString(for: portfolio!.balance, since: balances[mode.hashValue])
         change_label.textColor = changeColor(for: portfolio!.balance, since: balances[mode.hashValue])
 
@@ -169,7 +168,9 @@ class PortfolioViewController: UIViewController {
             self.portfolio = portfolio
 
             DispatchQueue.main.async() {
+                self.buys_table.stocks = self.portfolio!.buys!.map { $0 as! Stock }
                 self.buys_table.table_view.reloadData()
+                self.puts_table.stocks = self.portfolio!.puts!.map { $0 as! Stock }
                 self.puts_table.table_view.reloadData()
             }
         }

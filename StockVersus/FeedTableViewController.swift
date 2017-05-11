@@ -157,7 +157,6 @@ class FeedTableViewController: UITableViewController {
             }
         })
 
-
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "My Portfolio"
         }

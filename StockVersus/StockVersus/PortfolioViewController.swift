@@ -168,6 +168,7 @@ class PortfolioViewController: UIViewController {
             self.portfolio = portfolio
 
             DispatchQueue.main.async() {
+                self.setLabels()
                 self.buys_table.stocks = self.portfolio!.buys!.map { $0 as! Stock }
                 self.buys_table.table_view.reloadData()
                 self.puts_table.stocks = self.portfolio!.puts!.map { $0 as! Stock }

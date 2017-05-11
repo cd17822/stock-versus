@@ -87,22 +87,19 @@ router.put '/order', (req, res, next) ->
                 share.save (err, share) ->
                   if err then next err
                   else
-                    Portfolio.findByIdAndUpdate req.body.portfolio, {$inc: {cash: -1*share.shares*stock.balance}}, (err, portfolio) ->
+                    inc_by = -1*share.shares*stock.balance
+                    Portfolio.findByIdAndUpdate req.body.portfolio, {$inc: {cash: inc_by}}, (err, portfolio) ->
                       if err then next err
                       else
-                        inc_by = -1*share.shares*stock.balance
-                        Portfolio.findByIdAndUpdate req.body.portfolio, {$inc: {cash: inc_by}}, (err, portfolio) ->
+                        Share.find(portfolio: portfolio.id).populate('stock').exec (err, shares) ->
                           if err then next err
                           else
-                            Share.find(portfolio: portfolio.id).populate('stock').exec (err, shares) ->
-                              if err then next err
-                              else
-                                portfolio.buys = []
-                                portfolio.puts = []
-                                for s in shares
-                                  if s.buy then portfolio.buys.push s
-                                  else          portfolio.puts.push s
-                                (res.status 201).send portfolio: portfolio
+                            portfolio.buys = []
+                            portfolio.puts = []
+                            for s in shares
+                              if s.buy then portfolio.buys.push s
+                              else          portfolio.puts.push s
+                            (res.status 201).send portfolio: portfolio
       else
         share = new Share()
         share.stock = stock.id

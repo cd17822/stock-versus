@@ -77,6 +77,10 @@ class NewOrderView: UIView {
                 return
             }
 
+            if self.shares_field.text != nil && self.shares_field.text! == "0"
+            {
+                self.shares_field.text = ""
+            }
             self.individual_cost_label.text = self.ticker_price!.dollarString
 
             self.total_cost_label.text = (self.ticker_price! * Float(self.shares_field.text!)!).dollarString

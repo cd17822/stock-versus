@@ -57,7 +57,7 @@ class FeedTableViewController: UITableViewController {
                 }
                 
                 self.portfolios = portfolios!
-                print(self.portfolios.first?.puts ?? "nil")
+
                 DispatchQueue.main.async() {
                     self.tableView.reloadData()
                 }
@@ -99,7 +99,9 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "FeedToPortfolio", sender: portfolios[indexPath.row])
+        if indexPath.row < portfolios.count {
+            performSegue(withIdentifier: "FeedToPortfolio", sender: portfolios[indexPath.row])
+        }
     }
 
     /*

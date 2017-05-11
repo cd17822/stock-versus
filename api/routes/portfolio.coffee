@@ -16,7 +16,7 @@ router.get '/:userId', (req, res, next) ->
 
       tryToCallback = ->
         if hits == portfolios.length
-          res.send portfolios: portfolios
+          res.send portfolios: portfolios.reverse()
 
       tryToCallback()
 

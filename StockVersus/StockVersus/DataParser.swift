@@ -29,7 +29,8 @@ class DataParser {
 
                 portfolio.id = id
                 portfolio.user = user
-                portfolio.time_init = dateFromString(data["created_at"] as! String) as NSDate
+                portfolio.time_init = Date() as NSDate
+                portfolio.time_init = dateFromString(data["created_at"] as! String) as NSDate? ?? portfolio.time_init
                 portfolio.name = data["name"] as? String
                 portfolio.cash = data["cash"] as! Float
 
@@ -100,7 +101,7 @@ class DataParser {
                 if put_data == nil {
                     put_data = [[String:Any]]()
                 }
-
+                
                 if portfolio.puts != nil {
                     for put in portfolio.puts! {
                         let p = put as! Stock

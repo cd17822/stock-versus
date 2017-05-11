@@ -40,6 +40,8 @@ class PortfolioViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "bg"))
+        navigationItem.title = portfolio!.name
+        navigationItem.backBarButtonItem?.title = "Feed"
 
         setLabels()
     }

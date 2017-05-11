@@ -57,6 +57,7 @@ class CoreDataHandler {
 
     public static func fetchPortfolios(belongingTo user: User, _ cb: ([Portfolio]?, Error?) -> ()) {
         let request = NSFetchRequest<Portfolio>(entityName: "Portfolio")
+        request.sortDescriptors = [NSSortDescriptor(key: "time_init", ascending: true)]
 
         do {
             let portfolios = try context.fetch(request)

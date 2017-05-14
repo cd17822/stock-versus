@@ -41,7 +41,7 @@ class StockRowsViewCell: UITableViewCell {
 
     public func setPriceChangeLabel(for tu: TimeUnit) {
         mode = tu
-        
+
         price_change_label.text = dollars ? dollarChangeString(for: Float(stock!.shares) * stock!.balance, since: Float(stock!.shares) * balances[mode!.hashValue]) : percentChangeString(for: stock!.balance, since: balances[mode!.hashValue])
 
 

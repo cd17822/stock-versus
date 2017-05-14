@@ -52,7 +52,7 @@ class FeedPaneView: UIView {
         inner_border_view.layer.borderColor = UIColor.darkGray.cgColor
 
         balance_label.text = portfolio!.balance.dollarString
-        date_label.text = "\(Date().prettyDateTimeDescription)"
+        date_label.text = (portfolio!.updated_at! as Date).prettyButShortDateTimeDescription
         name_label.text = portfolio!.name!
 
         dollar_change_label.text = dollarChangeString(for: portfolio!.balance, since: portfolio!.balance_d)

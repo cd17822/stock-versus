@@ -29,6 +29,7 @@ class DataParser {
 
                 portfolio.id = id
                 portfolio.user = user
+                portfolio.updated_at = Date() as NSDate
                 portfolio.time_init = Date() as NSDate
                 portfolio.time_init = dateFromString(data["created_at"] as! String) as NSDate? ?? portfolio.time_init
                 portfolio.name = data["name"] as? String

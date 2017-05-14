@@ -17,6 +17,7 @@
         <attribute name="ranking_w" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ranking_y" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="time_init" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="buys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stock" inverseName="buy_portfolio" inverseEntity="Stock" syncable="YES"/>
         <relationship name="puts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stock" inverseName="put_portfolio" inverseEntity="Stock" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="portfolios" inverseEntity="User" syncable="YES"/>
@@ -42,7 +43,7 @@
         <relationship name="portfolios" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="user" inverseEntity="Portfolio" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Portfolio" positionX="-477" positionY="-396" width="128" height="328"/>
+        <element name="Portfolio" positionX="-477" positionY="-396" width="128" height="345"/>
         <element name="Stock" positionX="-119" positionY="-315" width="128" height="225"/>
         <element name="User" positionX="-173" positionY="-18" width="128" height="105"/>
     </elements>
